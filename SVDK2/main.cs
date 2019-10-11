@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
+using System.Data.SQLite;
 
 namespace SVDK2
 {
@@ -15,7 +18,7 @@ namespace SVDK2
         public main()
         {
             InitializeComponent();
-        }
 
+        }
     }
 }

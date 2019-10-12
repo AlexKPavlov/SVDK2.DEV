@@ -15,10 +15,34 @@ namespace SVDK2
 {
     public partial class main : Form
     {
+        IniFile settingsIni = new IniFile(@"setting.ini");  //Файл настроек
+        SQLiteConnection sqliteConnection;  //Строка подключения
+
         public main()
         {
             InitializeComponent();
 
+            if (settingsIni.Read("dbPath", "db").Length == 0)
+                settingsIni.Write("dbPath", @"db.db", "db");
+            sqliteConnection = new SQLiteConnection(@"Data Source="+settingsIni.Read("dbPath", "db") + @"; Version=3;");
         }
+
+
+        #region События
+        #region События кнопок
+        private void AgentToolStripButton_main_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void insuranceToolStripButton_main_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #endregion
+
+
     }
 }

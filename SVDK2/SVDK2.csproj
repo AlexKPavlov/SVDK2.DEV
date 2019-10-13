@@ -81,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IniFile.cs" />
+    <Compile Include="insuranceReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="insuranceReference.Designer.cs">
+      <DependentUpon>insuranceReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="insuranceReference.resx">
+      <DependentUpon>insuranceReference.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>

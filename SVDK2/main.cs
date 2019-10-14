@@ -37,7 +37,8 @@ namespace SVDK2
 
         private void insuranceToolStripButton_main_Click(object sender, EventArgs e)
         {
-
+            insuranceReference form = new insuranceReference(sqliteConnection);
+            form.ShowDialog();
         }
         #endregion
 

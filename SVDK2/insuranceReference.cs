@@ -26,6 +26,7 @@ namespace SVDK2
         private void insuranceReference_Load(object sender, EventArgs e)
         {
             updateDataGridView();
+            changeModeToolStripButton_CheckStateChanged(null, null);
         }
 
         private void changeModeToolStripButton_Click(object sender, EventArgs e)
@@ -103,6 +104,76 @@ namespace SVDK2
         {
             updateDataGridView();
         }
+
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 46)
+            {
+                removeToolStripButton.PerformClick();
+            }
+        }
+
+        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == e.FormattedValue || dataGridView.Rows[e.RowIndex].Cells["vs_kod"].Value == null)
+                return;
+
+            string cell;
+            if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null)
+                cell = "";
+            else
+                cell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+            if (cell.Length == 0 && e.FormattedValue.ToString() == "") {
+                MessageBox.Show("Название не может быть пустым", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView.CurrentCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                dataGridView.BeginEdit(false);
+                return;
+            }
+
+            if (cell.Length > 0 && e.FormattedValue.ToString() == "") {
+                MessageBox.Show("Название не может быть пустым", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+                return;
+            }
+
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand(@"UPDATE vs SET vs_name=$name WHERE vs_kod=$id;", sqliteConnection);
+            update.Parameters.AddWithValue("$name", e.FormattedValue.ToString());
+            update.Parameters.AddWithValue("$id", Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells["vs_kod"].Value));
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+        }
+
+        private void dataGridView_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            SQLiteCommand command = new SQLiteCommand("SELECT CASE WHEN vs_kod IS NULL THEN 0 ELSE MAX(vs_kod) END FROM vs", sqliteConnection);
+            sqliteConnection.Open();
+            SQLiteDataReader reader = command.ExecuteReader();
+            int id = 0;
+
+            while (reader.Read())
+            {
+                id = Convert.ToInt32(reader[0]) + 1;
+            }
+
+            dataGridView.Rows[e.Row.Index-1].Cells["vs_kod"].Value = id;
+
+            command = new SQLiteCommand("INSERT INTO vs (vs_kod) VALUES($id)", sqliteConnection);
+            command.Parameters.AddWithValue("$id", id);
+            command.ExecuteNonQuery();
+            
+            sqliteConnection.Close();
+
+            dataGridView.CurrentCell = dataGridView.Rows[e.Row.Index - 1].Cells["vs_name"];
+            dataGridView.BeginEdit(false);
+
+        }
         #endregion
 
         private void updateDataGridView()
@@ -141,22 +212,6 @@ namespace SVDK2
             return true;
         }
 
-        private void dataGridView_UserAddedRow(object sender, DataGridViewRowEventArgs e)
-        {
 
-        }
-
-        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            e.Cancel = true;
-        }
-
-        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == 46) 
-            {
-                removeToolStripButton.PerformClick();
-            }
-        }
     }
 }

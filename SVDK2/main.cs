@@ -32,13 +32,18 @@ namespace SVDK2
         #region События кнопок
         private void AgentToolStripButton_main_Click(object sender, EventArgs e)
         {
-
+            agent form = new agent(sqliteConnection);
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         private void insuranceToolStripButton_main_Click(object sender, EventArgs e)
         {
             insuranceReference form = new insuranceReference(sqliteConnection);
+            this.Hide();
             form.ShowDialog();
+            this.Show();
         }
         #endregion
 

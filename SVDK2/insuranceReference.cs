@@ -201,12 +201,16 @@ namespace SVDK2
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return false;
 
-            string command = "DELETE FROM vs WHERE vs_kod='" + id[0] + "'";
-            for (int i = 1; i < id.Count(); i++)
-                command += " OR vs_kod='" + id[i] + "'";
             sqliteConnection.Open();
-            SQLiteCommand delRow = new SQLiteCommand(command, sqliteConnection);
-            delRow.ExecuteNonQuery();
+            for (int j = 0; j < id.Count(); j+=50)
+            {
+                string command = "DELETE FROM vs WHERE vs_kod='" + id[j] + "'";
+                for (int i = 1; i + j < id.Count() && i < 50; i++)
+                    command += " OR vs_kod='" + id[i+j] + "'";
+                SQLiteCommand delRow = new SQLiteCommand(command, sqliteConnection);
+                delRow.ExecuteNonQuery();
+            }
+            
             sqliteConnection.Close();
 
             return true;

@@ -35,6 +35,8 @@
             this.profileTabPage = new System.Windows.Forms.TabPage();
             this.commissionTabPage = new System.Windows.Forms.TabPage();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.general = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -72,6 +74,8 @@
             this.agentDataGridView.ColumnHeadersVisible = false;
             this.agentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.general,
+            this.kod,
             this.name,
             this.active});
             this.agentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -124,20 +128,39 @@
             // 
             // id
             // 
-            this.id.HeaderText = "Код";
+            this.id.HeaderText = "ИД";
             this.id.MinimumWidth = 6;
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.Visible = false;
             this.id.Width = 125;
             // 
+            // general
+            // 
+            this.general.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.general.HeaderText = "Отображаемоё";
+            this.general.MinimumWidth = 6;
+            this.general.Name = "general";
+            this.general.ReadOnly = true;
+            this.general.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // kod
+            // 
+            this.kod.HeaderText = "Код";
+            this.kod.MinimumWidth = 6;
+            this.kod.Name = "kod";
+            this.kod.ReadOnly = true;
+            this.kod.Visible = false;
+            this.kod.Width = 125;
+            // 
             // name
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.name.HeaderText = "ФИО";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
             this.name.ReadOnly = true;
+            this.name.Visible = false;
+            this.name.Width = 197;
             // 
             // active
             // 
@@ -177,6 +200,8 @@
         private System.Windows.Forms.TabPage commissionTabPage;
         private System.Windows.Forms.DataGridView agentDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn general;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
     }

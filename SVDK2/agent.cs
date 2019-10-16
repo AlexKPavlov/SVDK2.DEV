@@ -30,6 +30,7 @@ namespace SVDK2
 
         private void loadAgentList()
         {
+            agentDataGridView.Rows.Clear();
             SQLiteCommand load = new SQLiteCommand("SELECT * FROM agent", sqliteConnection);
 
             sqliteConnection.Open();
@@ -58,10 +59,63 @@ namespace SVDK2
             agentDataGridView.Sort(agentDataGridView.Columns["kod"], ListSortDirection.Ascending);
             agentDataGridView.Sort(agentDataGridView.Columns["active"], ListSortDirection.Descending);
 
-            foreach (DataGridViewRow item in agentDataGridView.Rows)    //Порядок отображения
+            foreach (DataGridViewRow item in agentDataGridView.Rows)    //Оформление строк
             {
+                if (Convert.ToBoolean(item.Cells["active"].Value))  //Активные строки
+                {
+                    item.Cells["general"].Style.ForeColor = Color.Black;
+                    item.Cells["general"].Style.SelectionForeColor = Color.Black;
+                    item.Cells["general"].Style.SelectionBackColor = Color.LightBlue;
+                    item.Cells["general"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+                else    //Выключенные строки
+                {
+                    item.Cells["general"].Style.ForeColor = Color.Gray;
+                    item.Cells["general"].Style.SelectionForeColor = Color.Gray;
+                    item.Cells["general"].Style.SelectionBackColor = Color.LightBlue;
+                    item.Cells["general"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+                if ((Convert.ToInt32(item.Cells["id"].Value)) == -1) //Строка добавления
+                {
+                    item.Cells["general"].Style.ForeColor = Color.Black;
+                    item.Cells["general"].Style.SelectionForeColor = Color.Black;
+                    item.Cells["general"].Style.SelectionBackColor = Color.LightBlue;
+                    item.Cells["general"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
             }
         }
+
+        private void searchInAgentDataGrid(string text)
+        {
+
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (searchTextBox.Text == "Поиск...")
+                return;
+
+            searchInAgentDataGrid(searchTextBox.Text);
+        }
+
+        #region Placeholder для поля поиска
+        private void searchTextBox_Enter(object sender, EventArgs e)
+        {
+            if (searchTextBox.Text == "Поиск...")
+            {
+                searchTextBox.Text = "";
+                searchTextBox.ForeColor = Color.Black;
+            }
+        }
+        private void searchTextBox_Leave(object sender, EventArgs e)
+        {
+            if (searchTextBox.Text == "")
+            {
+                searchTextBox.Text = "Поиск...";
+                searchTextBox.ForeColor = Color.Gray;
+            }
+        }
+        #endregion
     }
 }

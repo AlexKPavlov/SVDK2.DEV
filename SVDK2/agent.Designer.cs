@@ -69,6 +69,10 @@
             // 
             // agentDataGridView
             // 
+            this.agentDataGridView.AllowUserToAddRows = false;
+            this.agentDataGridView.AllowUserToDeleteRows = false;
+            this.agentDataGridView.AllowUserToResizeColumns = false;
+            this.agentDataGridView.AllowUserToResizeRows = false;
             this.agentDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.agentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.agentDataGridView.ColumnHeadersVisible = false;
@@ -90,10 +94,15 @@
             // searchTextBox
             // 
             this.searchTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.searchTextBox.Location = new System.Drawing.Point(0, 0);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(200, 22);
             this.searchTextBox.TabIndex = 0;
+            this.searchTextBox.Text = "Поиск...";
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
+            this.searchTextBox.Leave += new System.EventHandler(this.searchTextBox_Leave);
             // 
             // tabControl
             // 

@@ -28,6 +28,7 @@ namespace SVDK2
             refreshAgentDataGrid();
         }
 
+        #region Обработка списка агентов и поиска в нём
         private void loadAgentList()
         {
             agentDataGridView.Rows.Clear();
@@ -86,18 +87,59 @@ namespace SVDK2
             }
         }
 
-        private void searchInAgentDataGrid(string text)
+        private Boolean searchInAgentDataGrid(string text)
         {
+            int countVisibleString = 0;
+            int lastVisibleIndex = -1;
 
+            foreach (DataGridViewRow item in agentDataGridView.Rows)
+            {
+                if (item.Cells["general"].Value.ToString().ToUpper().Contains(text.ToUpper()))
+                {
+                    if (lastVisibleIndex == -1 && text != "")
+                        agentDataGridView.CurrentCell = item.Cells["general"];
+                    item.Visible = true;
+                    lastVisibleIndex = item.Index;
+                    countVisibleString++;
+                }
+                else
+                    item.Visible = false;
+            }
+
+            if (countVisibleString == 1)
+            {
+                agentDataGridView.CurrentCell = agentDataGridView.Rows[lastVisibleIndex].Cells["general"];
+                searchInAgentDataGrid("");
+
+                return true;
+            }
+            if (countVisibleString == 0)
+            {
+                searchInAgentDataGrid("");
+
+                return true;
+            }
+
+            return false;
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
+            Boolean endSearch = false;
             if (searchTextBox.Text == "Поиск...")
-                return;
+                endSearch = searchInAgentDataGrid("");
+            else
+                endSearch = searchInAgentDataGrid(searchTextBox.Text);
 
-            searchInAgentDataGrid(searchTextBox.Text);
+            if (endSearch)
+            {
+                searchTextBox.Text = "";
+                tabControl.Focus();
+            }
+                
+
         }
+        #endregion
 
         #region Placeholder для поля поиска
         private void searchTextBox_Enter(object sender, EventArgs e)

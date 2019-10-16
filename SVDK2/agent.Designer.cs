@@ -84,10 +84,12 @@
             this.active});
             this.agentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.agentDataGridView.Location = new System.Drawing.Point(0, 22);
+            this.agentDataGridView.MultiSelect = false;
             this.agentDataGridView.Name = "agentDataGridView";
             this.agentDataGridView.RowHeadersVisible = false;
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
+            this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.agentDataGridView.Size = new System.Drawing.Size(200, 428);
             this.agentDataGridView.TabIndex = 1;
             // 

@@ -46,15 +46,14 @@
             this.saleChanelLabel_profile = new System.Windows.Forms.Label();
             this.cotactLabel_profile = new System.Windows.Forms.Label();
             this.nameTextBox_profile = new System.Windows.Forms.TextBox();
-            this.kodAgentTextBox_profile = new System.Windows.Forms.TextBox();
-            this.branchCodeTextBox_profile = new System.Windows.Forms.TextBox();
-            this.saleChanelTextBox_profile = new System.Windows.Forms.TextBox();
             this.contactTextBox_profile = new System.Windows.Forms.TextBox();
-            this.commissionTabPage = new System.Windows.Forms.TabPage();
             this.activeCheckBox_profile = new System.Windows.Forms.CheckBox();
             this.deleteAgentButton_profile = new System.Windows.Forms.Button();
             this.addNewAgentButton_profile = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.commissionTabPage = new System.Windows.Forms.TabPage();
+            this.kodAgentNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
+            this.branchCodeNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
+            this.saleChanelNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -64,7 +63,9 @@
             this.profileTabPage.SuspendLayout();
             this.flowLayoutPanel_profile.SuspendLayout();
             this.mainInformationTableLayoutPanel_profile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kodAgentNumericUpDown_profile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -198,7 +199,6 @@
             this.flowLayoutPanel_profile.AutoScroll = true;
             this.flowLayoutPanel_profile.Controls.Add(this.mainInformationTableLayoutPanel_profile);
             this.flowLayoutPanel_profile.Controls.Add(this.addNewAgentButton_profile);
-            this.flowLayoutPanel_profile.Controls.Add(this.numericUpDown1);
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
@@ -217,12 +217,12 @@
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelLabel_profile, 0, 3);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.cotactLabel_profile, 0, 4);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.nameTextBox_profile, 1, 0);
-            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentTextBox_profile, 1, 1);
-            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeTextBox_profile, 1, 2);
-            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelTextBox_profile, 1, 3);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.contactTextBox_profile, 1, 4);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.activeCheckBox_profile, 2, 0);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.deleteAgentButton_profile, 2, 4);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentNumericUpDown_profile, 1, 1);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeNumericUpDown_profile, 1, 2);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelNumericUpDown_profile, 1, 3);
             this.mainInformationTableLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.mainInformationTableLayoutPanel_profile.Name = "mainInformationTableLayoutPanel_profile";
             this.mainInformationTableLayoutPanel_profile.RowCount = 5;
@@ -286,27 +286,6 @@
             this.nameTextBox_profile.Size = new System.Drawing.Size(204, 22);
             this.nameTextBox_profile.TabIndex = 5;
             // 
-            // kodAgentTextBox_profile
-            // 
-            this.kodAgentTextBox_profile.Location = new System.Drawing.Point(153, 53);
-            this.kodAgentTextBox_profile.Name = "kodAgentTextBox_profile";
-            this.kodAgentTextBox_profile.Size = new System.Drawing.Size(204, 22);
-            this.kodAgentTextBox_profile.TabIndex = 6;
-            // 
-            // branchCodeTextBox_profile
-            // 
-            this.branchCodeTextBox_profile.Location = new System.Drawing.Point(153, 103);
-            this.branchCodeTextBox_profile.Name = "branchCodeTextBox_profile";
-            this.branchCodeTextBox_profile.Size = new System.Drawing.Size(204, 22);
-            this.branchCodeTextBox_profile.TabIndex = 7;
-            // 
-            // saleChanelTextBox_profile
-            // 
-            this.saleChanelTextBox_profile.Location = new System.Drawing.Point(153, 153);
-            this.saleChanelTextBox_profile.Name = "saleChanelTextBox_profile";
-            this.saleChanelTextBox_profile.Size = new System.Drawing.Size(204, 22);
-            this.saleChanelTextBox_profile.TabIndex = 8;
-            // 
             // contactTextBox_profile
             // 
             this.contactTextBox_profile.Location = new System.Drawing.Point(153, 203);
@@ -314,16 +293,6 @@
             this.contactTextBox_profile.Name = "contactTextBox_profile";
             this.contactTextBox_profile.Size = new System.Drawing.Size(204, 61);
             this.contactTextBox_profile.TabIndex = 9;
-            // 
-            // commissionTabPage
-            // 
-            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
-            this.commissionTabPage.Name = "commissionTabPage";
-            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
-            this.commissionTabPage.TabIndex = 1;
-            this.commissionTabPage.Text = "Комиссионные";
-            this.commissionTabPage.UseVisualStyleBackColor = true;
             // 
             // activeCheckBox_profile
             // 
@@ -360,12 +329,61 @@
             this.addNewAgentButton_profile.UseVisualStyleBackColor = true;
             this.addNewAgentButton_profile.Visible = false;
             // 
-            // numericUpDown1
+            // commissionTabPage
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(3, 361);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 2;
+            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
+            this.commissionTabPage.Name = "commissionTabPage";
+            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
+            this.commissionTabPage.TabIndex = 1;
+            this.commissionTabPage.Text = "Комиссионные";
+            this.commissionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // kodAgentNumericUpDown_profile
+            // 
+            this.kodAgentNumericUpDown_profile.Location = new System.Drawing.Point(153, 53);
+            this.kodAgentNumericUpDown_profile.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.kodAgentNumericUpDown_profile.Name = "kodAgentNumericUpDown_profile";
+            this.kodAgentNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.kodAgentNumericUpDown_profile.TabIndex = 12;
+            // 
+            // branchCodeNumericUpDown_profile
+            // 
+            this.branchCodeNumericUpDown_profile.Location = new System.Drawing.Point(153, 103);
+            this.branchCodeNumericUpDown_profile.Maximum = new decimal(new int[] {
+            13799999,
+            0,
+            0,
+            0});
+            this.branchCodeNumericUpDown_profile.Minimum = new decimal(new int[] {
+            13700000,
+            0,
+            0,
+            0});
+            this.branchCodeNumericUpDown_profile.Name = "branchCodeNumericUpDown_profile";
+            this.branchCodeNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.branchCodeNumericUpDown_profile.TabIndex = 13;
+            this.branchCodeNumericUpDown_profile.Value = new decimal(new int[] {
+            13700000,
+            0,
+            0,
+            0});
+            // 
+            // saleChanelNumericUpDown_profile
+            // 
+            this.saleChanelNumericUpDown_profile.Location = new System.Drawing.Point(153, 153);
+            this.saleChanelNumericUpDown_profile.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.saleChanelNumericUpDown_profile.Name = "saleChanelNumericUpDown_profile";
+            this.saleChanelNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.saleChanelNumericUpDown_profile.TabIndex = 14;
             // 
             // agent
             // 
@@ -389,7 +407,9 @@
             this.flowLayoutPanel_profile.ResumeLayout(false);
             this.mainInformationTableLayoutPanel_profile.ResumeLayout(false);
             this.mainInformationTableLayoutPanel_profile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kodAgentNumericUpDown_profile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -415,13 +435,12 @@
         private System.Windows.Forms.Label saleChanelLabel_profile;
         private System.Windows.Forms.Label cotactLabel_profile;
         private System.Windows.Forms.TextBox nameTextBox_profile;
-        private System.Windows.Forms.TextBox kodAgentTextBox_profile;
-        private System.Windows.Forms.TextBox branchCodeTextBox_profile;
-        private System.Windows.Forms.TextBox saleChanelTextBox_profile;
         private System.Windows.Forms.TextBox contactTextBox_profile;
         private System.Windows.Forms.CheckBox activeCheckBox_profile;
         private System.Windows.Forms.Button deleteAgentButton_profile;
         private System.Windows.Forms.Button addNewAgentButton_profile;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown kodAgentNumericUpDown_profile;
+        private System.Windows.Forms.NumericUpDown branchCodeNumericUpDown_profile;
+        private System.Windows.Forms.NumericUpDown saleChanelNumericUpDown_profile;
     }
 }

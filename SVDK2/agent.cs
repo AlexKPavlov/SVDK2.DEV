@@ -298,21 +298,27 @@ namespace SVDK2
 
         #region Функции работы с данными вкладок + их события
         #region Профиль - profileTabPage
+        private void preparingProfile() {
+            kodAgentNumericUpDown_profile.Controls[0].Visible = false;
+            branchCodeNumericUpDown_profile.Controls[0].Visible = false;
+            saleChanelNumericUpDown_profile.Controls[0].Visible = false;
+        }
+
         private void loadProfileAgent(int idAgent)
         {
             nameLabel_profile.Text = "";    //Очистка полей
-            kodAgentTextBox_profile.Text = "";
-            branchCodeTextBox_profile.Text = "";
-            saleChanelTextBox_profile.Text = "";
+            kodAgentNumericUpDown_profile.Value = 0;
+            branchCodeNumericUpDown_profile.Value = 0;
+            saleChanelNumericUpDown_profile.Value = 0;
             contactTextBox_profile.Text = "";
             activeCheckBox_profile.Checked = false;
 
             if (idAgent == -1)  //Активация/дезактивация полей для добавления нового агента
             {
                 nameLabel_profile.Enabled = false;
-                kodAgentTextBox_profile.Enabled = false;
-                branchCodeTextBox_profile.Enabled = false;
-                saleChanelTextBox_profile.Enabled = false;
+                kodAgentNumericUpDown_profile.Enabled = false;
+                branchCodeNumericUpDown_profile.Enabled = false;
+                saleChanelNumericUpDown_profile.Enabled = false;
                 contactTextBox_profile.Enabled = false;
                 activeCheckBox_profile.Enabled = false;
                 deleteAgentButton_profile.Enabled = false;
@@ -322,9 +328,9 @@ namespace SVDK2
             else
             {
                 nameLabel_profile.Enabled = true;
-                kodAgentTextBox_profile.Enabled = true;
-                branchCodeTextBox_profile.Enabled = true;
-                saleChanelTextBox_profile.Enabled = true;
+                kodAgentNumericUpDown_profile.Enabled = true;
+                branchCodeNumericUpDown_profile.Enabled = true;
+                saleChanelNumericUpDown_profile.Enabled = true;
                 contactTextBox_profile.Enabled = true;
                 activeCheckBox_profile.Enabled = true;
                 deleteAgentButton_profile.Enabled = true;
@@ -336,13 +342,14 @@ namespace SVDK2
             load.Parameters.AddWithValue("id", idAgent);
             SQLiteDataReader reader = load.ExecuteReader();
             while (reader.Read()) {
-                nameLabel_profile.Text = reader["agent_name"].ToString();    
-                kodAgentTextBox_profile.Text = reader["agent_name"].ToString();
-                branchCodeTextBox_profile.Text = "";
-                saleChanelTextBox_profile.Text = "";
-                contactTextBox_profile.Text = "";
-                activeCheckBox_profile.Checked = false;
+                nameLabel_profile.Text = reader["agent_name"].ToString();
+                kodAgentNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_lnr"]);
+                branchCodeNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_branch_code"]);
+                saleChanelNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_sale_chanel"]);
+                contactTextBox_profile.Lines = reader["agent_contact"].ToString().Split(new string[] {@"\n"}, StringSplitOptions.None);
+                activeCheckBox_profile.Checked = Convert.ToBoolean(reader["agent_active"]);
             }
+            sqliteConnection.Close();
         }
         #endregion
         #endregion

@@ -136,7 +136,7 @@ namespace SVDK2
                 searchTextBox.Text = "";
                 tabControl.Focus();
             }
-                
+
 
         }
         #endregion
@@ -156,6 +156,88 @@ namespace SVDK2
             {
                 searchTextBox.Text = "Поиск...";
                 searchTextBox.ForeColor = Color.Gray;
+            }
+        }
+        #endregion
+
+        #region Горячие клавиши
+        private void agent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.G:    //Поиск
+                        searchTextBox.Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    #region Цифры под вкладки на правой части
+                    case Keys.D1:
+                        if (tabControl.Controls.Count < 1)
+                            break;
+                        tabControl.SelectedIndex = 0;
+                        tabControl.Controls[0].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D2:
+                        if (tabControl.Controls.Count < 2)
+                            break;
+                        tabControl.SelectedIndex = 1;
+                        tabControl.Controls[1].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D3:
+                        if (tabControl.Controls.Count < 3)
+                            break;
+                        tabControl.SelectedIndex = 2;
+                        tabControl.Controls[2].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D4:
+                        if (tabControl.Controls.Count < 4)
+                            break;
+                        tabControl.SelectedIndex = 3;
+                        tabControl.Controls[3].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D5:
+                        if (tabControl.Controls.Count < 5)
+                            break;
+                        tabControl.SelectedIndex = 4;
+                        tabControl.Controls[4].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D6:
+                        if (tabControl.Controls.Count < 6)
+                            break;
+                        tabControl.SelectedIndex = 5;
+                        tabControl.Controls[5].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D7:
+                        if (tabControl.Controls.Count < 7)
+                            break;
+                        tabControl.SelectedIndex = 6;
+                        tabControl.Controls[6].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D8:
+                        if (tabControl.Controls.Count < 8)
+                            break;
+                        tabControl.SelectedIndex = 7;
+                        tabControl.Controls[7].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    case Keys.D9:
+                        if (tabControl.Controls.Count < 9)
+                            break;
+                        tabControl.SelectedIndex = 8;
+                        tabControl.Controls[8].Focus();
+                        e.SuppressKeyPress = true;
+                        break;
+                    #endregion
+
+                }
             }
         }
         #endregion

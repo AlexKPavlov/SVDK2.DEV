@@ -39,12 +39,14 @@
             this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentDataGridView)).BeginInit();
             this.tabControl.SuspendLayout();
+            this.profileTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -119,6 +121,7 @@
             // 
             // profileTabPage
             // 
+            this.profileTabPage.Controls.Add(this.flowLayoutPanel1);
             this.profileTabPage.Location = new System.Drawing.Point(4, 25);
             this.profileTabPage.Name = "profileTabPage";
             this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -182,15 +185,25 @@
             this.active.Visible = false;
             this.active.Width = 125;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(585, 415);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer);
+            this.KeyPreview = true;
             this.Name = "agent";
             this.Text = "Агенты";
             this.Load += new System.EventHandler(this.agent_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.agent_KeyDown);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel1.PerformLayout();
             this.splitContainer.Panel2.ResumeLayout(false);
@@ -198,6 +211,7 @@
             this.splitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.agentDataGridView)).EndInit();
             this.tabControl.ResumeLayout(false);
+            this.profileTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,5 +229,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

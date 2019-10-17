@@ -236,6 +236,7 @@ namespace SVDK2
                         e.SuppressKeyPress = true;
                         break;
                     #endregion
+                    #region Переключение в списке агентов
                     case Keys.A:    //Переключение на агента выше по списку
                         if (agentDataGridView.Rows.Count > 0)
                         {
@@ -276,6 +277,7 @@ namespace SVDK2
                             e.SuppressKeyPress = true;
                         }
                         break;
+                        #endregion
                 }
             }
         }

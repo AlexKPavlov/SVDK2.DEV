@@ -30,17 +30,27 @@
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.agentDataGridView = new System.Windows.Forms.DataGridView();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.profileTabPage = new System.Windows.Forms.TabPage();
-            this.commissionTabPage = new System.Windows.Forms.TabPage();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.general = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.profileTabPage = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel_profile = new System.Windows.Forms.FlowLayoutPanel();
+            this.mainInformationTableLayoutPanel_profile = new System.Windows.Forms.TableLayoutPanel();
+            this.commissionTabPage = new System.Windows.Forms.TabPage();
+            this.nameLabel_profile = new System.Windows.Forms.Label();
+            this.kodAgentLabel_profile = new System.Windows.Forms.Label();
+            this.branchCodeLabel_profile = new System.Windows.Forms.Label();
+            this.saleChanelLabel_profile = new System.Windows.Forms.Label();
+            this.cotactLabel_profile = new System.Windows.Forms.Label();
+            this.nameTextBox_profile = new System.Windows.Forms.TextBox();
+            this.kodAgentTextBox_profile = new System.Windows.Forms.TextBox();
+            this.branchCodeTextBox_profile = new System.Windows.Forms.TextBox();
+            this.saleChanelTextBox_profile = new System.Windows.Forms.TextBox();
+            this.contactTextBox_profile = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -48,7 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.agentDataGridView)).BeginInit();
             this.tabControl.SuspendLayout();
             this.profileTabPage.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel_profile.SuspendLayout();
+            this.mainInformationTableLayoutPanel_profile.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -97,51 +108,6 @@
             this.agentDataGridView.Size = new System.Drawing.Size(200, 428);
             this.agentDataGridView.TabIndex = 1;
             // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.searchTextBox.Location = new System.Drawing.Point(0, 0);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(200, 22);
-            this.searchTextBox.TabIndex = 0;
-            this.searchTextBox.Text = "Поиск...";
-            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
-            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
-            this.searchTextBox.Leave += new System.EventHandler(this.searchTextBox_Leave);
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.profileTabPage);
-            this.tabControl.Controls.Add(this.commissionTabPage);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(599, 450);
-            this.tabControl.TabIndex = 0;
-            // 
-            // profileTabPage
-            // 
-            this.profileTabPage.Controls.Add(this.flowLayoutPanel1);
-            this.profileTabPage.Location = new System.Drawing.Point(4, 25);
-            this.profileTabPage.Name = "profileTabPage";
-            this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.profileTabPage.Size = new System.Drawing.Size(591, 421);
-            this.profileTabPage.TabIndex = 0;
-            this.profileTabPage.Text = "Профиль";
-            this.profileTabPage.UseVisualStyleBackColor = true;
-            // 
-            // commissionTabPage
-            // 
-            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
-            this.commissionTabPage.Name = "commissionTabPage";
-            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
-            this.commissionTabPage.TabIndex = 1;
-            this.commissionTabPage.Text = "Комиссионные";
-            this.commissionTabPage.UseVisualStyleBackColor = true;
-            // 
             // id
             // 
             this.id.HeaderText = "ИД";
@@ -187,27 +153,168 @@
             this.active.Visible = false;
             this.active.Width = 125;
             // 
-            // flowLayoutPanel1
+            // searchTextBox
             // 
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(585, 415);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.searchTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.searchTextBox.Location = new System.Drawing.Point(0, 0);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(200, 22);
+            this.searchTextBox.TabIndex = 0;
+            this.searchTextBox.Text = "Поиск...";
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
+            this.searchTextBox.Leave += new System.EventHandler(this.searchTextBox_Leave);
             // 
-            // tableLayoutPanel1
+            // tabControl
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.5F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.profileTabPage);
+            this.tabControl.Controls.Add(this.commissionTabPage);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(599, 450);
+            this.tabControl.TabIndex = 0;
+            // 
+            // profileTabPage
+            // 
+            this.profileTabPage.Controls.Add(this.flowLayoutPanel_profile);
+            this.profileTabPage.Location = new System.Drawing.Point(4, 25);
+            this.profileTabPage.Name = "profileTabPage";
+            this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.profileTabPage.Size = new System.Drawing.Size(591, 421);
+            this.profileTabPage.TabIndex = 0;
+            this.profileTabPage.Text = "Профиль";
+            this.profileTabPage.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel_profile
+            // 
+            this.flowLayoutPanel_profile.AutoScroll = true;
+            this.flowLayoutPanel_profile.Controls.Add(this.mainInformationTableLayoutPanel_profile);
+            this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
+            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(585, 415);
+            this.flowLayoutPanel_profile.TabIndex = 0;
+            // 
+            // mainInformationTableLayoutPanel_profile
+            // 
+            this.mainInformationTableLayoutPanel_profile.ColumnCount = 3;
+            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.nameLabel_profile, 0, 0);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentLabel_profile, 0, 1);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeLabel_profile, 0, 2);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelLabel_profile, 0, 3);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.cotactLabel_profile, 0, 4);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.nameTextBox_profile, 1, 0);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentTextBox_profile, 1, 1);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeTextBox_profile, 1, 2);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelTextBox_profile, 1, 3);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.contactTextBox_profile, 1, 4);
+            this.mainInformationTableLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
+            this.mainInformationTableLayoutPanel_profile.Name = "mainInformationTableLayoutPanel_profile";
+            this.mainInformationTableLayoutPanel_profile.RowCount = 5;
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(579, 267);
+            this.mainInformationTableLayoutPanel_profile.TabIndex = 0;
+            // 
+            // commissionTabPage
+            // 
+            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
+            this.commissionTabPage.Name = "commissionTabPage";
+            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
+            this.commissionTabPage.TabIndex = 1;
+            this.commissionTabPage.Text = "Комиссионные";
+            this.commissionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // nameLabel_profile
+            // 
+            this.nameLabel_profile.AutoSize = true;
+            this.nameLabel_profile.Location = new System.Drawing.Point(3, 0);
+            this.nameLabel_profile.Name = "nameLabel_profile";
+            this.nameLabel_profile.Size = new System.Drawing.Size(46, 17);
+            this.nameLabel_profile.TabIndex = 0;
+            this.nameLabel_profile.Text = "ФИО:";
+            // 
+            // kodAgentLabel_profile
+            // 
+            this.kodAgentLabel_profile.AutoSize = true;
+            this.kodAgentLabel_profile.Location = new System.Drawing.Point(3, 50);
+            this.kodAgentLabel_profile.Name = "kodAgentLabel_profile";
+            this.kodAgentLabel_profile.Size = new System.Drawing.Size(85, 17);
+            this.kodAgentLabel_profile.TabIndex = 1;
+            this.kodAgentLabel_profile.Text = "Код агента:";
+            // 
+            // branchCodeLabel_profile
+            // 
+            this.branchCodeLabel_profile.AutoSize = true;
+            this.branchCodeLabel_profile.Location = new System.Drawing.Point(3, 100);
+            this.branchCodeLabel_profile.Name = "branchCodeLabel_profile";
+            this.branchCodeLabel_profile.Size = new System.Drawing.Size(144, 17);
+            this.branchCodeLabel_profile.TabIndex = 2;
+            this.branchCodeLabel_profile.Text = "Код подразделения:";
+            // 
+            // saleChanelLabel_profile
+            // 
+            this.saleChanelLabel_profile.AutoSize = true;
+            this.saleChanelLabel_profile.Location = new System.Drawing.Point(3, 150);
+            this.saleChanelLabel_profile.Name = "saleChanelLabel_profile";
+            this.saleChanelLabel_profile.Size = new System.Drawing.Size(106, 17);
+            this.saleChanelLabel_profile.TabIndex = 3;
+            this.saleChanelLabel_profile.Text = "Канал продаж:";
+            // 
+            // cotactLabel_profile
+            // 
+            this.cotactLabel_profile.AutoSize = true;
+            this.cotactLabel_profile.Location = new System.Drawing.Point(3, 200);
+            this.cotactLabel_profile.Name = "cotactLabel_profile";
+            this.cotactLabel_profile.Size = new System.Drawing.Size(76, 17);
+            this.cotactLabel_profile.TabIndex = 4;
+            this.cotactLabel_profile.Text = "Контакты:";
+            // 
+            // nameTextBox_profile
+            // 
+            this.nameTextBox_profile.Location = new System.Drawing.Point(153, 3);
+            this.nameTextBox_profile.Name = "nameTextBox_profile";
+            this.nameTextBox_profile.Size = new System.Drawing.Size(204, 22);
+            this.nameTextBox_profile.TabIndex = 5;
+            // 
+            // kodAgentTextBox_profile
+            // 
+            this.kodAgentTextBox_profile.Location = new System.Drawing.Point(153, 53);
+            this.kodAgentTextBox_profile.Name = "kodAgentTextBox_profile";
+            this.kodAgentTextBox_profile.Size = new System.Drawing.Size(204, 22);
+            this.kodAgentTextBox_profile.TabIndex = 6;
+            // 
+            // branchCodeTextBox_profile
+            // 
+            this.branchCodeTextBox_profile.Location = new System.Drawing.Point(153, 103);
+            this.branchCodeTextBox_profile.Name = "branchCodeTextBox_profile";
+            this.branchCodeTextBox_profile.Size = new System.Drawing.Size(204, 22);
+            this.branchCodeTextBox_profile.TabIndex = 7;
+            // 
+            // saleChanelTextBox_profile
+            // 
+            this.saleChanelTextBox_profile.Location = new System.Drawing.Point(153, 153);
+            this.saleChanelTextBox_profile.Name = "saleChanelTextBox_profile";
+            this.saleChanelTextBox_profile.Size = new System.Drawing.Size(204, 22);
+            this.saleChanelTextBox_profile.TabIndex = 8;
+            // 
+            // contactTextBox_profile
+            // 
+            this.contactTextBox_profile.Location = new System.Drawing.Point(153, 203);
+            this.contactTextBox_profile.Multiline = true;
+            this.contactTextBox_profile.Name = "contactTextBox_profile";
+            this.contactTextBox_profile.Size = new System.Drawing.Size(204, 49);
+            this.contactTextBox_profile.TabIndex = 9;
             // 
             // agent
             // 
@@ -228,7 +335,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.agentDataGridView)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.profileTabPage.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel_profile.ResumeLayout(false);
+            this.mainInformationTableLayoutPanel_profile.ResumeLayout(false);
+            this.mainInformationTableLayoutPanel_profile.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -246,7 +355,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_profile;
+        private System.Windows.Forms.TableLayoutPanel mainInformationTableLayoutPanel_profile;
+        private System.Windows.Forms.Label nameLabel_profile;
+        private System.Windows.Forms.Label kodAgentLabel_profile;
+        private System.Windows.Forms.Label branchCodeLabel_profile;
+        private System.Windows.Forms.Label saleChanelLabel_profile;
+        private System.Windows.Forms.Label cotactLabel_profile;
+        private System.Windows.Forms.TextBox nameTextBox_profile;
+        private System.Windows.Forms.TextBox kodAgentTextBox_profile;
+        private System.Windows.Forms.TextBox branchCodeTextBox_profile;
+        private System.Windows.Forms.TextBox saleChanelTextBox_profile;
+        private System.Windows.Forms.TextBox contactTextBox_profile;
     }
 }

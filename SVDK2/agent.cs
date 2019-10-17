@@ -43,14 +43,18 @@ namespace SVDK2
                 agentDataGridView.Rows[rowNumber].Cells["id"].Value = reader["agent_id"];
                 agentDataGridView.Rows[rowNumber].Cells["name"].Value = reader["agent_name"];
                 agentDataGridView.Rows[rowNumber].Cells["kod"].Value = Convert.ToInt32(reader["agent_lnr"]);
-                agentDataGridView.Rows[rowNumber].Cells["active"].Value = reader["agent_active"];
+                if (Convert.ToBoolean(reader["agent_active"]))
+                    agentDataGridView.Rows[rowNumber].Cells["active"].Value = -1;
+                else
+                    agentDataGridView.Rows[rowNumber].Cells["active"].Value = 1;
             }
             sqliteConnection.Close();
 
             int additionRowNumber = agentDataGridView.Rows.Add();
             agentDataGridView.Rows[additionRowNumber].Cells["id"].Value = -1;
             agentDataGridView.Rows[additionRowNumber].Cells["general"].Value = "<-Добавить агента->";
-            agentDataGridView.Rows[additionRowNumber].Cells["active"].Value = false;
+            agentDataGridView.Rows[additionRowNumber].Cells["kod"].Value = -1;
+            agentDataGridView.Rows[additionRowNumber].Cells["active"].Value = 0;
         }
 
         private void refreshAgentDataGrid()
@@ -59,11 +63,11 @@ namespace SVDK2
                 if (Convert.ToInt32(item.Cells["id"].Value) != -1)
                     item.Cells["general"].Value = item.Cells["kod"].Value + ": " + item.Cells["name"].Value;
             agentDataGridView.Sort(agentDataGridView.Columns["kod"], ListSortDirection.Ascending);
-            agentDataGridView.Sort(agentDataGridView.Columns["active"], ListSortDirection.Descending);
+            agentDataGridView.Sort(agentDataGridView.Columns["active"], ListSortDirection.Ascending);
 
             foreach (DataGridViewRow item in agentDataGridView.Rows)    //Оформление строк
             {
-                if (Convert.ToBoolean(item.Cells["active"].Value))  //Активные строки
+                if (Convert.ToInt32(item.Cells["active"].Value) == -1)  //Активные строки
                 {
                     item.Cells["general"].Style.ForeColor = Color.Black;
                     item.Cells["general"].Style.SelectionForeColor = Color.Black;
@@ -280,6 +284,7 @@ namespace SVDK2
                         break;
                     #endregion
                     case Keys.J:    //Обновление формы
+                        tabControl.Focus();
                         loadAgentList();
                         refreshAgentDataGrid();
                         break;

@@ -236,7 +236,46 @@ namespace SVDK2
                         e.SuppressKeyPress = true;
                         break;
                     #endregion
+                    case Keys.A:    //Переключение на агента выше по списку
+                        if (agentDataGridView.Rows.Count > 0)
+                        {
+                            int iter = 0;
+                            int index = agentDataGridView.SelectedRows[0].Index - 1;
+                            if (index < 0)
+                                index = agentDataGridView.Rows.Count - 1;
+                            while (!agentDataGridView.Rows[index].Visible && iter + 1 <= agentDataGridView.Rows.Count)
+                            {
+                                index--;
+                                if (index < 0)
+                                    index = agentDataGridView.Rows.Count - 1;
+                                iter++;
+                            }
+                            if (iter <= agentDataGridView.Rows.Count)
+                                agentDataGridView.CurrentCell = agentDataGridView.Rows[index].Cells["general"];
 
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
+                    case Keys.Z:    //Переключение на агента ниже по списку
+                        if (agentDataGridView.Rows.Count > 0)
+                        {
+                            int iter = 0;
+                            int index = agentDataGridView.SelectedRows[0].Index + 1;
+                            if (index > agentDataGridView.Rows.Count - 1)
+                                index = 0;
+                            while (!agentDataGridView.Rows[index].Visible && iter + 1 <= agentDataGridView.Rows.Count)
+                            {
+                                index++;
+                                if (index > agentDataGridView.Rows.Count - 1)
+                                    index = 0;
+                                iter++;
+                            }
+                            if (iter <= agentDataGridView.Rows.Count)
+                                agentDataGridView.CurrentCell = agentDataGridView.Rows[index].Cells["general"];
+
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
                 }
             }
         }

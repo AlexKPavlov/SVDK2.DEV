@@ -26,6 +26,7 @@ namespace SVDK2
         {
             loadAgentList();
             refreshAgentDataGrid();
+            preparingProfile();
         }
 
         #region Обработка списка агентов и поиска в нём
@@ -41,7 +42,7 @@ namespace SVDK2
                 int rowNumber = agentDataGridView.Rows.Add();
                 agentDataGridView.Rows[rowNumber].Cells["id"].Value = reader["agent_id"];
                 agentDataGridView.Rows[rowNumber].Cells["name"].Value = reader["agent_name"];
-                agentDataGridView.Rows[rowNumber].Cells["kod"].Value = reader["agent_lnr"];
+                agentDataGridView.Rows[rowNumber].Cells["kod"].Value = Convert.ToInt32(reader["agent_lnr"]);
                 agentDataGridView.Rows[rowNumber].Cells["active"].Value = reader["agent_active"];
             }
             sqliteConnection.Close();
@@ -277,7 +278,11 @@ namespace SVDK2
                             e.SuppressKeyPress = true;
                         }
                         break;
-                        #endregion
+                    #endregion
+                    case Keys.J:    //Обновление формы
+                        loadAgentList();
+                        refreshAgentDataGrid();
+                        break;
                 }
             }
         }
@@ -285,10 +290,13 @@ namespace SVDK2
 
         private void loadSelectedUserInCurrentTabPage() //Загрузка данных выбранного агента В выбранную вкладку
         {
+            if (agentDataGridView.CurrentRow == null)
+                return;
+
             switch (tabControl.SelectedTab.Name)
             {
                 case "profileTabPage":
-                    loadProfileAgent(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"]));
+                    loadProfileAgent(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value));
                     break;
                 case "commissionTabPage":
 
@@ -296,9 +304,19 @@ namespace SVDK2
             }
         }
 
+        private void agentDataGridView_CurrentCellChanged(object sender, EventArgs e)   //События для вызова обновления данных
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
+
         #region Функции работы с данными вкладок + их события
         #region Профиль - profileTabPage
-        private void preparingProfile() {
+        private void preparingProfile()
+        {
             kodAgentNumericUpDown_profile.Controls[0].Visible = false;
             branchCodeNumericUpDown_profile.Controls[0].Visible = false;
             saleChanelNumericUpDown_profile.Controls[0].Visible = false;
@@ -306,16 +324,16 @@ namespace SVDK2
 
         private void loadProfileAgent(int idAgent)
         {
-            nameLabel_profile.Text = "";    //Очистка полей
+            nameTextBox_profile.Text = "";    //Очистка полей
             kodAgentNumericUpDown_profile.Value = 0;
-            branchCodeNumericUpDown_profile.Value = 0;
+            branchCodeNumericUpDown_profile.Value = 13700000;
             saleChanelNumericUpDown_profile.Value = 0;
             contactTextBox_profile.Text = "";
             activeCheckBox_profile.Checked = false;
 
             if (idAgent == -1)  //Активация/дезактивация полей для добавления нового агента
             {
-                nameLabel_profile.Enabled = false;
+                nameTextBox_profile.Enabled = false;
                 kodAgentNumericUpDown_profile.Enabled = false;
                 branchCodeNumericUpDown_profile.Enabled = false;
                 saleChanelNumericUpDown_profile.Enabled = false;
@@ -327,7 +345,7 @@ namespace SVDK2
             }
             else
             {
-                nameLabel_profile.Enabled = true;
+                nameTextBox_profile.Enabled = true;
                 kodAgentNumericUpDown_profile.Enabled = true;
                 branchCodeNumericUpDown_profile.Enabled = true;
                 saleChanelNumericUpDown_profile.Enabled = true;
@@ -337,21 +355,94 @@ namespace SVDK2
                 addNewAgentButton_profile.Visible = false;
             }
 
-            sqliteConnection.Open();
+            Boolean connectionOppened = false;
+            if (sqliteConnection.State == ConnectionState.Open)
+                connectionOppened = true;
+            if (!connectionOppened)
+                sqliteConnection.Open();
             SQLiteCommand load = new SQLiteCommand(@"SELECT * FROM agent WHERE agent_id=$id", sqliteConnection);
             load.Parameters.AddWithValue("id", idAgent);
             SQLiteDataReader reader = load.ExecuteReader();
-            while (reader.Read()) {
-                nameLabel_profile.Text = reader["agent_name"].ToString();
+            while (reader.Read())
+            {
+                nameTextBox_profile.Text = reader["agent_name"].ToString();
                 kodAgentNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_lnr"]);
                 branchCodeNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_branch_code"]);
                 saleChanelNumericUpDown_profile.Value = Convert.ToInt32(reader["agent_sale_chanel"]);
-                contactTextBox_profile.Lines = reader["agent_contact"].ToString().Split(new string[] {@"\n"}, StringSplitOptions.None);
+                contactTextBox_profile.Lines = reader["agent_contact"].ToString().Split(new string[] { @"\n" }, StringSplitOptions.None);
                 activeCheckBox_profile.Checked = Convert.ToBoolean(reader["agent_active"]);
             }
+            if (!connectionOppened)
+                sqliteConnection.Close();
+        }
+
+        private void nameTextBox_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_name=$name WHERE agent_id=$id", sqliteConnection);
+            update.Parameters.AddWithValue("$name", nameTextBox_profile.Text);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+            agentDataGridView.SelectedRows[0].Cells["general"].Value += "*";
+        }
+        private void kodAgentNumericUpDown_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_lnr=$kod WHERE agent_id=$id", sqliteConnection);
+            update.Parameters.AddWithValue("$kod", kodAgentNumericUpDown_profile.Value);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+            agentDataGridView.SelectedRows[0].Cells["general"].Value += "*";
+        }
+        private void branchCodeNumericUpDown_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_branch_code=$code WHERE agent_id=$id", sqliteConnection);
+            update.Parameters.AddWithValue("$code", branchCodeNumericUpDown_profile.Value);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+        }
+        private void saleChanelNumericUpDown_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_sale_chanel=$chanel WHERE agent_id=$id", sqliteConnection);
+            update.Parameters.AddWithValue("$chanel", saleChanelNumericUpDown_profile.Value);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+        }
+        private void contactTextBox_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_contact=$contact WHERE agent_id=$id", sqliteConnection);
+            string contact = "";
+            foreach (string item in contactTextBox_profile.Lines)
+            {
+                if (contact != "")
+                    contact += @"\n";
+                contact += @item;
+            }
+            update.Parameters.AddWithValue("$contact", contact);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
+            sqliteConnection.Close();
+        }
+        private void activeCheckBox_profile_Leave(object sender, EventArgs e)
+        {
+            sqliteConnection.Open();
+            SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_active=$active WHERE agent_id=$id", sqliteConnection);
+            update.Parameters.AddWithValue("$active", activeCheckBox_profile.Checked);
+            update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            update.ExecuteNonQuery();
             sqliteConnection.Close();
         }
         #endregion
+
         #endregion
+
+
     }
 }

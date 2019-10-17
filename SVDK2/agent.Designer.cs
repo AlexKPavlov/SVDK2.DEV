@@ -113,6 +113,7 @@
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.agentDataGridView.Size = new System.Drawing.Size(200, 428);
             this.agentDataGridView.TabIndex = 1;
+            this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             // 
             // id
             // 
@@ -182,6 +183,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(599, 450);
             this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // profileTabPage
             // 
@@ -285,6 +287,7 @@
             this.nameTextBox_profile.Name = "nameTextBox_profile";
             this.nameTextBox_profile.Size = new System.Drawing.Size(204, 22);
             this.nameTextBox_profile.TabIndex = 5;
+            this.nameTextBox_profile.Leave += new System.EventHandler(this.nameTextBox_profile_Leave);
             // 
             // contactTextBox_profile
             // 
@@ -293,6 +296,7 @@
             this.contactTextBox_profile.Name = "contactTextBox_profile";
             this.contactTextBox_profile.Size = new System.Drawing.Size(204, 61);
             this.contactTextBox_profile.TabIndex = 9;
+            this.contactTextBox_profile.Leave += new System.EventHandler(this.contactTextBox_profile_Leave);
             // 
             // activeCheckBox_profile
             // 
@@ -304,6 +308,7 @@
             this.activeCheckBox_profile.TabIndex = 10;
             this.activeCheckBox_profile.Text = "Активность";
             this.activeCheckBox_profile.UseVisualStyleBackColor = true;
+            this.activeCheckBox_profile.Leave += new System.EventHandler(this.activeCheckBox_profile_Leave);
             // 
             // deleteAgentButton_profile
             // 
@@ -350,6 +355,7 @@
             this.kodAgentNumericUpDown_profile.Name = "kodAgentNumericUpDown_profile";
             this.kodAgentNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
             this.kodAgentNumericUpDown_profile.TabIndex = 12;
+            this.kodAgentNumericUpDown_profile.Leave += new System.EventHandler(this.kodAgentNumericUpDown_profile_Leave);
             // 
             // branchCodeNumericUpDown_profile
             // 
@@ -372,6 +378,7 @@
             0,
             0,
             0});
+            this.branchCodeNumericUpDown_profile.Leave += new System.EventHandler(this.branchCodeNumericUpDown_profile_Leave);
             // 
             // saleChanelNumericUpDown_profile
             // 
@@ -384,6 +391,7 @@
             this.saleChanelNumericUpDown_profile.Name = "saleChanelNumericUpDown_profile";
             this.saleChanelNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
             this.saleChanelNumericUpDown_profile.TabIndex = 14;
+            this.saleChanelNumericUpDown_profile.Leave += new System.EventHandler(this.saleChanelNumericUpDown_profile_Leave);
             // 
             // agent
             // 

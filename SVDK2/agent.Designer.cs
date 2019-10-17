@@ -40,7 +40,6 @@
             this.profileTabPage = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel_profile = new System.Windows.Forms.FlowLayoutPanel();
             this.mainInformationTableLayoutPanel_profile = new System.Windows.Forms.TableLayoutPanel();
-            this.commissionTabPage = new System.Windows.Forms.TabPage();
             this.nameLabel_profile = new System.Windows.Forms.Label();
             this.kodAgentLabel_profile = new System.Windows.Forms.Label();
             this.branchCodeLabel_profile = new System.Windows.Forms.Label();
@@ -51,6 +50,9 @@
             this.branchCodeTextBox_profile = new System.Windows.Forms.TextBox();
             this.saleChanelTextBox_profile = new System.Windows.Forms.TextBox();
             this.contactTextBox_profile = new System.Windows.Forms.TextBox();
+            this.commissionTabPage = new System.Windows.Forms.TabPage();
+            this.activeCheckBox_profile = new System.Windows.Forms.CheckBox();
+            this.deleteAgentButton_profile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -214,6 +216,8 @@
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeTextBox_profile, 1, 2);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelTextBox_profile, 1, 3);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.contactTextBox_profile, 1, 4);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.activeCheckBox_profile, 2, 0);
+            this.mainInformationTableLayoutPanel_profile.Controls.Add(this.deleteAgentButton_profile, 2, 4);
             this.mainInformationTableLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.mainInformationTableLayoutPanel_profile.Name = "mainInformationTableLayoutPanel_profile";
             this.mainInformationTableLayoutPanel_profile.RowCount = 5;
@@ -224,16 +228,6 @@
             this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(579, 267);
             this.mainInformationTableLayoutPanel_profile.TabIndex = 0;
-            // 
-            // commissionTabPage
-            // 
-            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
-            this.commissionTabPage.Name = "commissionTabPage";
-            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
-            this.commissionTabPage.TabIndex = 1;
-            this.commissionTabPage.Text = "Комиссионные";
-            this.commissionTabPage.UseVisualStyleBackColor = true;
             // 
             // nameLabel_profile
             // 
@@ -316,6 +310,41 @@
             this.contactTextBox_profile.Size = new System.Drawing.Size(204, 49);
             this.contactTextBox_profile.TabIndex = 9;
             // 
+            // commissionTabPage
+            // 
+            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
+            this.commissionTabPage.Name = "commissionTabPage";
+            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
+            this.commissionTabPage.TabIndex = 1;
+            this.commissionTabPage.Text = "Комиссионные";
+            this.commissionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // activeCheckBox_profile
+            // 
+            this.activeCheckBox_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.activeCheckBox_profile.AutoSize = true;
+            this.activeCheckBox_profile.Location = new System.Drawing.Point(471, 3);
+            this.activeCheckBox_profile.Name = "activeCheckBox_profile";
+            this.activeCheckBox_profile.Size = new System.Drawing.Size(105, 21);
+            this.activeCheckBox_profile.TabIndex = 10;
+            this.activeCheckBox_profile.Text = "Активность";
+            this.activeCheckBox_profile.UseVisualStyleBackColor = true;
+            // 
+            // deleteAgentButton_profile
+            // 
+            this.deleteAgentButton_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteAgentButton_profile.AutoSize = true;
+            this.deleteAgentButton_profile.BackColor = System.Drawing.Color.LightCoral;
+            this.deleteAgentButton_profile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteAgentButton_profile.ForeColor = System.Drawing.Color.Black;
+            this.deleteAgentButton_profile.Location = new System.Drawing.Point(451, 235);
+            this.deleteAgentButton_profile.Name = "deleteAgentButton_profile";
+            this.deleteAgentButton_profile.Size = new System.Drawing.Size(125, 29);
+            this.deleteAgentButton_profile.TabIndex = 11;
+            this.deleteAgentButton_profile.Text = "Удалить агента";
+            this.deleteAgentButton_profile.UseVisualStyleBackColor = false;
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -367,5 +396,7 @@
         private System.Windows.Forms.TextBox branchCodeTextBox_profile;
         private System.Windows.Forms.TextBox saleChanelTextBox_profile;
         private System.Windows.Forms.TextBox contactTextBox_profile;
+        private System.Windows.Forms.CheckBox activeCheckBox_profile;
+        private System.Windows.Forms.Button deleteAgentButton_profile;
     }
 }

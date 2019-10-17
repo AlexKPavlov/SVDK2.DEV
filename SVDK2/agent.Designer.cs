@@ -53,6 +53,8 @@
             this.commissionTabPage = new System.Windows.Forms.TabPage();
             this.activeCheckBox_profile = new System.Windows.Forms.CheckBox();
             this.deleteAgentButton_profile = new System.Windows.Forms.Button();
+            this.addNewAgentButton_profile = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -62,6 +64,7 @@
             this.profileTabPage.SuspendLayout();
             this.flowLayoutPanel_profile.SuspendLayout();
             this.mainInformationTableLayoutPanel_profile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -194,6 +197,8 @@
             // 
             this.flowLayoutPanel_profile.AutoScroll = true;
             this.flowLayoutPanel_profile.Controls.Add(this.mainInformationTableLayoutPanel_profile);
+            this.flowLayoutPanel_profile.Controls.Add(this.addNewAgentButton_profile);
+            this.flowLayoutPanel_profile.Controls.Add(this.numericUpDown1);
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
@@ -226,7 +231,7 @@
             this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(579, 267);
+            this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(577, 267);
             this.mainInformationTableLayoutPanel_profile.TabIndex = 0;
             // 
             // nameLabel_profile
@@ -307,7 +312,7 @@
             this.contactTextBox_profile.Location = new System.Drawing.Point(153, 203);
             this.contactTextBox_profile.Multiline = true;
             this.contactTextBox_profile.Name = "contactTextBox_profile";
-            this.contactTextBox_profile.Size = new System.Drawing.Size(204, 49);
+            this.contactTextBox_profile.Size = new System.Drawing.Size(204, 61);
             this.contactTextBox_profile.TabIndex = 9;
             // 
             // commissionTabPage
@@ -324,7 +329,7 @@
             // 
             this.activeCheckBox_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.activeCheckBox_profile.AutoSize = true;
-            this.activeCheckBox_profile.Location = new System.Drawing.Point(471, 3);
+            this.activeCheckBox_profile.Location = new System.Drawing.Point(469, 3);
             this.activeCheckBox_profile.Name = "activeCheckBox_profile";
             this.activeCheckBox_profile.Size = new System.Drawing.Size(105, 21);
             this.activeCheckBox_profile.TabIndex = 10;
@@ -338,12 +343,29 @@
             this.deleteAgentButton_profile.BackColor = System.Drawing.Color.LightCoral;
             this.deleteAgentButton_profile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteAgentButton_profile.ForeColor = System.Drawing.Color.Black;
-            this.deleteAgentButton_profile.Location = new System.Drawing.Point(451, 235);
+            this.deleteAgentButton_profile.Location = new System.Drawing.Point(449, 235);
             this.deleteAgentButton_profile.Name = "deleteAgentButton_profile";
             this.deleteAgentButton_profile.Size = new System.Drawing.Size(125, 29);
             this.deleteAgentButton_profile.TabIndex = 11;
             this.deleteAgentButton_profile.Text = "Удалить агента";
             this.deleteAgentButton_profile.UseVisualStyleBackColor = false;
+            // 
+            // addNewAgentButton_profile
+            // 
+            this.addNewAgentButton_profile.Location = new System.Drawing.Point(3, 276);
+            this.addNewAgentButton_profile.Name = "addNewAgentButton_profile";
+            this.addNewAgentButton_profile.Size = new System.Drawing.Size(574, 79);
+            this.addNewAgentButton_profile.TabIndex = 1;
+            this.addNewAgentButton_profile.Text = "Добавить нового агента";
+            this.addNewAgentButton_profile.UseVisualStyleBackColor = true;
+            this.addNewAgentButton_profile.Visible = false;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 361);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 2;
             // 
             // agent
             // 
@@ -367,6 +389,7 @@
             this.flowLayoutPanel_profile.ResumeLayout(false);
             this.mainInformationTableLayoutPanel_profile.ResumeLayout(false);
             this.mainInformationTableLayoutPanel_profile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,5 +421,7 @@
         private System.Windows.Forms.TextBox contactTextBox_profile;
         private System.Windows.Forms.CheckBox activeCheckBox_profile;
         private System.Windows.Forms.Button deleteAgentButton_profile;
+        private System.Windows.Forms.Button addNewAgentButton_profile;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

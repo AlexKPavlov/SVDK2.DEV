@@ -282,5 +282,69 @@ namespace SVDK2
             }
         }
         #endregion
+
+        private void loadSelectedUserInCurrentTabPage() //Загрузка данных выбранного агента В выбранную вкладку
+        {
+            switch (tabControl.SelectedTab.Name)
+            {
+                case "profileTabPage":
+                    loadProfileAgent(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"]));
+                    break;
+                case "commissionTabPage":
+
+                    break;
+            }
+        }
+
+        #region Функции работы с данными вкладок + их события
+        #region Профиль - profileTabPage
+        private void loadProfileAgent(int idAgent)
+        {
+            nameLabel_profile.Text = "";    //Очистка полей
+            kodAgentTextBox_profile.Text = "";
+            branchCodeTextBox_profile.Text = "";
+            saleChanelTextBox_profile.Text = "";
+            contactTextBox_profile.Text = "";
+            activeCheckBox_profile.Checked = false;
+
+            if (idAgent == -1)  //Активация/дезактивация полей для добавления нового агента
+            {
+                nameLabel_profile.Enabled = false;
+                kodAgentTextBox_profile.Enabled = false;
+                branchCodeTextBox_profile.Enabled = false;
+                saleChanelTextBox_profile.Enabled = false;
+                contactTextBox_profile.Enabled = false;
+                activeCheckBox_profile.Enabled = false;
+                deleteAgentButton_profile.Enabled = false;
+                addNewAgentButton_profile.Visible = true;
+                return;
+            }
+            else
+            {
+                nameLabel_profile.Enabled = true;
+                kodAgentTextBox_profile.Enabled = true;
+                branchCodeTextBox_profile.Enabled = true;
+                saleChanelTextBox_profile.Enabled = true;
+                contactTextBox_profile.Enabled = true;
+                activeCheckBox_profile.Enabled = true;
+                deleteAgentButton_profile.Enabled = true;
+                addNewAgentButton_profile.Visible = false;
+            }
+
+            sqliteConnection.Open();
+            SQLiteCommand load = new SQLiteCommand(@"SELECT * FROM agent WHERE agent_id=$id", sqliteConnection);
+            load.Parameters.AddWithValue("id", idAgent);
+            SQLiteDataReader reader = load.ExecuteReader();
+            while (reader.Read()) {
+                nameLabel_profile.Text = reader["agent_name"].ToString();    
+                kodAgentTextBox_profile.Text = reader["agent_name"].ToString();
+                branchCodeTextBox_profile.Text = "";
+                saleChanelTextBox_profile.Text = "";
+                contactTextBox_profile.Text = "";
+                activeCheckBox_profile.Checked = false;
+            }
+        }
+        #endregion
+        #endregion
     }
 }

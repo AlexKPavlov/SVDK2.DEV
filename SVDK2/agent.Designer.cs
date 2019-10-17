@@ -30,11 +30,6 @@
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.agentDataGridView = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.general = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.profileTabPage = new System.Windows.Forms.TabPage();
@@ -54,6 +49,11 @@
             this.kodAgentNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
             this.branchCodeNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
             this.saleChanelNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.general = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -114,51 +114,6 @@
             this.agentDataGridView.Size = new System.Drawing.Size(200, 428);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ИД";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            this.id.Width = 125;
-            // 
-            // general
-            // 
-            this.general.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.general.HeaderText = "Отображаемоё";
-            this.general.MinimumWidth = 6;
-            this.general.Name = "general";
-            this.general.ReadOnly = true;
-            this.general.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // kod
-            // 
-            this.kod.HeaderText = "Код";
-            this.kod.MinimumWidth = 6;
-            this.kod.Name = "kod";
-            this.kod.ReadOnly = true;
-            this.kod.Visible = false;
-            this.kod.Width = 125;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "ФИО";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Visible = false;
-            this.name.Width = 197;
-            // 
-            // active
-            // 
-            this.active.HeaderText = "Активность";
-            this.active.MinimumWidth = 6;
-            this.active.Name = "active";
-            this.active.ReadOnly = true;
-            this.active.Visible = false;
-            this.active.Width = 125;
             // 
             // searchTextBox
             // 
@@ -284,6 +239,7 @@
             // nameTextBox_profile
             // 
             this.nameTextBox_profile.Location = new System.Drawing.Point(153, 3);
+            this.nameTextBox_profile.MaxLength = 50;
             this.nameTextBox_profile.Name = "nameTextBox_profile";
             this.nameTextBox_profile.Size = new System.Drawing.Size(204, 22);
             this.nameTextBox_profile.TabIndex = 5;
@@ -292,6 +248,7 @@
             // contactTextBox_profile
             // 
             this.contactTextBox_profile.Location = new System.Drawing.Point(153, 203);
+            this.contactTextBox_profile.MaxLength = 100;
             this.contactTextBox_profile.Multiline = true;
             this.contactTextBox_profile.Name = "contactTextBox_profile";
             this.contactTextBox_profile.Size = new System.Drawing.Size(204, 61);
@@ -323,6 +280,7 @@
             this.deleteAgentButton_profile.TabIndex = 11;
             this.deleteAgentButton_profile.Text = "Удалить агента";
             this.deleteAgentButton_profile.UseVisualStyleBackColor = false;
+            this.deleteAgentButton_profile.Click += new System.EventHandler(this.deleteAgentButton_profile_Click);
             // 
             // addNewAgentButton_profile
             // 
@@ -333,6 +291,7 @@
             this.addNewAgentButton_profile.Text = "Добавить нового агента";
             this.addNewAgentButton_profile.UseVisualStyleBackColor = true;
             this.addNewAgentButton_profile.Visible = false;
+            this.addNewAgentButton_profile.Click += new System.EventHandler(this.addNewAgentButton_profile_Click);
             // 
             // commissionTabPage
             // 
@@ -354,7 +313,7 @@
             0});
             this.kodAgentNumericUpDown_profile.Name = "kodAgentNumericUpDown_profile";
             this.kodAgentNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
-            this.kodAgentNumericUpDown_profile.TabIndex = 12;
+            this.kodAgentNumericUpDown_profile.TabIndex = 6;
             this.kodAgentNumericUpDown_profile.Leave += new System.EventHandler(this.kodAgentNumericUpDown_profile_Leave);
             // 
             // branchCodeNumericUpDown_profile
@@ -372,7 +331,7 @@
             0});
             this.branchCodeNumericUpDown_profile.Name = "branchCodeNumericUpDown_profile";
             this.branchCodeNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
-            this.branchCodeNumericUpDown_profile.TabIndex = 13;
+            this.branchCodeNumericUpDown_profile.TabIndex = 7;
             this.branchCodeNumericUpDown_profile.Value = new decimal(new int[] {
             13700000,
             0,
@@ -390,8 +349,53 @@
             0});
             this.saleChanelNumericUpDown_profile.Name = "saleChanelNumericUpDown_profile";
             this.saleChanelNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
-            this.saleChanelNumericUpDown_profile.TabIndex = 14;
+            this.saleChanelNumericUpDown_profile.TabIndex = 8;
             this.saleChanelNumericUpDown_profile.Leave += new System.EventHandler(this.saleChanelNumericUpDown_profile_Leave);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ИД";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 125;
+            // 
+            // general
+            // 
+            this.general.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.general.HeaderText = "Отображаемое";
+            this.general.MinimumWidth = 6;
+            this.general.Name = "general";
+            this.general.ReadOnly = true;
+            this.general.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // kod
+            // 
+            this.kod.HeaderText = "Код";
+            this.kod.MinimumWidth = 6;
+            this.kod.Name = "kod";
+            this.kod.ReadOnly = true;
+            this.kod.Visible = false;
+            this.kod.Width = 125;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "ФИО";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Visible = false;
+            this.name.Width = 197;
+            // 
+            // active
+            // 
+            this.active.HeaderText = "Активность";
+            this.active.MinimumWidth = 6;
+            this.active.Name = "active";
+            this.active.ReadOnly = true;
+            this.active.Visible = false;
+            this.active.Width = 125;
             // 
             // agent
             // 
@@ -430,11 +434,6 @@
         private System.Windows.Forms.TabPage profileTabPage;
         private System.Windows.Forms.TabPage commissionTabPage;
         private System.Windows.Forms.DataGridView agentDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn general;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn active;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_profile;
         private System.Windows.Forms.TableLayoutPanel mainInformationTableLayoutPanel_profile;
         private System.Windows.Forms.Label nameLabel_profile;
@@ -450,5 +449,10 @@
         private System.Windows.Forms.NumericUpDown kodAgentNumericUpDown_profile;
         private System.Windows.Forms.NumericUpDown branchCodeNumericUpDown_profile;
         private System.Windows.Forms.NumericUpDown saleChanelNumericUpDown_profile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn general;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn active;
     }
 }

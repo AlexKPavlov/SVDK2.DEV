@@ -114,13 +114,15 @@ namespace SVDK2
             if (countVisibleString == 1)
             {
                 agentDataGridView.CurrentCell = agentDataGridView.Rows[lastVisibleIndex].Cells["general"];
-                searchInAgentDataGrid("");
+                if (agentDataGridView.Rows.Count > 1)
+                    searchInAgentDataGrid("");
 
                 return true;
             }
             if (countVisibleString == 0)
             {
-                searchInAgentDataGrid("");
+                if (agentDataGridView.Rows.Count > 0)
+                    searchInAgentDataGrid("");
 
                 return true;
             }
@@ -443,6 +445,40 @@ namespace SVDK2
             update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
             update.ExecuteNonQuery();
             sqliteConnection.Close();
+            agentDataGridView.SelectedRows[0].Cells["general"].Value += "*";
+        }
+
+        private void deleteAgentButton_profile_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите удалить агента?\nЭто действие нельзя отменить.",
+                "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                return;
+
+            sqliteConnection.Open();
+            SQLiteCommand delete = new SQLiteCommand("DELETE FROM agent WHERE agent_id=$id", sqliteConnection);
+            delete.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
+            delete.ExecuteNonQuery();
+            sqliteConnection.Close();
+            agentDataGridView.Rows.Remove(agentDataGridView.SelectedRows[0]);
+        }
+
+        private void addNewAgentButton_profile_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены, что хотите\nсоздать нового агента?",
+                "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                return;
+
+            sqliteConnection.Open();
+            SQLiteCommand add = new SQLiteCommand("INSERT INTO agent (agent_name, agent_sale_chanel, agent_contact) VALUES ('','0',''); select seq from sqlite_sequence where name='agent';", sqliteConnection);
+            SQLiteDataReader reader = add.ExecuteReader();
+            while (reader.Read())
+            {
+                agentDataGridView.Rows.Insert(0, 1);
+                agentDataGridView.Rows[0].Cells["id"].Value = Convert.ToInt32(reader["seq"]);
+                agentDataGridView.Rows[0].Cells["general"].Value = "Новый агент";
+            }
+            sqliteConnection.Close();
+
         }
         #endregion
 

@@ -36,8 +36,9 @@
             this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.refreshToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.vs_kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vs_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vs_kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -120,8 +121,9 @@
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.vs_kod,
-            this.vs_name});
+            this.vs_id,
+            this.vs_name,
+            this.vs_kod});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 27);
             this.dataGridView.Name = "dataGridView";
@@ -136,22 +138,34 @@
             this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
             this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             // 
-            // vs_kod
+            // vs_id
             // 
-            this.vs_kod.Frozen = true;
-            this.vs_kod.HeaderText = "Код";
-            this.vs_kod.MinimumWidth = 6;
-            this.vs_kod.Name = "vs_kod";
-            this.vs_kod.Visible = false;
-            this.vs_kod.Width = 125;
+            this.vs_id.Frozen = true;
+            this.vs_id.HeaderText = "ID вида";
+            this.vs_id.MinimumWidth = 6;
+            this.vs_id.Name = "vs_id";
+            this.vs_id.ReadOnly = true;
+            this.vs_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.vs_id.Visible = false;
+            this.vs_id.Width = 125;
             // 
             // vs_name
             // 
             this.vs_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.vs_name.FillWeight = 90F;
             this.vs_name.HeaderText = "Наименование страхования";
             this.vs_name.MinimumWidth = 6;
             this.vs_name.Name = "vs_name";
-            this.vs_name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.vs_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // vs_kod
+            // 
+            this.vs_kod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.vs_kod.HeaderText = "Код";
+            this.vs_kod.MinimumWidth = 6;
+            this.vs_kod.Name = "vs_kod";
+            this.vs_kod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.vs_kod.Width = 39;
             // 
             // insuranceReference
             // 
@@ -181,8 +195,9 @@
         private System.Windows.Forms.ToolStripButton renameToolStripButton;
         private System.Windows.Forms.ToolStripButton removeToolStripButton;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vs_kod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vs_name;
         private System.Windows.Forms.ToolStripButton refreshToolStripButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_kod;
     }
 }

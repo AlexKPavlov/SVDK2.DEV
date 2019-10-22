@@ -56,6 +56,7 @@ namespace SVDK2
                 removeToolStripButton.Enabled = true;
 
                 dataGridView.Columns[1].ReadOnly = false;
+                dataGridView.Columns[2].ReadOnly = false;
                 dataGridView.AllowUserToAddRows = true;
                 dataGridView.AllowUserToDeleteRows = true;
             }
@@ -66,6 +67,7 @@ namespace SVDK2
                 removeToolStripButton.Enabled = false;
 
                 dataGridView.Columns[1].ReadOnly = true;
+                dataGridView.Columns[2].ReadOnly = true;
                 dataGridView.AllowUserToAddRows = false;
                 dataGridView.AllowUserToDeleteRows = false;
             }
@@ -88,7 +90,7 @@ namespace SVDK2
             int rowCount = dataGridView.SelectedRows.Count;
             int[] id = new int[rowCount];
             for (int i = 0; i < rowCount; i++)
-                id[i] = Convert.ToInt32(dataGridView.SelectedRows[i].Cells["vs_kod"].Value);
+                id[i] = Convert.ToInt32(dataGridView.SelectedRows[i].Cells["vs_id"].Value);
 
             if (deleteRowsFromDB(id))
             {
@@ -120,7 +122,9 @@ namespace SVDK2
 
         private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == e.FormattedValue || dataGridView.Rows[e.RowIndex].Cells["vs_kod"].Value == null)
+            if (dataGridView.Rows.Count - 1 == e.RowIndex)
+                return;
+            if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == e.FormattedValue.ToString() || dataGridView.Rows[e.RowIndex].Cells["vs_id"].Value == null)
                 return;
 
             string cell;
@@ -130,22 +134,36 @@ namespace SVDK2
                 cell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
 
             if (cell.Length == 0 && e.FormattedValue.ToString() == "") {
-                MessageBox.Show("Название не может быть пустым", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Данная ячейка не может быть пустой", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridView.CurrentCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 dataGridView.BeginEdit(false);
                 return;
             }
 
             if (cell.Length > 0 && e.FormattedValue.ToString() == "") {
-                MessageBox.Show("Название не может быть пустым", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Данная ячейка не может быть пустой", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
             }
 
+            if (dataGridView.Columns[e.ColumnIndex].Name == "vs_kod" && !Int32.TryParse(e.FormattedValue.ToString(), out int i))
+            {
+                MessageBox.Show("Данное поле должно содержать только цифры!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+                return;
+            }
+
+            if (dataGridView.Columns[e.ColumnIndex].Name == "vs_kod")
+                dataGridView.Rows[e.RowIndex].Cells["vs_kod"].Value = Convert.ToInt32(e.FormattedValue);
+
             sqliteConnection.Open();
-            SQLiteCommand update = new SQLiteCommand(@"UPDATE vs SET vs_name=$name WHERE vs_kod=$id;", sqliteConnection);
-            update.Parameters.AddWithValue("$name", e.FormattedValue.ToString());
-            update.Parameters.AddWithValue("$id", Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells["vs_kod"].Value));
+            SQLiteCommand update;
+            if (dataGridView.Columns[e.ColumnIndex].Name == "vs_name")
+                update = new SQLiteCommand(@"UPDATE vs SET vs_name=$param WHERE vs_id=$id;", sqliteConnection);
+            else
+                update = new SQLiteCommand(@"UPDATE vs SET vs_kod=$param WHERE vs_id=$id;", sqliteConnection);
+            update.Parameters.AddWithValue("$param", e.FormattedValue.ToString());
+            update.Parameters.AddWithValue("$id", Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells["vs_id"].Value));
             update.ExecuteNonQuery();
             sqliteConnection.Close();
         }
@@ -164,12 +182,15 @@ namespace SVDK2
 
             dataGridView.Rows[e.Row.Index-1].Cells["vs_kod"].Value = id;
 
-            command = new SQLiteCommand("INSERT INTO vs (vs_kod) VALUES($id)", sqliteConnection);
+            command = new SQLiteCommand("INSERT INTO vs (vs_kod) VALUES($id); SELECT last_insert_rowid();", sqliteConnection);
             command.Parameters.AddWithValue("$id", id);
-            command.ExecuteNonQuery();
-            
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                dataGridView.Rows[e.Row.Index - 1].Cells["vs_id"].Value = id = Convert.ToInt32(reader[0]);
+            }
             sqliteConnection.Close();
-
+            dataGridView.Rows[e.Row.Index - 1].Cells["vs_name"].Value = "";
             dataGridView.CurrentCell = dataGridView.Rows[e.Row.Index - 1].Cells["vs_name"];
             dataGridView.BeginEdit(false);
 
@@ -186,7 +207,8 @@ namespace SVDK2
             while (reader.Read())
             {
                 int rowNumber = dataGridView.Rows.Add();
-                dataGridView.Rows[rowNumber].Cells["vs_kod"].Value = reader["vs_kod"];
+                dataGridView.Rows[rowNumber].Cells["vs_id"].Value = Convert.ToInt32(reader["vs_id"]);
+                dataGridView.Rows[rowNumber].Cells["vs_kod"].Value = Convert.ToInt32(reader["vs_kod"]);
                 dataGridView.Rows[rowNumber].Cells["vs_name"].Value = reader["vs_name"];
             }
             sqliteConnection.Close();
@@ -204,9 +226,9 @@ namespace SVDK2
             sqliteConnection.Open();
             for (int j = 0; j < id.Count(); j+=50)
             {
-                string command = "DELETE FROM vs WHERE vs_kod='" + id[j] + "'";
+                string command = "DELETE FROM vs WHERE vs_id='" + id[j] + "'";
                 for (int i = 1; i + j < id.Count() && i < 50; i++)
-                    command += " OR vs_kod='" + id[i+j] + "'";
+                    command += " OR vs_id='" + id[i+j] + "'";
                 SQLiteCommand delRow = new SQLiteCommand(command, sqliteConnection);
                 delRow.ExecuteNonQuery();
             }

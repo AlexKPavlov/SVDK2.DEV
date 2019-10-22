@@ -54,7 +54,7 @@
             this.refreshToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(472, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(472, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.TabStop = true;
             this.toolStrip1.Text = "toolStrip1";
@@ -65,7 +65,7 @@
             this.changeModeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("changeModeToolStripButton.Image")));
             this.changeModeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.changeModeToolStripButton.Name = "changeModeToolStripButton";
-            this.changeModeToolStripButton.Size = new System.Drawing.Size(72, 24);
+            this.changeModeToolStripButton.Size = new System.Drawing.Size(72, 28);
             this.changeModeToolStripButton.Text = "&Вкл. ред.";
             this.changeModeToolStripButton.CheckStateChanged += new System.EventHandler(this.changeModeToolStripButton_CheckStateChanged);
             this.changeModeToolStripButton.Click += new System.EventHandler(this.changeModeToolStripButton_Click);
@@ -125,13 +125,13 @@
             this.vs_name,
             this.vs_kod});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView.Location = new System.Drawing.Point(0, 27);
+            this.dataGridView.Location = new System.Drawing.Point(0, 31);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(472, 376);
+            this.dataGridView.Size = new System.Drawing.Size(472, 372);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_CellValidating);
             this.dataGridView.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView_UserAddedRow);

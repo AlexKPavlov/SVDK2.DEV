@@ -20,6 +20,10 @@ namespace SVDK2
             InitializeComponent();
 
             this.sqliteConnection = sqliteConnection;
+
+            /*this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleDimensions = new SizeF(2, 2);
+            this.PerformAutoScale();*/
         }
 
         private void agent_Load(object sender, EventArgs e)

@@ -54,6 +54,27 @@
             this.saleChanelNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
             this.addNewAgentButton_profile = new System.Windows.Forms.Button();
             this.commissionTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.yearLabel_commission = new System.Windows.Forms.Label();
+            this.yearNumericUpDown_commission = new System.Windows.Forms.NumericUpDown();
+            this.exportButton_commission = new System.Windows.Forms.Button();
+            this.dataGridView_commission = new System.Windows.Forms.DataGridView();
+            this.vs_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commissionPersent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_id_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_id_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_id_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_id_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.commissionPersent_persent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.insurancePlan_quantity_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_sum_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_quantity_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_sum_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_quantity_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_sum_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_quantity_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -66,6 +87,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kodAgentNumericUpDown_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).BeginInit();
+            this.commissionTabPage.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -83,8 +108,8 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer.SplitterDistance = 200;
+            this.splitContainer.Size = new System.Drawing.Size(982, 450);
+            this.splitContainer.SplitterDistance = 140;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             // 
@@ -111,7 +136,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(200, 428);
+            this.agentDataGridView.Size = new System.Drawing.Size(140, 428);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             // 
@@ -166,7 +191,7 @@
             this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.searchTextBox.Location = new System.Drawing.Point(0, 0);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(200, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(140, 22);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Text = "Поиск...";
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
@@ -181,7 +206,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(599, 450);
+            this.tabControl.Size = new System.Drawing.Size(841, 450);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -191,7 +216,7 @@
             this.profileTabPage.Location = new System.Drawing.Point(4, 25);
             this.profileTabPage.Name = "profileTabPage";
             this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.profileTabPage.Size = new System.Drawing.Size(591, 421);
+            this.profileTabPage.Size = new System.Drawing.Size(833, 421);
             this.profileTabPage.TabIndex = 0;
             this.profileTabPage.Text = "Профиль";
             this.profileTabPage.UseVisualStyleBackColor = true;
@@ -204,7 +229,7 @@
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
-            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(585, 415);
+            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(827, 415);
             this.flowLayoutPanel_profile.TabIndex = 0;
             // 
             // mainInformationTableLayoutPanel_profile
@@ -389,19 +414,256 @@
             // 
             // commissionTabPage
             // 
+            this.commissionTabPage.Controls.Add(this.tableLayoutPanel1);
             this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
             this.commissionTabPage.Name = "commissionTabPage";
             this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(591, 421);
+            this.commissionTabPage.Size = new System.Drawing.Size(833, 421);
             this.commissionTabPage.TabIndex = 1;
             this.commissionTabPage.Text = "Комиссионные";
             this.commissionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.yearLabel_commission, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.exportButton_commission, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView_commission, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(827, 415);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // yearLabel_commission
+            // 
+            this.yearLabel_commission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yearLabel_commission.AutoSize = true;
+            this.yearLabel_commission.Location = new System.Drawing.Point(3, 383);
+            this.yearLabel_commission.Name = "yearLabel_commission";
+            this.yearLabel_commission.Size = new System.Drawing.Size(98, 17);
+            this.yearLabel_commission.TabIndex = 0;
+            this.yearLabel_commission.Text = "Год выборки:";
+            this.yearLabel_commission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // yearNumericUpDown_commission
+            // 
+            this.yearNumericUpDown_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 386);
+            this.yearNumericUpDown_commission.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.yearNumericUpDown_commission.Minimum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.yearNumericUpDown_commission.Name = "yearNumericUpDown_commission";
+            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(98, 22);
+            this.yearNumericUpDown_commission.TabIndex = 1;
+            this.yearNumericUpDown_commission.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            // 
+            // exportButton_commission
+            // 
+            this.exportButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportButton_commission.AutoSize = true;
+            this.exportButton_commission.Location = new System.Drawing.Point(700, 386);
+            this.exportButton_commission.Name = "exportButton_commission";
+            this.exportButton_commission.Size = new System.Drawing.Size(124, 26);
+            this.exportButton_commission.TabIndex = 2;
+            this.exportButton_commission.Text = "Экспорт данных";
+            this.exportButton_commission.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_commission
+            // 
+            this.dataGridView_commission.AllowUserToAddRows = false;
+            this.dataGridView_commission.AllowUserToDeleteRows = false;
+            this.dataGridView_commission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_commission.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.vs_id,
+            this.commissionPersent_id,
+            this.insurancePlan_id_1,
+            this.insurancePlan_id_2,
+            this.insurancePlan_id_3,
+            this.insurancePlan_id_4,
+            this.vs_name,
+            this.commissionPersent_persent,
+            this.insurancePlan_quantity_1,
+            this.insurancePlan_sum_1,
+            this.insurancePlan_quantity_2,
+            this.insurancePlan_sum_2,
+            this.insurancePlan_quantity_3,
+            this.insurancePlan_sum_3,
+            this.insurancePlan_quantity_4,
+            this.insurancePlan_sum_4});
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView_commission, 3);
+            this.dataGridView_commission.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_commission.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_commission.Name = "dataGridView_commission";
+            this.dataGridView_commission.RowHeadersVisible = false;
+            this.dataGridView_commission.RowHeadersWidth = 51;
+            this.dataGridView_commission.RowTemplate.Height = 24;
+            this.dataGridView_commission.Size = new System.Drawing.Size(821, 377);
+            this.dataGridView_commission.TabIndex = 3;
+            // 
+            // vs_id
+            // 
+            this.vs_id.Frozen = true;
+            this.vs_id.HeaderText = "ИД вида страхования";
+            this.vs_id.MinimumWidth = 6;
+            this.vs_id.Name = "vs_id";
+            this.vs_id.ReadOnly = true;
+            this.vs_id.Visible = false;
+            this.vs_id.Width = 150;
+            // 
+            // commissionPersent_id
+            // 
+            this.commissionPersent_id.HeaderText = "ИД записи комиссионных вознаграждений";
+            this.commissionPersent_id.MinimumWidth = 6;
+            this.commissionPersent_id.Name = "commissionPersent_id";
+            this.commissionPersent_id.ReadOnly = true;
+            this.commissionPersent_id.Visible = false;
+            this.commissionPersent_id.Width = 125;
+            // 
+            // insurancePlan_id_1
+            // 
+            this.insurancePlan_id_1.HeaderText = "ИД записи плана 1 квартала";
+            this.insurancePlan_id_1.MinimumWidth = 6;
+            this.insurancePlan_id_1.Name = "insurancePlan_id_1";
+            this.insurancePlan_id_1.ReadOnly = true;
+            this.insurancePlan_id_1.Visible = false;
+            this.insurancePlan_id_1.Width = 125;
+            // 
+            // insurancePlan_id_2
+            // 
+            this.insurancePlan_id_2.HeaderText = "ИД записи плана 2 квартала";
+            this.insurancePlan_id_2.MinimumWidth = 6;
+            this.insurancePlan_id_2.Name = "insurancePlan_id_2";
+            this.insurancePlan_id_2.ReadOnly = true;
+            this.insurancePlan_id_2.Visible = false;
+            this.insurancePlan_id_2.Width = 125;
+            // 
+            // insurancePlan_id_3
+            // 
+            this.insurancePlan_id_3.HeaderText = "ИД записи плана 3 квартала";
+            this.insurancePlan_id_3.MinimumWidth = 6;
+            this.insurancePlan_id_3.Name = "insurancePlan_id_3";
+            this.insurancePlan_id_3.ReadOnly = true;
+            this.insurancePlan_id_3.Visible = false;
+            this.insurancePlan_id_3.Width = 125;
+            // 
+            // insurancePlan_id_4
+            // 
+            this.insurancePlan_id_4.HeaderText = "ИД записи плана 4 квартала";
+            this.insurancePlan_id_4.MinimumWidth = 6;
+            this.insurancePlan_id_4.Name = "insurancePlan_id_4";
+            this.insurancePlan_id_4.ReadOnly = true;
+            this.insurancePlan_id_4.Visible = false;
+            this.insurancePlan_id_4.Width = 125;
+            // 
+            // vs_name
+            // 
+            this.vs_name.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.vs_name.Frozen = true;
+            this.vs_name.HeaderText = "Вид страхования";
+            this.vs_name.MinimumWidth = 6;
+            this.vs_name.Name = "vs_name";
+            this.vs_name.Width = 150;
+            // 
+            // commissionPersent_persent
+            // 
+            this.commissionPersent_persent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.commissionPersent_persent.HeaderText = "% воз.";
+            this.commissionPersent_persent.MinimumWidth = 6;
+            this.commissionPersent_persent.Name = "commissionPersent_persent";
+            this.commissionPersent_persent.Width = 56;
+            // 
+            // insurancePlan_quantity_1
+            // 
+            this.insurancePlan_quantity_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_quantity_1.HeaderText = "Кол-во (Q1)";
+            this.insurancePlan_quantity_1.MinimumWidth = 6;
+            this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
+            this.insurancePlan_quantity_1.Width = 115;
+            // 
+            // insurancePlan_sum_1
+            // 
+            this.insurancePlan_sum_1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_sum_1.HeaderText = "Сумма (Q1)";
+            this.insurancePlan_sum_1.MinimumWidth = 6;
+            this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
+            this.insurancePlan_sum_1.Width = 112;
+            // 
+            // insurancePlan_quantity_2
+            // 
+            this.insurancePlan_quantity_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_quantity_2.HeaderText = "Кол-во (Q2)";
+            this.insurancePlan_quantity_2.MinimumWidth = 6;
+            this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
+            this.insurancePlan_quantity_2.Width = 115;
+            // 
+            // insurancePlan_sum_2
+            // 
+            this.insurancePlan_sum_2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_sum_2.HeaderText = "Сумма (Q2)";
+            this.insurancePlan_sum_2.MinimumWidth = 6;
+            this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
+            this.insurancePlan_sum_2.Width = 112;
+            // 
+            // insurancePlan_quantity_3
+            // 
+            this.insurancePlan_quantity_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_quantity_3.HeaderText = "Кол-во (Q3)";
+            this.insurancePlan_quantity_3.MinimumWidth = 6;
+            this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
+            this.insurancePlan_quantity_3.Width = 115;
+            // 
+            // insurancePlan_sum_3
+            // 
+            this.insurancePlan_sum_3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_sum_3.HeaderText = "Сумма (Q3)";
+            this.insurancePlan_sum_3.MinimumWidth = 6;
+            this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
+            this.insurancePlan_sum_3.Width = 112;
+            // 
+            // insurancePlan_quantity_4
+            // 
+            this.insurancePlan_quantity_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_quantity_4.HeaderText = "Кол-во (Q4)";
+            this.insurancePlan_quantity_4.MinimumWidth = 6;
+            this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
+            this.insurancePlan_quantity_4.Width = 115;
+            // 
+            // insurancePlan_sum_4
+            // 
+            this.insurancePlan_sum_4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.insurancePlan_sum_4.HeaderText = "Сумма (Q4)";
+            this.insurancePlan_sum_4.MinimumWidth = 6;
+            this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
+            this.insurancePlan_sum_4.Width = 112;
             // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(982, 450);
             this.Controls.Add(this.splitContainer);
             this.KeyPreview = true;
             this.Name = "agent";
@@ -422,6 +684,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.kodAgentNumericUpDown_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).EndInit();
+            this.commissionTabPage.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,5 +721,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label yearLabel_commission;
+        private System.Windows.Forms.NumericUpDown yearNumericUpDown_commission;
+        private System.Windows.Forms.Button exportButton_commission;
+        private System.Windows.Forms.DataGridView dataGridView_commission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPersent_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_4;
+        private System.Windows.Forms.DataGridViewComboBoxColumn vs_name;
+        private System.Windows.Forms.DataGridViewButtonColumn commissionPersent_persent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_4;
     }
 }

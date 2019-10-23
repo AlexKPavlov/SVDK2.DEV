@@ -308,7 +308,7 @@ namespace SVDK2
                     loadProfileAgent(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value));
                     break;
                 case "commissionTabPage":
-                    loadCommisionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
+                    loadCommissionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
                     break;
             }
         }
@@ -485,7 +485,7 @@ namespace SVDK2
 
         #endregion
         #region Комиссионные и плановые показатели - commissionTabPage
-        private void loadCommisionDataGrid(int agent_id, int year)
+        private void loadCommissionDataGrid(int agent_id, int year)
         {
             dataGridView_commission.Rows.Clear();
             dataGridView_commission.Rows.Add();
@@ -534,14 +534,93 @@ namespace SVDK2
                 dataGridView_commission.Rows[index].Cells["vs_name"].Value = indexInTable;
                 dataGridView_commission.Rows[index].Visible = true;
 
+                int commissionId;
+                decimal commissionPersent;
+                findIdOrCreateCommission(agent_id, item, year, out commissionId, out commissionPersent);
+                dataGridView_commission.Rows[index].Cells["commissionPersent_id"].Value = commissionId;
+                dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].Value = commissionPersent;
             }
             sqliteConnection.Close();
         }
 
-        private int findIdOrCreateCommission(int agent_id, int vs_id, int year) {
+        private void findIdOrCreateCommission(int agent_id, int vs_id, int year, out int commissionId, out decimal commissionPersent) {
+            commissionId = -1;
+            commissionPersent = 0;
+            Boolean connectionOpen = false;
+            if (sqliteConnection.State == ConnectionState.Open)
+                connectionOpen = true;
+            if (!connectionOpen)
+                sqliteConnection.Open();
 
+            SQLiteCommand command = new SQLiteCommand("SELECT commissionPersent_id AS id, commissionPersent_persent AS persent FROM commissionPersent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPersent_year=@year", sqliteConnection);
+            command.Parameters.AddWithValue("@agent_id", agent_id);
+            command.Parameters.AddWithValue("@vs_id", vs_id);
+            command.Parameters.AddWithValue("@year", year);
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                commissionId = Convert.ToInt32(reader[0]);
+                commissionPersent = Convert.ToDecimal(reader[1]);
+            }
+            if (commissionId != -1)
+                return;
 
-            return 0;
+            command = new SQLiteCommand("INSERT INTO commissionPersent (agent_id, vs_id, commissionPersent_year, commissionPersent_persent) VALUES (@agent_id, @vs_id, @year, @persent); SELECT last_insert_rowid()", sqliteConnection);
+            command.Parameters.AddWithValue("@agent_id", agent_id);
+            command.Parameters.AddWithValue("@vs_id", vs_id);
+            command.Parameters.AddWithValue("@year", year);
+            command.Parameters.AddWithValue("@persent", 0);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                commissionId = Convert.ToInt32(reader[0]);
+                commissionPersent = 0;
+            }
+
+            if (!connectionOpen)
+                sqliteConnection.Close();
+        }
+
+        private void findIdOrCreateInsurancePlan(int agent_id, int vs_id, int year, int quarter, out int insurancePlanId, out int insurancePlanQuantity, out decimal insurancePlanSum)
+        {
+            insurancePlanId = -1;
+            insurancePlanQuantity = 0;
+            insurancePlanSum = 0;
+            Boolean connectionOpen = false;
+            if (sqliteConnection.State == ConnectionState.Open)
+                connectionOpen = true;
+            if (!connectionOpen)
+                sqliteConnection.Open();
+
+            SQLiteCommand command = new SQLiteCommand("SELECT insurancePlan_id AS id, insurancePlan_quantity AS quantity, insurancePlan_sum AS sum FROM insurancePlan WHERE agent_id=@agent_id AND vs_id=@vs_id AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter", sqliteConnection);
+            command.Parameters.AddWithValue("@agent_id", agent_id);
+            command.Parameters.AddWithValue("@vs_id", vs_id);
+            command.Parameters.AddWithValue("@year", year);
+            command.Parameters.AddWithValue("@quarter", quarter);
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                insurancePlanId = Convert.ToInt32(reader[0]);
+                insurancePlanQuantity = Convert.ToInt32(reader[1]);
+                insurancePlanSum = Convert.ToDecimal(reader[2]);
+            }
+            if (insurancePlanId != -1)
+                return;
+
+            command = new SQLiteCommand("INSERT INTO insurancePlan (agent_id, vs_id, insurancePlan_year, insurancePlan_quarter, insurancePlan_quantity, insurancePlan_sum) VALUES (@agent_id, @vs_id, @year, @quarter, @quantity, @sum); SELECT last_insert_rowid()", sqliteConnection);
+            command.Parameters.AddWithValue("@agent_id", agent_id);
+            command.Parameters.AddWithValue("@vs_id", vs_id);
+            command.Parameters.AddWithValue("@year", year);
+            command.Parameters.AddWithValue("@persent", 0);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                commissionId = Convert.ToInt32(reader[0]);
+                commissionPersent = 0;
+            }
+
+            if (!connectionOpen)
+                sqliteConnection.Close();
         }
         #endregion
         #endregion

@@ -522,6 +522,7 @@
             this.dataGridView_commission.RowTemplate.Height = 24;
             this.dataGridView_commission.Size = new System.Drawing.Size(821, 377);
             this.dataGridView_commission.TabIndex = 3;
+            this.dataGridView_commission.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_commission_EditingControlShowing);
             // 
             // vs_id
             // 

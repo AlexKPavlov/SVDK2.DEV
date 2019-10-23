@@ -498,6 +498,7 @@ namespace SVDK2
             comboBoxCell.DisplayMember = "name";
             comboBoxCell.ValueMember = "id";
             comboBoxCell.DataSource = tableVs;
+            comboBoxCell.AutoComplete = true;
             dataGridView_commission.Rows[1].Cells["vs_name"] = comboBoxCell;
             dataGridView_commission.Rows[1].Visible = false;
             dataGridView_commission.Rows[0].Cells["vs_name"] = (DataGridViewComboBoxCell)dataGridView_commission.Rows[1].Cells["vs_name"].Clone();
@@ -538,7 +539,22 @@ namespace SVDK2
                 decimal commissionPersent;
                 findIdOrCreateCommission(agent_id, item, year, out commissionId, out commissionPersent);
                 dataGridView_commission.Rows[index].Cells["commissionPersent_id"].Value = commissionId;
+                dataGridView_commission.Rows[index].Cells["commissionPersent_id"].ReadOnly = false;
                 dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].Value = commissionPersent;
+                dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].ReadOnly = false;
+
+                for (int i = 1; i <= 4; i++)
+                {
+                    int insurancePlanId, insurancePlanQuantity;
+                    decimal insurancePlanSum;
+                    findIdOrCreateInsurancePlan(agent_id, item, year, i, out insurancePlanId, out insurancePlanQuantity, out insurancePlanSum);
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].Value = commissionId;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].ReadOnly = false;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_"+i].Value = insurancePlanQuantity;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_"+i].ReadOnly = false;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_"+i].Value = insurancePlanSum;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_"+i].ReadOnly = false;
+                }
             }
             sqliteConnection.Close();
         }
@@ -611,18 +627,36 @@ namespace SVDK2
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@vs_id", vs_id);
             command.Parameters.AddWithValue("@year", year);
-            command.Parameters.AddWithValue("@persent", 0);
+            command.Parameters.AddWithValue("@quarter", quarter);
+            command.Parameters.AddWithValue("@quantity", 0);
+            command.Parameters.AddWithValue("@sum", 0);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                commissionId = Convert.ToInt32(reader[0]);
-                commissionPersent = 0;
+                insurancePlanId = Convert.ToInt32(reader[0]);
+                insurancePlanQuantity = 0;
+                insurancePlanSum = 0;
             }
 
             if (!connectionOpen)
                 sqliteConnection.Close();
         }
+
+        private void dataGridView_commission_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            var comboBox = e.Control as DataGridViewComboBoxEditingControl;
+            if (comboBox != null)
+            {
+                comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            }
+        }
+
+
         #endregion
+
         #endregion
+
+
     }
 }

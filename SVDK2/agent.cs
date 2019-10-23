@@ -482,7 +482,9 @@ namespace SVDK2
         }
 
         #endregion
+        #region Комиссионные и плановые показатели - commissionTabPage
 
+        #endregion
         #endregion
     }
 }

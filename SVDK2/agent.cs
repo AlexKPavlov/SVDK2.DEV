@@ -522,7 +522,26 @@ namespace SVDK2
                 vs_id.Add(Convert.ToInt32(reader[0]));
             }
             IEnumerable<int> vs_id_distinct = vs_id.Distinct();
-            //TODO: написать функцию для загрузки и отображения поля в таблице с добавлением недостающих записей
+            foreach (int item in vs_id_distinct)
+            {
+                dataGridView_commission.Rows.InsertCopy(dataGridView_commission.Rows.Count - 1, dataGridView_commission.Rows.Count - 2);
+                int index = dataGridView_commission.Rows.Count - 3;
+                dataGridView_commission.Rows[index].Cells["vs_id"].Value = item;
+                Int64 indexInTable = 0;
+                foreach (DataRow row in tableVs.Rows)
+                    if (Convert.ToInt64(item) == Convert.ToInt64(row.ItemArray[0]))
+                        indexInTable = Convert.ToInt64(row.ItemArray[0]);
+                dataGridView_commission.Rows[index].Cells["vs_name"].Value = indexInTable;
+                dataGridView_commission.Rows[index].Visible = true;
+
+            }
+            sqliteConnection.Close();
+        }
+
+        private int findIdOrCreateCommission(int agent_id, int vs_id, int year) {
+
+
+            return 0;
         }
         #endregion
         #endregion

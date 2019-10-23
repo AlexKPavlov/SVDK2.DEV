@@ -597,7 +597,7 @@
             this.commissionPersent_persent.ReadOnly = true;
             this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 56;
+            this.commissionPersent_persent.Width = 50;
             // 
             // insurancePlan_quantity_1
             // 
@@ -606,7 +606,7 @@
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
-            this.insurancePlan_quantity_1.Width = 115;
+            this.insurancePlan_quantity_1.Width = 106;
             // 
             // insurancePlan_sum_1
             // 
@@ -615,7 +615,7 @@
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
-            this.insurancePlan_sum_1.Width = 112;
+            this.insurancePlan_sum_1.Width = 103;
             // 
             // insurancePlan_quantity_2
             // 
@@ -624,7 +624,7 @@
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
-            this.insurancePlan_quantity_2.Width = 115;
+            this.insurancePlan_quantity_2.Width = 106;
             // 
             // insurancePlan_sum_2
             // 
@@ -633,7 +633,7 @@
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
-            this.insurancePlan_sum_2.Width = 112;
+            this.insurancePlan_sum_2.Width = 103;
             // 
             // insurancePlan_quantity_3
             // 
@@ -642,7 +642,7 @@
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
-            this.insurancePlan_quantity_3.Width = 115;
+            this.insurancePlan_quantity_3.Width = 106;
             // 
             // insurancePlan_sum_3
             // 
@@ -651,7 +651,7 @@
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
-            this.insurancePlan_sum_3.Width = 112;
+            this.insurancePlan_sum_3.Width = 103;
             // 
             // insurancePlan_quantity_4
             // 
@@ -660,7 +660,7 @@
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
-            this.insurancePlan_quantity_4.Width = 115;
+            this.insurancePlan_quantity_4.Width = 106;
             // 
             // insurancePlan_sum_4
             // 
@@ -669,7 +669,7 @@
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
-            this.insurancePlan_sum_4.Width = 112;
+            this.insurancePlan_sum_4.Width = 103;
             // 
             // agent
             // 

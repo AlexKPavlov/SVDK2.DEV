@@ -27,6 +27,8 @@ namespace SVDK2
             loadAgentList();
             refreshAgentDataGrid();
             preparingProfile();
+
+            yearNumericUpDown_commission.Value = DateTime.Now.Year;
         }
 
         #region Обработка списка агентов и поиска в нём
@@ -306,7 +308,7 @@ namespace SVDK2
                     loadProfileAgent(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value));
                     break;
                 case "commissionTabPage":
-
+                    loadCommisionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
                     break;
             }
         }
@@ -483,7 +485,45 @@ namespace SVDK2
 
         #endregion
         #region Комиссионные и плановые показатели - commissionTabPage
+        private void loadCommisionDataGrid(int agent_id, int year)
+        {
+            dataGridView_commission.Rows.Clear();
+            dataGridView_commission.Rows.Add();
+            dataGridView_commission.Rows.Add();
+            DataGridViewComboBoxCell comboBoxCell = new DataGridViewComboBoxCell();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT vs_id as id, (vs_kod || ': ' || vs_name) as name FROM vs", sqliteConnection);
+            DataTable tableVs = new DataTable();
+            adapter.AcceptChangesDuringFill = false;
+            adapter.Fill(tableVs);
+            comboBoxCell.DisplayMember = "name";
+            comboBoxCell.ValueMember = "id";
+            comboBoxCell.DataSource = tableVs;
+            dataGridView_commission.Rows[1].Cells["vs_name"] = comboBoxCell;
+            dataGridView_commission.Rows[1].Visible = false;
+            dataGridView_commission.Rows[0].Cells["vs_name"] = (DataGridViewComboBoxCell)dataGridView_commission.Rows[1].Cells["vs_name"].Clone();
+            dataGridView_commission.Rows[0].Cells["vs_name"].ReadOnly = false;
 
+            sqliteConnection.Open();
+            List<int> vs_id = new List<int> { };
+            SQLiteCommand command = new SQLiteCommand("SELECT DISTINCT insurancePlan.vs_id FROM insurancePlan WHERE insurancePlan.agent_id=$agent_id AND insurancePlan.insurancePlan_year=$year", sqliteConnection);
+            command.Parameters.AddWithValue("$agent_id", agent_id);
+            command.Parameters.AddWithValue("$year", Convert.ToInt32(yearNumericUpDown_commission.Value));
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                vs_id.Add(Convert.ToInt32(reader[0]));
+            }
+            command = new SQLiteCommand("SELECT DISTINCT commissionPersent.vs_id FROM commissionPersent WHERE commissionPersent.agent_id=$agent_id AND commissionPersent.commissionPersent_year=$year", sqliteConnection);
+            command.Parameters.AddWithValue("$agent_id", agent_id);
+            command.Parameters.AddWithValue("$year", Convert.ToInt32(yearNumericUpDown_commission.Value));
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                vs_id.Add(Convert.ToInt32(reader[0]));
+            }
+            IEnumerable<int> vs_id_distinct = vs_id.Distinct();
+            //TODO: написать функцию для загрузки и отображения поля в таблице с добавлением недостающих записей
+        }
         #endregion
         #endregion
     }

@@ -66,7 +66,7 @@
             this.insurancePlan_id_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.commissionPersent_persent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.commissionPersent_persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -585,6 +585,7 @@
             this.vs_name.HeaderText = "Вид страхования";
             this.vs_name.MinimumWidth = 6;
             this.vs_name.Name = "vs_name";
+            this.vs_name.ReadOnly = true;
             this.vs_name.Width = 150;
             // 
             // commissionPersent_persent
@@ -593,6 +594,9 @@
             this.commissionPersent_persent.HeaderText = "% воз.";
             this.commissionPersent_persent.MinimumWidth = 6;
             this.commissionPersent_persent.Name = "commissionPersent_persent";
+            this.commissionPersent_persent.ReadOnly = true;
+            this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.commissionPersent_persent.Width = 56;
             // 
             // insurancePlan_quantity_1
@@ -601,6 +605,7 @@
             this.insurancePlan_quantity_1.HeaderText = "Кол-во (Q1)";
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
+            this.insurancePlan_quantity_1.ReadOnly = true;
             this.insurancePlan_quantity_1.Width = 115;
             // 
             // insurancePlan_sum_1
@@ -609,6 +614,7 @@
             this.insurancePlan_sum_1.HeaderText = "Сумма (Q1)";
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
+            this.insurancePlan_sum_1.ReadOnly = true;
             this.insurancePlan_sum_1.Width = 112;
             // 
             // insurancePlan_quantity_2
@@ -617,6 +623,7 @@
             this.insurancePlan_quantity_2.HeaderText = "Кол-во (Q2)";
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
+            this.insurancePlan_quantity_2.ReadOnly = true;
             this.insurancePlan_quantity_2.Width = 115;
             // 
             // insurancePlan_sum_2
@@ -625,6 +632,7 @@
             this.insurancePlan_sum_2.HeaderText = "Сумма (Q2)";
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
+            this.insurancePlan_sum_2.ReadOnly = true;
             this.insurancePlan_sum_2.Width = 112;
             // 
             // insurancePlan_quantity_3
@@ -633,6 +641,7 @@
             this.insurancePlan_quantity_3.HeaderText = "Кол-во (Q3)";
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
+            this.insurancePlan_quantity_3.ReadOnly = true;
             this.insurancePlan_quantity_3.Width = 115;
             // 
             // insurancePlan_sum_3
@@ -641,6 +650,7 @@
             this.insurancePlan_sum_3.HeaderText = "Сумма (Q3)";
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
+            this.insurancePlan_sum_3.ReadOnly = true;
             this.insurancePlan_sum_3.Width = 112;
             // 
             // insurancePlan_quantity_4
@@ -649,6 +659,7 @@
             this.insurancePlan_quantity_4.HeaderText = "Кол-во (Q4)";
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
+            this.insurancePlan_quantity_4.ReadOnly = true;
             this.insurancePlan_quantity_4.Width = 115;
             // 
             // insurancePlan_sum_4
@@ -657,6 +668,7 @@
             this.insurancePlan_sum_4.HeaderText = "Сумма (Q4)";
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
+            this.insurancePlan_sum_4.ReadOnly = true;
             this.insurancePlan_sum_4.Width = 112;
             // 
             // agent
@@ -733,7 +745,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_3;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_4;
         private System.Windows.Forms.DataGridViewComboBoxColumn vs_name;
-        private System.Windows.Forms.DataGridViewButtonColumn commissionPersent_persent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPersent_persent;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_2;

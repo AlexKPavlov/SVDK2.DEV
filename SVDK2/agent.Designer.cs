@@ -110,8 +110,8 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(982, 450);
-            this.splitContainer.SplitterDistance = 140;
+            this.splitContainer.Size = new System.Drawing.Size(736, 366);
+            this.splitContainer.SplitterDistance = 104;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             // 
@@ -131,14 +131,15 @@
             this.name,
             this.active});
             this.agentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.agentDataGridView.Location = new System.Drawing.Point(0, 22);
+            this.agentDataGridView.Location = new System.Drawing.Point(0, 20);
+            this.agentDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.agentDataGridView.MultiSelect = false;
             this.agentDataGridView.Name = "agentDataGridView";
             this.agentDataGridView.RowHeadersVisible = false;
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(140, 428);
+            this.agentDataGridView.Size = new System.Drawing.Size(104, 346);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             // 
@@ -192,8 +193,9 @@
             this.searchTextBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.searchTextBox.Location = new System.Drawing.Point(0, 0);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(140, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(104, 20);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Text = "Поиск...";
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
@@ -206,19 +208,21 @@
             this.tabControl.Controls.Add(this.commissionTabPage);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(841, 450);
+            this.tabControl.Size = new System.Drawing.Size(631, 366);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // profileTabPage
             // 
             this.profileTabPage.Controls.Add(this.flowLayoutPanel_profile);
-            this.profileTabPage.Location = new System.Drawing.Point(4, 25);
+            this.profileTabPage.Location = new System.Drawing.Point(4, 22);
+            this.profileTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.profileTabPage.Name = "profileTabPage";
-            this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.profileTabPage.Size = new System.Drawing.Size(833, 421);
+            this.profileTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.profileTabPage.Size = new System.Drawing.Size(623, 340);
             this.profileTabPage.TabIndex = 0;
             this.profileTabPage.Text = "Профиль";
             this.profileTabPage.UseVisualStyleBackColor = true;
@@ -229,16 +233,17 @@
             this.flowLayoutPanel_profile.Controls.Add(this.mainInformationTableLayoutPanel_profile);
             this.flowLayoutPanel_profile.Controls.Add(this.addNewAgentButton_profile);
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel_profile.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanel_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
-            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(827, 415);
+            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(619, 336);
             this.flowLayoutPanel_profile.TabIndex = 0;
             // 
             // mainInformationTableLayoutPanel_profile
             // 
             this.mainInformationTableLayoutPanel_profile.ColumnCount = 3;
-            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.mainInformationTableLayoutPanel_profile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.nameLabel_profile, 0, 0);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentLabel_profile, 0, 1);
@@ -252,78 +257,86 @@
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.kodAgentNumericUpDown_profile, 1, 1);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.branchCodeNumericUpDown_profile, 1, 2);
             this.mainInformationTableLayoutPanel_profile.Controls.Add(this.saleChanelNumericUpDown_profile, 1, 3);
-            this.mainInformationTableLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
+            this.mainInformationTableLayoutPanel_profile.Location = new System.Drawing.Point(2, 2);
+            this.mainInformationTableLayoutPanel_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mainInformationTableLayoutPanel_profile.Name = "mainInformationTableLayoutPanel_profile";
             this.mainInformationTableLayoutPanel_profile.RowCount = 5;
-            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.mainInformationTableLayoutPanel_profile.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(577, 267);
+            this.mainInformationTableLayoutPanel_profile.Size = new System.Drawing.Size(433, 217);
             this.mainInformationTableLayoutPanel_profile.TabIndex = 0;
             // 
             // nameLabel_profile
             // 
             this.nameLabel_profile.AutoSize = true;
-            this.nameLabel_profile.Location = new System.Drawing.Point(3, 0);
+            this.nameLabel_profile.Location = new System.Drawing.Point(2, 0);
+            this.nameLabel_profile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel_profile.Name = "nameLabel_profile";
-            this.nameLabel_profile.Size = new System.Drawing.Size(46, 17);
+            this.nameLabel_profile.Size = new System.Drawing.Size(37, 13);
             this.nameLabel_profile.TabIndex = 0;
             this.nameLabel_profile.Text = "ФИО:";
             // 
             // kodAgentLabel_profile
             // 
             this.kodAgentLabel_profile.AutoSize = true;
-            this.kodAgentLabel_profile.Location = new System.Drawing.Point(3, 50);
+            this.kodAgentLabel_profile.Location = new System.Drawing.Point(2, 41);
+            this.kodAgentLabel_profile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.kodAgentLabel_profile.Name = "kodAgentLabel_profile";
-            this.kodAgentLabel_profile.Size = new System.Drawing.Size(85, 17);
+            this.kodAgentLabel_profile.Size = new System.Drawing.Size(66, 13);
             this.kodAgentLabel_profile.TabIndex = 1;
             this.kodAgentLabel_profile.Text = "Код агента:";
             // 
             // branchCodeLabel_profile
             // 
             this.branchCodeLabel_profile.AutoSize = true;
-            this.branchCodeLabel_profile.Location = new System.Drawing.Point(3, 100);
+            this.branchCodeLabel_profile.Location = new System.Drawing.Point(2, 82);
+            this.branchCodeLabel_profile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.branchCodeLabel_profile.Name = "branchCodeLabel_profile";
-            this.branchCodeLabel_profile.Size = new System.Drawing.Size(144, 17);
+            this.branchCodeLabel_profile.Size = new System.Drawing.Size(88, 26);
             this.branchCodeLabel_profile.TabIndex = 2;
             this.branchCodeLabel_profile.Text = "Код подразделения:";
             // 
             // saleChanelLabel_profile
             // 
             this.saleChanelLabel_profile.AutoSize = true;
-            this.saleChanelLabel_profile.Location = new System.Drawing.Point(3, 150);
+            this.saleChanelLabel_profile.Location = new System.Drawing.Point(2, 123);
+            this.saleChanelLabel_profile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.saleChanelLabel_profile.Name = "saleChanelLabel_profile";
-            this.saleChanelLabel_profile.Size = new System.Drawing.Size(106, 17);
+            this.saleChanelLabel_profile.Size = new System.Drawing.Size(82, 13);
             this.saleChanelLabel_profile.TabIndex = 3;
             this.saleChanelLabel_profile.Text = "Канал продаж:";
             // 
             // cotactLabel_profile
             // 
             this.cotactLabel_profile.AutoSize = true;
-            this.cotactLabel_profile.Location = new System.Drawing.Point(3, 200);
+            this.cotactLabel_profile.Location = new System.Drawing.Point(2, 164);
+            this.cotactLabel_profile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cotactLabel_profile.Name = "cotactLabel_profile";
-            this.cotactLabel_profile.Size = new System.Drawing.Size(76, 17);
+            this.cotactLabel_profile.Size = new System.Drawing.Size(59, 13);
             this.cotactLabel_profile.TabIndex = 4;
             this.cotactLabel_profile.Text = "Контакты:";
             // 
             // nameTextBox_profile
             // 
-            this.nameTextBox_profile.Location = new System.Drawing.Point(153, 3);
+            this.nameTextBox_profile.Location = new System.Drawing.Point(114, 2);
+            this.nameTextBox_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nameTextBox_profile.MaxLength = 50;
             this.nameTextBox_profile.Name = "nameTextBox_profile";
-            this.nameTextBox_profile.Size = new System.Drawing.Size(204, 22);
+            this.nameTextBox_profile.Size = new System.Drawing.Size(154, 20);
             this.nameTextBox_profile.TabIndex = 5;
             this.nameTextBox_profile.Leave += new System.EventHandler(this.nameTextBox_profile_Leave);
             // 
             // contactTextBox_profile
             // 
-            this.contactTextBox_profile.Location = new System.Drawing.Point(153, 203);
+            this.contactTextBox_profile.Location = new System.Drawing.Point(114, 166);
+            this.contactTextBox_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.contactTextBox_profile.MaxLength = 100;
             this.contactTextBox_profile.Multiline = true;
             this.contactTextBox_profile.Name = "contactTextBox_profile";
-            this.contactTextBox_profile.Size = new System.Drawing.Size(204, 61);
+            this.contactTextBox_profile.Size = new System.Drawing.Size(154, 50);
             this.contactTextBox_profile.TabIndex = 9;
             this.contactTextBox_profile.Leave += new System.EventHandler(this.contactTextBox_profile_Leave);
             // 
@@ -331,9 +344,10 @@
             // 
             this.activeCheckBox_profile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.activeCheckBox_profile.AutoSize = true;
-            this.activeCheckBox_profile.Location = new System.Drawing.Point(469, 3);
+            this.activeCheckBox_profile.Location = new System.Drawing.Point(346, 2);
+            this.activeCheckBox_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.activeCheckBox_profile.Name = "activeCheckBox_profile";
-            this.activeCheckBox_profile.Size = new System.Drawing.Size(105, 21);
+            this.activeCheckBox_profile.Size = new System.Drawing.Size(85, 17);
             this.activeCheckBox_profile.TabIndex = 10;
             this.activeCheckBox_profile.Text = "Активность";
             this.activeCheckBox_profile.UseVisualStyleBackColor = true;
@@ -346,9 +360,10 @@
             this.deleteAgentButton_profile.BackColor = System.Drawing.Color.LightCoral;
             this.deleteAgentButton_profile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteAgentButton_profile.ForeColor = System.Drawing.Color.Black;
-            this.deleteAgentButton_profile.Location = new System.Drawing.Point(449, 235);
+            this.deleteAgentButton_profile.Location = new System.Drawing.Point(332, 191);
+            this.deleteAgentButton_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteAgentButton_profile.Name = "deleteAgentButton_profile";
-            this.deleteAgentButton_profile.Size = new System.Drawing.Size(125, 29);
+            this.deleteAgentButton_profile.Size = new System.Drawing.Size(99, 25);
             this.deleteAgentButton_profile.TabIndex = 11;
             this.deleteAgentButton_profile.Text = "Удалить агента";
             this.deleteAgentButton_profile.UseVisualStyleBackColor = false;
@@ -356,20 +371,22 @@
             // 
             // kodAgentNumericUpDown_profile
             // 
-            this.kodAgentNumericUpDown_profile.Location = new System.Drawing.Point(153, 53);
+            this.kodAgentNumericUpDown_profile.Location = new System.Drawing.Point(114, 43);
+            this.kodAgentNumericUpDown_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kodAgentNumericUpDown_profile.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
             this.kodAgentNumericUpDown_profile.Name = "kodAgentNumericUpDown_profile";
-            this.kodAgentNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.kodAgentNumericUpDown_profile.Size = new System.Drawing.Size(153, 20);
             this.kodAgentNumericUpDown_profile.TabIndex = 6;
             this.kodAgentNumericUpDown_profile.Leave += new System.EventHandler(this.kodAgentNumericUpDown_profile_Leave);
             // 
             // branchCodeNumericUpDown_profile
             // 
-            this.branchCodeNumericUpDown_profile.Location = new System.Drawing.Point(153, 103);
+            this.branchCodeNumericUpDown_profile.Location = new System.Drawing.Point(114, 84);
+            this.branchCodeNumericUpDown_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.branchCodeNumericUpDown_profile.Maximum = new decimal(new int[] {
             13799999,
             0,
@@ -381,7 +398,7 @@
             0,
             0});
             this.branchCodeNumericUpDown_profile.Name = "branchCodeNumericUpDown_profile";
-            this.branchCodeNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.branchCodeNumericUpDown_profile.Size = new System.Drawing.Size(153, 20);
             this.branchCodeNumericUpDown_profile.TabIndex = 7;
             this.branchCodeNumericUpDown_profile.Value = new decimal(new int[] {
             13700000,
@@ -392,22 +409,24 @@
             // 
             // saleChanelNumericUpDown_profile
             // 
-            this.saleChanelNumericUpDown_profile.Location = new System.Drawing.Point(153, 153);
+            this.saleChanelNumericUpDown_profile.Location = new System.Drawing.Point(114, 125);
+            this.saleChanelNumericUpDown_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saleChanelNumericUpDown_profile.Maximum = new decimal(new int[] {
             999,
             0,
             0,
             0});
             this.saleChanelNumericUpDown_profile.Name = "saleChanelNumericUpDown_profile";
-            this.saleChanelNumericUpDown_profile.Size = new System.Drawing.Size(204, 22);
+            this.saleChanelNumericUpDown_profile.Size = new System.Drawing.Size(153, 20);
             this.saleChanelNumericUpDown_profile.TabIndex = 8;
             this.saleChanelNumericUpDown_profile.Leave += new System.EventHandler(this.saleChanelNumericUpDown_profile_Leave);
             // 
             // addNewAgentButton_profile
             // 
-            this.addNewAgentButton_profile.Location = new System.Drawing.Point(3, 276);
+            this.addNewAgentButton_profile.Location = new System.Drawing.Point(2, 223);
+            this.addNewAgentButton_profile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addNewAgentButton_profile.Name = "addNewAgentButton_profile";
-            this.addNewAgentButton_profile.Size = new System.Drawing.Size(574, 79);
+            this.addNewAgentButton_profile.Size = new System.Drawing.Size(430, 64);
             this.addNewAgentButton_profile.TabIndex = 1;
             this.addNewAgentButton_profile.Text = "Добавить нового агента";
             this.addNewAgentButton_profile.UseVisualStyleBackColor = true;
@@ -417,10 +436,11 @@
             // commissionTabPage
             // 
             this.commissionTabPage.Controls.Add(this.tableLayoutPanel1);
-            this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
+            this.commissionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.commissionTabPage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.commissionTabPage.Name = "commissionTabPage";
-            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(833, 421);
+            this.commissionTabPage.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.commissionTabPage.Size = new System.Drawing.Size(623, 340);
             this.commissionTabPage.TabIndex = 1;
             this.commissionTabPage.Text = "Комиссионные";
             this.commissionTabPage.UseVisualStyleBackColor = true;
@@ -428,21 +448,22 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.yearLabel_commission, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.exportButton_commission, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView_commission, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(827, 415);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 336);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // yearLabel_commission
@@ -450,9 +471,10 @@
             this.yearLabel_commission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.yearLabel_commission.AutoSize = true;
-            this.yearLabel_commission.Location = new System.Drawing.Point(3, 383);
+            this.yearLabel_commission.Location = new System.Drawing.Point(2, 310);
+            this.yearLabel_commission.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.yearLabel_commission.Name = "yearLabel_commission";
-            this.yearLabel_commission.Size = new System.Drawing.Size(98, 17);
+            this.yearLabel_commission.Size = new System.Drawing.Size(74, 26);
             this.yearLabel_commission.TabIndex = 0;
             this.yearLabel_commission.Text = "Год выборки:";
             this.yearLabel_commission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -462,7 +484,8 @@
             this.yearNumericUpDown_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 386);
+            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(80, 312);
+            this.yearNumericUpDown_commission.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.yearNumericUpDown_commission.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -474,7 +497,7 @@
             0,
             0});
             this.yearNumericUpDown_commission.Name = "yearNumericUpDown_commission";
-            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(98, 22);
+            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(74, 20);
             this.yearNumericUpDown_commission.TabIndex = 1;
             this.yearNumericUpDown_commission.Value = new decimal(new int[] {
             2000,
@@ -487,9 +510,10 @@
             // 
             this.exportButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.exportButton_commission.AutoSize = true;
-            this.exportButton_commission.Location = new System.Drawing.Point(700, 386);
+            this.exportButton_commission.Location = new System.Drawing.Point(518, 312);
+            this.exportButton_commission.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exportButton_commission.Name = "exportButton_commission";
-            this.exportButton_commission.Size = new System.Drawing.Size(124, 26);
+            this.exportButton_commission.Size = new System.Drawing.Size(99, 22);
             this.exportButton_commission.TabIndex = 2;
             this.exportButton_commission.Text = "Экспорт данных";
             this.exportButton_commission.UseVisualStyleBackColor = true;
@@ -518,14 +542,15 @@
             this.insurancePlan_sum_4});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView_commission, 3);
             this.dataGridView_commission.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_commission.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_commission.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView_commission.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView_commission.MultiSelect = false;
             this.dataGridView_commission.Name = "dataGridView_commission";
             this.dataGridView_commission.RowHeadersVisible = false;
             this.dataGridView_commission.RowHeadersWidth = 51;
             this.dataGridView_commission.RowTemplate.Height = 24;
             this.dataGridView_commission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_commission.Size = new System.Drawing.Size(821, 377);
+            this.dataGridView_commission.Size = new System.Drawing.Size(615, 306);
             this.dataGridView_commission.TabIndex = 3;
             this.dataGridView_commission.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_commission_CellValidated);
             this.dataGridView_commission.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_commission_CellValidating);
@@ -606,7 +631,7 @@
             this.commissionPersent_persent.ReadOnly = true;
             this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 50;
+            this.commissionPersent_persent.Width = 41;
             // 
             // insurancePlan_quantity_1
             // 
@@ -615,7 +640,7 @@
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
-            this.insurancePlan_quantity_1.Width = 106;
+            this.insurancePlan_quantity_1.Width = 82;
             // 
             // insurancePlan_sum_1
             // 
@@ -624,7 +649,7 @@
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
-            this.insurancePlan_sum_1.Width = 103;
+            this.insurancePlan_sum_1.Width = 82;
             // 
             // insurancePlan_quantity_2
             // 
@@ -633,7 +658,7 @@
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
-            this.insurancePlan_quantity_2.Width = 106;
+            this.insurancePlan_quantity_2.Width = 82;
             // 
             // insurancePlan_sum_2
             // 
@@ -642,7 +667,7 @@
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
-            this.insurancePlan_sum_2.Width = 103;
+            this.insurancePlan_sum_2.Width = 82;
             // 
             // insurancePlan_quantity_3
             // 
@@ -651,7 +676,7 @@
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
-            this.insurancePlan_quantity_3.Width = 106;
+            this.insurancePlan_quantity_3.Width = 82;
             // 
             // insurancePlan_sum_3
             // 
@@ -660,7 +685,7 @@
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
-            this.insurancePlan_sum_3.Width = 103;
+            this.insurancePlan_sum_3.Width = 82;
             // 
             // insurancePlan_quantity_4
             // 
@@ -669,7 +694,7 @@
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
-            this.insurancePlan_quantity_4.Width = 106;
+            this.insurancePlan_quantity_4.Width = 82;
             // 
             // insurancePlan_sum_4
             // 
@@ -678,7 +703,7 @@
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
-            this.insurancePlan_sum_4.Width = 103;
+            this.insurancePlan_sum_4.Width = 82;
             // 
             // timer_commission
             // 
@@ -687,11 +712,12 @@
             // 
             // agent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 450);
+            this.ClientSize = new System.Drawing.Size(736, 366);
             this.Controls.Add(this.splitContainer);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "agent";
             this.Text = "Агенты";
             this.Load += new System.EventHandler(this.agent_Load);

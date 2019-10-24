@@ -26,7 +26,7 @@ namespace SVDK2
         {
             loadAgentList();
             refreshAgentDataGrid();
-            preparingProfile();
+            //preparingProfile();
 
             yearNumericUpDown_commission.Value = DateTime.Now.Year;
         }

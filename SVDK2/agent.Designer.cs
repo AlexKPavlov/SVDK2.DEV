@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.agentDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +76,7 @@
             this.insurancePlan_sum_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer_commission = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -479,6 +481,7 @@
             0,
             0,
             0});
+            this.yearNumericUpDown_commission.ValueChanged += new System.EventHandler(this.yearNumericUpDown_commission_ValueChanged);
             // 
             // exportButton_commission
             // 
@@ -516,13 +519,18 @@
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView_commission, 3);
             this.dataGridView_commission.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_commission.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_commission.MultiSelect = false;
             this.dataGridView_commission.Name = "dataGridView_commission";
             this.dataGridView_commission.RowHeadersVisible = false;
             this.dataGridView_commission.RowHeadersWidth = 51;
             this.dataGridView_commission.RowTemplate.Height = 24;
+            this.dataGridView_commission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_commission.Size = new System.Drawing.Size(821, 377);
             this.dataGridView_commission.TabIndex = 3;
+            this.dataGridView_commission.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_commission_CellValidated);
+            this.dataGridView_commission.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_commission_CellValidating);
             this.dataGridView_commission.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_commission_EditingControlShowing);
+            this.dataGridView_commission.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             // 
             // vs_id
             // 
@@ -672,6 +680,11 @@
             this.insurancePlan_sum_4.ReadOnly = true;
             this.insurancePlan_sum_4.Width = 103;
             // 
+            // timer_commission
+            // 
+            this.timer_commission.Interval = 1;
+            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -755,5 +768,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_3;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_4;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_4;
+        private System.Windows.Forms.Timer timer_commission;
     }
 }

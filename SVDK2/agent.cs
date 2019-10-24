@@ -548,18 +548,19 @@ namespace SVDK2
                     int insurancePlanId, insurancePlanQuantity;
                     decimal insurancePlanSum;
                     findIdOrCreateInsurancePlan(agent_id, item, year, i, out insurancePlanId, out insurancePlanQuantity, out insurancePlanSum);
-                    dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].Value = commissionId;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].Value = insurancePlanId;
                     dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].ReadOnly = false;
-                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_"+i].Value = insurancePlanQuantity;
-                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_"+i].ReadOnly = false;
-                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_"+i].Value = insurancePlanSum;
-                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_"+i].ReadOnly = false;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_" + i].Value = insurancePlanQuantity;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_" + i].ReadOnly = false;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_" + i].Value = insurancePlanSum;
+                    dataGridView_commission.Rows[index].Cells["insurancePlan_sum_" + i].ReadOnly = false;
                 }
             }
             sqliteConnection.Close();
         }
 
-        private void findIdOrCreateCommission(int agent_id, int vs_id, int year, out int commissionId, out decimal commissionPersent) {
+        private void findIdOrCreateCommission(int agent_id, int vs_id, int year, out int commissionId, out decimal commissionPersent)
+        {
             commissionId = -1;
             commissionPersent = 0;
             Boolean connectionOpen = false;
@@ -652,10 +653,263 @@ namespace SVDK2
             }
         }
 
+        private void dataGridView_commission_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.RowIndex != dataGridView_commission.Rows.Count - 1 && e.RowIndex != dataGridView_commission.Rows.Count - 2)
+            {
+                switch (dataGridView_commission.Columns[e.ColumnIndex].Name)
+                {
+                    case "commissionPersent_persent":
+                        {
+                            decimal persent;
+                            if (!decimal.TryParse(e.FormattedValue.ToString(), out persent))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
 
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE commissionPersent SET commissionPersent_persent=@persent WHERE commissionPersent_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@persent", persent);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["commissionPersent_id"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_quantity_1":
+                        {
+                            int quantity;
+                            if (!Int32.TryParse(e.FormattedValue.ToString(), out quantity))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_quantity=@quantity WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@quantity", quantity);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_1"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_quantity_2":
+                        {
+                            int quantity;
+                            if (!Int32.TryParse(e.FormattedValue.ToString(), out quantity))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_quantity=@quantity WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@quantity", quantity);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_2"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_quantity_3":
+                        {
+                            int quantity;
+                            if (!Int32.TryParse(e.FormattedValue.ToString(), out quantity))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_quantity=@quantity WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@quantity", quantity);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_3"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_quantity_4":
+                        {
+                            int quantity;
+                            if (!Int32.TryParse(e.FormattedValue.ToString(), out quantity))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_quantity=@quantity WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@quantity", quantity);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_4"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_sum_1":
+                        {
+                            decimal sum;
+                            if (!Decimal.TryParse(e.FormattedValue.ToString(), out sum))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_sum=@sum WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@sum", sum);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_1"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_sum_2":
+                        {
+                            decimal sum;
+                            if (!Decimal.TryParse(e.FormattedValue.ToString(), out sum))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_sum=@sum WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@sum", sum);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_2"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_sum_3":
+                        {
+                            decimal sum;
+                            if (!Decimal.TryParse(e.FormattedValue.ToString(), out sum))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_sum=@sum WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@sum", sum);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_3"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                    case "insurancePlan_sum_4":
+                        {
+                            decimal sum;
+                            if (!Decimal.TryParse(e.FormattedValue.ToString(), out sum))
+                            {
+                                MessageBox.Show("Недопустимое значение!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                return;
+                            }
+
+                            sqliteConnection.Open();
+                            SQLiteCommand command = new SQLiteCommand("UPDATE insurancePlan SET insurancePlan_sum=@sum WHERE insurancePlan_id=@id", sqliteConnection);
+                            command.Parameters.AddWithValue("@sum", sum);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["insurancePlan_id_4"].Value);
+                            command.ExecuteNonQuery();
+                            sqliteConnection.Close();
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void dataGridView_commission_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView_commission.Rows.Count - e.RowIndex == 2 && dataGridView_commission.Columns[e.ColumnIndex].Name == "vs_name")
+            {
+                int id = Convert.ToInt32(dataGridView_commission.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                if (id == 0)
+                    return;
+                for (int i = 0; i < dataGridView_commission.Rows.Count - 3; i++)
+                    if (Convert.ToInt32(dataGridView_commission.Rows[i].Cells["vs_id"].Value) == id)
+                    {
+                        MessageBox.Show("Данный вид страхования уже находится в списке", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                dataGridView_commission.Rows[e.RowIndex].Cells["vs_id"].Value = Convert.ToInt32(dataGridView_commission.Rows[e.RowIndex].Cells["vs_name"].Value);
+
+                timer_commission.Start();
+            }
+        }
+
+        private void loadRowGrid()
+        {
+            int index = dataGridView_commission.Rows.Count - 2;
+            dataGridView_commission.Rows[index].Cells["vs_name"].ReadOnly = true;
+            int commissionId;
+            decimal commissionPersent;
+            findIdOrCreateCommission(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(dataGridView_commission.Rows[index].Cells["vs_id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value), out commissionId, out commissionPersent);
+            dataGridView_commission.Rows[index].Cells["commissionPersent_id"].Value = commissionId;
+            dataGridView_commission.Rows[index].Cells["commissionPersent_id"].ReadOnly = false;
+            dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].Value = commissionPersent;
+            dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].ReadOnly = false;
+
+            for (int i = 1; i <= 4; i++)
+            {
+                int insurancePlanId, insurancePlanQuantity;
+                decimal insurancePlanSum;
+                findIdOrCreateInsurancePlan(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(dataGridView_commission.Rows[index].Cells["vs_id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value), i, out insurancePlanId, out insurancePlanQuantity, out insurancePlanSum);
+                dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].Value = insurancePlanId;
+                dataGridView_commission.Rows[index].Cells["insurancePlan_id_" + i].ReadOnly = false;
+                dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_" + i].Value = insurancePlanQuantity;
+                dataGridView_commission.Rows[index].Cells["insurancePlan_quantity_" + i].ReadOnly = false;
+                dataGridView_commission.Rows[index].Cells["insurancePlan_sum_" + i].Value = insurancePlanSum;
+                dataGridView_commission.Rows[index].Cells["insurancePlan_sum_" + i].ReadOnly = false;
+            }
+
+            dataGridView_commission.Rows.InsertCopy(dataGridView_commission.Rows.Count - 1, dataGridView_commission.Rows.Count - 1);
+            foreach (DataGridViewCell item in dataGridView_commission.Rows[dataGridView_commission.Rows.Count - 2].Cells)
+                item.ReadOnly = true;
+            dataGridView_commission.Rows[dataGridView_commission.Rows.Count - 2].Visible = true;
+            dataGridView_commission.Rows[dataGridView_commission.Rows.Count - 2].Cells["vs_name"].ReadOnly = false;
+        }
+
+        private void timer_commission_Tick(object sender, EventArgs e)
+        {
+            timer_commission.Stop();
+            loadRowGrid();
+        }
+
+        private void yearNumericUpDown_commission_ValueChanged(object sender, EventArgs e)
+        {
+            loadCommissionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
+        }
+
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && dataGridView_commission.SelectedRows.Count > 0) {
+                if (dataGridView_commission.SelectedRows[0].Index == dataGridView_commission.Rows.Count - 2)
+                    return;
+                sqliteConnection.Open();
+                SQLiteCommand command = new SQLiteCommand("DELETE FROM commissionPersent WHERE commissionPersent_id=@commissionPersent_id; DELETE FROM insurancePlan WHERE insurancePlan_id=@insurancePlan_id1 OR insurancePlan_id=@insurancePlan_id2 OR insurancePlan_id=@insurancePlan_id3 OR insurancePlan_id=@insurancePlan_id4;", sqliteConnection);
+                command.Parameters.AddWithValue("@commissionPersent_id", dataGridView_commission.SelectedRows[0].Cells["commissionPersent_id"].Value);
+                command.Parameters.AddWithValue("@insurancePlan_id1", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_1"].Value);
+                command.Parameters.AddWithValue("@insurancePlan_id2", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_2"].Value);
+                command.Parameters.AddWithValue("@insurancePlan_id3", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_3"].Value);
+                command.Parameters.AddWithValue("@insurancePlan_id4", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_4"].Value);
+                command.ExecuteNonQuery();
+                sqliteConnection.Close();
+                dataGridView_commission.Rows.Remove(dataGridView_commission.SelectedRows[0]);
+            }
+        }
         #endregion
 
         #endregion
+
+
 
 
     }

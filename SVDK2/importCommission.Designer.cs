@@ -37,14 +37,10 @@
             this.itemForImportLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.commissionPersentCheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanQuantity1CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanSum1CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanQuantity2CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanQuantity3CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanQuantity4CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanSum2CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanSum3CheckBox = new System.Windows.Forms.CheckBox();
-            this.insurancePlanSum4CheckBox = new System.Windows.Forms.CheckBox();
+            this.insurancePlan1CheckBox = new System.Windows.Forms.CheckBox();
+            this.insurancePlan2CheckBox = new System.Windows.Forms.CheckBox();
+            this.insurancePlan3CheckBox = new System.Windows.Forms.CheckBox();
+            this.insurancePlan4CheckBox = new System.Windows.Forms.CheckBox();
             this.yearLabel = new System.Windows.Forms.Label();
             this.yearNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -53,8 +49,8 @@
             this.modeLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.fullResetModeRadioButton = new System.Windows.Forms.RadioButton();
-            this.ignorModeRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.addModeRadioButton = new System.Windows.Forms.RadioButton();
+            this.updateModeRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -135,7 +131,6 @@
             this.selectingAgentRadioButton.Name = "selectingAgentRadioButton";
             this.selectingAgentRadioButton.Size = new System.Drawing.Size(134, 21);
             this.selectingAgentRadioButton.TabIndex = 10;
-            this.selectingAgentRadioButton.TabStop = true;
             this.selectingAgentRadioButton.Text = "Выбрать агента";
             this.selectingAgentRadioButton.UseVisualStyleBackColor = true;
             this.selectingAgentRadioButton.CheckedChanged += new System.EventHandler(this.selectingAgentRadioButton_CheckedChanged);
@@ -147,7 +142,7 @@
             this.agentComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.agentComboBox.Enabled = false;
             this.agentComboBox.FormattingEnabled = true;
-            this.agentComboBox.Location = new System.Drawing.Point(397, 185);
+            this.agentComboBox.Location = new System.Drawing.Point(397, 186);
             this.agentComboBox.Name = "agentComboBox";
             this.agentComboBox.Size = new System.Drawing.Size(192, 24);
             this.agentComboBox.TabIndex = 3;
@@ -168,14 +163,10 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.commissionPersentCheckBox, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanQuantity1CheckBox, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanSum1CheckBox, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanQuantity2CheckBox, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanQuantity3CheckBox, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanQuantity4CheckBox, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanSum2CheckBox, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanSum3CheckBox, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.insurancePlanSum4CheckBox, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.insurancePlan1CheckBox, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.insurancePlan2CheckBox, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.insurancePlan3CheckBox, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.insurancePlan4CheckBox, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(200, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -198,85 +189,45 @@
             this.commissionPersentCheckBox.Text = "% вознаграждения";
             this.commissionPersentCheckBox.UseVisualStyleBackColor = true;
             // 
-            // insurancePlanQuantity1CheckBox
+            // insurancePlan1CheckBox
             // 
-            this.insurancePlanQuantity1CheckBox.AutoSize = true;
-            this.insurancePlanQuantity1CheckBox.Location = new System.Drawing.Point(3, 31);
-            this.insurancePlanQuantity1CheckBox.Name = "insurancePlanQuantity1CheckBox";
-            this.insurancePlanQuantity1CheckBox.Size = new System.Drawing.Size(108, 21);
-            this.insurancePlanQuantity1CheckBox.TabIndex = 1;
-            this.insurancePlanQuantity1CheckBox.Text = "Кол-во (Q1)";
-            this.insurancePlanQuantity1CheckBox.UseVisualStyleBackColor = true;
+            this.insurancePlan1CheckBox.AutoSize = true;
+            this.insurancePlan1CheckBox.Location = new System.Drawing.Point(3, 31);
+            this.insurancePlan1CheckBox.Name = "insurancePlan1CheckBox";
+            this.insurancePlan1CheckBox.Size = new System.Drawing.Size(108, 21);
+            this.insurancePlan1CheckBox.TabIndex = 1;
+            this.insurancePlan1CheckBox.Text = "Кол-во (Q1)";
+            this.insurancePlan1CheckBox.UseVisualStyleBackColor = true;
             // 
-            // insurancePlanSum1CheckBox
+            // insurancePlan2CheckBox
             // 
-            this.insurancePlanSum1CheckBox.AutoSize = true;
-            this.insurancePlanSum1CheckBox.Location = new System.Drawing.Point(197, 31);
-            this.insurancePlanSum1CheckBox.Name = "insurancePlanSum1CheckBox";
-            this.insurancePlanSum1CheckBox.Size = new System.Drawing.Size(105, 21);
-            this.insurancePlanSum1CheckBox.TabIndex = 2;
-            this.insurancePlanSum1CheckBox.Text = "Сумма (Q1)";
-            this.insurancePlanSum1CheckBox.UseVisualStyleBackColor = true;
+            this.insurancePlan2CheckBox.AutoSize = true;
+            this.insurancePlan2CheckBox.Location = new System.Drawing.Point(3, 59);
+            this.insurancePlan2CheckBox.Name = "insurancePlan2CheckBox";
+            this.insurancePlan2CheckBox.Size = new System.Drawing.Size(108, 21);
+            this.insurancePlan2CheckBox.TabIndex = 3;
+            this.insurancePlan2CheckBox.Text = "Кол-во (Q2)";
+            this.insurancePlan2CheckBox.UseVisualStyleBackColor = true;
             // 
-            // insurancePlanQuantity2CheckBox
+            // insurancePlan3CheckBox
             // 
-            this.insurancePlanQuantity2CheckBox.AutoSize = true;
-            this.insurancePlanQuantity2CheckBox.Location = new System.Drawing.Point(3, 59);
-            this.insurancePlanQuantity2CheckBox.Name = "insurancePlanQuantity2CheckBox";
-            this.insurancePlanQuantity2CheckBox.Size = new System.Drawing.Size(108, 21);
-            this.insurancePlanQuantity2CheckBox.TabIndex = 3;
-            this.insurancePlanQuantity2CheckBox.Text = "Кол-во (Q2)";
-            this.insurancePlanQuantity2CheckBox.UseVisualStyleBackColor = true;
+            this.insurancePlan3CheckBox.AutoSize = true;
+            this.insurancePlan3CheckBox.Location = new System.Drawing.Point(3, 87);
+            this.insurancePlan3CheckBox.Name = "insurancePlan3CheckBox";
+            this.insurancePlan3CheckBox.Size = new System.Drawing.Size(108, 21);
+            this.insurancePlan3CheckBox.TabIndex = 5;
+            this.insurancePlan3CheckBox.Text = "Кол-во (Q3)";
+            this.insurancePlan3CheckBox.UseVisualStyleBackColor = true;
             // 
-            // insurancePlanQuantity3CheckBox
+            // insurancePlan4CheckBox
             // 
-            this.insurancePlanQuantity3CheckBox.AutoSize = true;
-            this.insurancePlanQuantity3CheckBox.Location = new System.Drawing.Point(3, 87);
-            this.insurancePlanQuantity3CheckBox.Name = "insurancePlanQuantity3CheckBox";
-            this.insurancePlanQuantity3CheckBox.Size = new System.Drawing.Size(108, 21);
-            this.insurancePlanQuantity3CheckBox.TabIndex = 5;
-            this.insurancePlanQuantity3CheckBox.Text = "Кол-во (Q3)";
-            this.insurancePlanQuantity3CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // insurancePlanQuantity4CheckBox
-            // 
-            this.insurancePlanQuantity4CheckBox.AutoSize = true;
-            this.insurancePlanQuantity4CheckBox.Location = new System.Drawing.Point(3, 115);
-            this.insurancePlanQuantity4CheckBox.Name = "insurancePlanQuantity4CheckBox";
-            this.insurancePlanQuantity4CheckBox.Size = new System.Drawing.Size(108, 21);
-            this.insurancePlanQuantity4CheckBox.TabIndex = 7;
-            this.insurancePlanQuantity4CheckBox.Text = "Кол-во (Q4)";
-            this.insurancePlanQuantity4CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // insurancePlanSum2CheckBox
-            // 
-            this.insurancePlanSum2CheckBox.AutoSize = true;
-            this.insurancePlanSum2CheckBox.Location = new System.Drawing.Point(197, 59);
-            this.insurancePlanSum2CheckBox.Name = "insurancePlanSum2CheckBox";
-            this.insurancePlanSum2CheckBox.Size = new System.Drawing.Size(105, 21);
-            this.insurancePlanSum2CheckBox.TabIndex = 4;
-            this.insurancePlanSum2CheckBox.Text = "Сумма (Q2)";
-            this.insurancePlanSum2CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // insurancePlanSum3CheckBox
-            // 
-            this.insurancePlanSum3CheckBox.AutoSize = true;
-            this.insurancePlanSum3CheckBox.Location = new System.Drawing.Point(197, 87);
-            this.insurancePlanSum3CheckBox.Name = "insurancePlanSum3CheckBox";
-            this.insurancePlanSum3CheckBox.Size = new System.Drawing.Size(105, 21);
-            this.insurancePlanSum3CheckBox.TabIndex = 6;
-            this.insurancePlanSum3CheckBox.Text = "Сумма (Q3)";
-            this.insurancePlanSum3CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // insurancePlanSum4CheckBox
-            // 
-            this.insurancePlanSum4CheckBox.AutoSize = true;
-            this.insurancePlanSum4CheckBox.Location = new System.Drawing.Point(197, 115);
-            this.insurancePlanSum4CheckBox.Name = "insurancePlanSum4CheckBox";
-            this.insurancePlanSum4CheckBox.Size = new System.Drawing.Size(105, 21);
-            this.insurancePlanSum4CheckBox.TabIndex = 8;
-            this.insurancePlanSum4CheckBox.Text = "Сумма (Q4)";
-            this.insurancePlanSum4CheckBox.UseVisualStyleBackColor = true;
+            this.insurancePlan4CheckBox.AutoSize = true;
+            this.insurancePlan4CheckBox.Location = new System.Drawing.Point(3, 115);
+            this.insurancePlan4CheckBox.Name = "insurancePlan4CheckBox";
+            this.insurancePlan4CheckBox.Size = new System.Drawing.Size(108, 21);
+            this.insurancePlan4CheckBox.TabIndex = 7;
+            this.insurancePlan4CheckBox.Text = "Кол-во (Q4)";
+            this.insurancePlan4CheckBox.UseVisualStyleBackColor = true;
             // 
             // yearLabel
             // 
@@ -334,6 +285,7 @@
             this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Импорт";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // cancelButton
             // 
@@ -342,8 +294,9 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(90, 34);
             this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Отменна";
+            this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // modeLabel
             // 
@@ -360,8 +313,8 @@
             this.tableLayoutPanel.SetColumnSpan(this.tableLayoutPanel4, 2);
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Controls.Add(this.fullResetModeRadioButton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.ignorModeRadioButton, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.radioButton1, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.addModeRadioButton, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.updateModeRadioButton, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(200, 244);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -384,27 +337,25 @@
             this.fullResetModeRadioButton.Text = "Полная замена данных (удаление старых)";
             this.fullResetModeRadioButton.UseVisualStyleBackColor = true;
             // 
-            // ignorModeRadioButton
+            // addModeRadioButton
             // 
-            this.ignorModeRadioButton.AutoSize = true;
-            this.ignorModeRadioButton.Location = new System.Drawing.Point(3, 73);
-            this.ignorModeRadioButton.Name = "ignorModeRadioButton";
-            this.ignorModeRadioButton.Size = new System.Drawing.Size(352, 21);
-            this.ignorModeRadioButton.TabIndex = 2;
-            this.ignorModeRadioButton.TabStop = true;
-            this.ignorModeRadioButton.Text = "Добавление новых, игнорирование существущих";
-            this.ignorModeRadioButton.UseVisualStyleBackColor = true;
+            this.addModeRadioButton.AutoSize = true;
+            this.addModeRadioButton.Location = new System.Drawing.Point(3, 73);
+            this.addModeRadioButton.Name = "addModeRadioButton";
+            this.addModeRadioButton.Size = new System.Drawing.Size(352, 21);
+            this.addModeRadioButton.TabIndex = 2;
+            this.addModeRadioButton.Text = "Добавление новых, игнорирование существущих";
+            this.addModeRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // updateModeRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 38);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(341, 21);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Добавление новых, обновление существующих";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.updateModeRadioButton.AutoSize = true;
+            this.updateModeRadioButton.Location = new System.Drawing.Point(3, 38);
+            this.updateModeRadioButton.Name = "updateModeRadioButton";
+            this.updateModeRadioButton.Size = new System.Drawing.Size(341, 21);
+            this.updateModeRadioButton.TabIndex = 1;
+            this.updateModeRadioButton.Text = "Добавление новых, обновление существующих";
+            this.updateModeRadioButton.UseVisualStyleBackColor = true;
             // 
             // importCommission
             // 
@@ -441,14 +392,10 @@
         private System.Windows.Forms.Label itemForImportLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.CheckBox commissionPersentCheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanQuantity1CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanSum1CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanQuantity2CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanQuantity3CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanQuantity4CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanSum2CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanSum3CheckBox;
-        private System.Windows.Forms.CheckBox insurancePlanSum4CheckBox;
+        private System.Windows.Forms.CheckBox insurancePlan1CheckBox;
+        private System.Windows.Forms.CheckBox insurancePlan2CheckBox;
+        private System.Windows.Forms.CheckBox insurancePlan3CheckBox;
+        private System.Windows.Forms.CheckBox insurancePlan4CheckBox;
         private System.Windows.Forms.Label yearLabel;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -457,7 +404,7 @@
         private System.Windows.Forms.Label modeLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.RadioButton fullResetModeRadioButton;
-        private System.Windows.Forms.RadioButton ignorModeRadioButton;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton addModeRadioButton;
+        private System.Windows.Forms.RadioButton updateModeRadioButton;
     }
 }

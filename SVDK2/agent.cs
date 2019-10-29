@@ -686,11 +686,13 @@ namespace SVDK2
         private void dataGridView_commission_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             var comboBox = e.Control as DataGridViewComboBoxEditingControl;
-            if (comboBox != null)
+            if (comboBox != null && dataGridView_commission.CurrentCell.Value == null)
             {
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
+            if (dataGridView_commission.CurrentCell.Value != null)
+                dataGridView_commission.CurrentCell.ReadOnly = true;
         }
 
         private void dataGridView_commission_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -872,10 +874,11 @@ namespace SVDK2
                 int id = Convert.ToInt32(dataGridView_commission.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                 if (id == 0)
                     return;
-                for (int i = 0; i < dataGridView_commission.Rows.Count - 3; i++)
+                for (int i = 0; i <= dataGridView_commission.Rows.Count - 3; i++)
                     if (Convert.ToInt32(dataGridView_commission.Rows[i].Cells["vs_id"].Value) == id)
                     {
                         MessageBox.Show("Данный вид страхования уже находится в списке", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataGridView_commission.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = null;
                         return;
                     }
 

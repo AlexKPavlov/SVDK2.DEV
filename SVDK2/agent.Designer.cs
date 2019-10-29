@@ -58,7 +58,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.yearLabel_commission = new System.Windows.Forms.Label();
             this.yearNumericUpDown_commission = new System.Windows.Forms.NumericUpDown();
-            this.exportButton_commission = new System.Windows.Forms.Button();
+            this.importButton_commission = new System.Windows.Forms.Button();
             this.dataGridView_commission = new System.Windows.Forms.DataGridView();
             this.vs_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commissionPersent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -433,7 +433,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.yearLabel_commission, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.exportButton_commission, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.importButton_commission, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView_commission, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
@@ -483,16 +483,17 @@
             0});
             this.yearNumericUpDown_commission.ValueChanged += new System.EventHandler(this.yearNumericUpDown_commission_ValueChanged);
             // 
-            // exportButton_commission
+            // importButton_commission
             // 
-            this.exportButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exportButton_commission.AutoSize = true;
-            this.exportButton_commission.Location = new System.Drawing.Point(700, 386);
-            this.exportButton_commission.Name = "exportButton_commission";
-            this.exportButton_commission.Size = new System.Drawing.Size(124, 26);
-            this.exportButton_commission.TabIndex = 2;
-            this.exportButton_commission.Text = "Экспорт данных";
-            this.exportButton_commission.UseVisualStyleBackColor = true;
+            this.importButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.importButton_commission.AutoSize = true;
+            this.importButton_commission.Location = new System.Drawing.Point(700, 386);
+            this.importButton_commission.Name = "importButton_commission";
+            this.importButton_commission.Size = new System.Drawing.Size(124, 26);
+            this.importButton_commission.TabIndex = 2;
+            this.importButton_commission.Text = "Импорт данных";
+            this.importButton_commission.UseVisualStyleBackColor = true;
+            this.importButton_commission.Click += new System.EventHandler(this.importButton_commission_Click);
             // 
             // dataGridView_commission
             // 
@@ -750,7 +751,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label yearLabel_commission;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown_commission;
-        private System.Windows.Forms.Button exportButton_commission;
+        private System.Windows.Forms.Button importButton_commission;
         private System.Windows.Forms.DataGridView dataGridView_commission;
         private System.Windows.Forms.DataGridViewTextBoxColumn vs_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn commissionPersent_id;

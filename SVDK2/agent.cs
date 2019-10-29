@@ -174,7 +174,7 @@ namespace SVDK2
         {
             if (e.Alt)
             {
-                switch (e.KeyCode)
+                switch (e.KeyCode)  //Общие горячие клавиши
                 {
                     case Keys.G:    //Поиск
                         searchTextBox.Focus();
@@ -291,7 +291,33 @@ namespace SVDK2
                         tabControl.Focus();
                         loadAgentList();
                         refreshAgentDataGrid();
+                        e.SuppressKeyPress = true;
                         break;
+                }
+
+                switch (tabControl.SelectedTab.Name)    //Горячие клавиши вкладок
+                {
+                    #region Комиссионные
+                    case "commissionTabPage":
+                        {
+                            switch (e.KeyCode)
+                            {
+                                case Keys.S:
+                                    {
+                                        yearNumericUpDown_commission.UpButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.X:
+                                    {
+                                        yearNumericUpDown_commission.DownButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+                        #endregion
                 }
             }
         }
@@ -503,6 +529,20 @@ namespace SVDK2
             dataGridView_commission.Rows[1].Visible = false;
             dataGridView_commission.Rows[0].Cells["vs_name"] = (DataGridViewComboBoxCell)dataGridView_commission.Rows[1].Cells["vs_name"].Clone();
             dataGridView_commission.Rows[0].Cells["vs_name"].ReadOnly = false;
+
+            if (agent_id == -1)  //Активация/дезактивация полей для добавления нового агента
+            {
+                dataGridView_commission.Enabled = false;
+                yearNumericUpDown_commission.Enabled = false;
+                importButton_commission.Enabled = false;
+                return;
+            }
+            else
+            {
+                dataGridView_commission.Enabled = true;
+                yearNumericUpDown_commission.Enabled = true;
+                importButton_commission.Enabled = true;
+            }
 
             sqliteConnection.Open();
             List<int> vs_id = new List<int> { };
@@ -890,7 +930,8 @@ namespace SVDK2
 
         private void dataGridView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete && dataGridView_commission.SelectedRows.Count > 0) {
+            if (e.KeyCode == Keys.Delete && dataGridView_commission.SelectedRows.Count > 0)
+            {
                 if (dataGridView_commission.SelectedRows[0].Index == dataGridView_commission.Rows.Count - 2)
                     return;
                 sqliteConnection.Open();
@@ -903,13 +944,19 @@ namespace SVDK2
                 command.ExecuteNonQuery();
                 sqliteConnection.Close();
                 dataGridView_commission.Rows.Remove(dataGridView_commission.SelectedRows[0]);
+                e.SuppressKeyPress = true;
             }
         }
-        #endregion
+
+        private void importButton_commission_Click(object sender, EventArgs e)
+        {
+            importCommission form = new importCommission(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value));
+            form.ShowDialog();
+        }
 
         #endregion
 
-
+        #endregion
 
 
     }

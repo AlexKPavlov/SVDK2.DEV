@@ -26,12 +26,27 @@ namespace SVDK2
 
         private void importCommission_Load(object sender, EventArgs e)
         {
-
+            loadAgentComboBox();
         }
 
         private void loadAgentComboBox() {
             sqliteConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT ", sqliteConnection);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT agent_id, (CASE WHEN agent_active IS 'false' THEN agent_lnr||': '||agent_name||'(не акт.)' ELSE agent_lnr||': '||agent_name END) AS name FROM agent ORDER BY agent_active DESC", sqliteConnection);
+            DataTable listAgent = new DataTable();
+            adapter.Fill(listAgent);
+
+            agentComboBox.DisplayMember = "name";
+            agentComboBox.ValueMember = "agent_id";
+            agentComboBox.DataSource = listAgent;
+            agentComboBox.SelectedIndex = 0;
+        }
+
+        private void selectingAgentRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (selectingAgentRadioButton.Checked)
+                agentComboBox.Enabled = true;
+            else
+                agentComboBox.Enabled = false;
         }
     }
 }

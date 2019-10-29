@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.sourceLabel = new System.Windows.Forms.Label();
-            this.currentAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.currentAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.selectingAgentRadioButton = new System.Windows.Forms.RadioButton();
             this.agentComboBox = new System.Windows.Forms.ComboBox();
             this.itemForImportLabel = new System.Windows.Forms.Label();
@@ -47,9 +47,9 @@
             this.insurancePlanSum4CheckBox = new System.Windows.Forms.CheckBox();
             this.yearLabel = new System.Windows.Forms.Label();
             this.yearNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.submitButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.modeLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.fullResetModeRadioButton = new System.Windows.Forms.RadioButton();
@@ -100,17 +100,6 @@
             this.sourceLabel.TabIndex = 0;
             this.sourceLabel.Text = "Откуда:";
             // 
-            // currentAgentRadioButton
-            // 
-            this.currentAgentRadioButton.AutoSize = true;
-            this.currentAgentRadioButton.Location = new System.Drawing.Point(3, 3);
-            this.currentAgentRadioButton.Name = "currentAgentRadioButton";
-            this.currentAgentRadioButton.Size = new System.Drawing.Size(147, 21);
-            this.currentAgentRadioButton.TabIndex = 9;
-            this.currentAgentRadioButton.TabStop = true;
-            this.currentAgentRadioButton.Text = "Из того же агента";
-            this.currentAgentRadioButton.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -127,6 +116,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(191, 61);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // currentAgentRadioButton
+            // 
+            this.currentAgentRadioButton.AutoSize = true;
+            this.currentAgentRadioButton.Checked = true;
+            this.currentAgentRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.currentAgentRadioButton.Name = "currentAgentRadioButton";
+            this.currentAgentRadioButton.Size = new System.Drawing.Size(147, 21);
+            this.currentAgentRadioButton.TabIndex = 9;
+            this.currentAgentRadioButton.TabStop = true;
+            this.currentAgentRadioButton.Text = "Из того же агента";
+            this.currentAgentRadioButton.UseVisualStyleBackColor = true;
+            // 
             // selectingAgentRadioButton
             // 
             this.selectingAgentRadioButton.AutoSize = true;
@@ -137,13 +138,16 @@
             this.selectingAgentRadioButton.TabStop = true;
             this.selectingAgentRadioButton.Text = "Выбрать агента";
             this.selectingAgentRadioButton.UseVisualStyleBackColor = true;
+            this.selectingAgentRadioButton.CheckedChanged += new System.EventHandler(this.selectingAgentRadioButton_CheckedChanged);
             // 
             // agentComboBox
             // 
+            this.agentComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.agentComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.agentComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.agentComboBox.Enabled = false;
             this.agentComboBox.FormattingEnabled = true;
-            this.agentComboBox.Location = new System.Drawing.Point(397, 186);
+            this.agentComboBox.Location = new System.Drawing.Point(397, 185);
             this.agentComboBox.Name = "agentComboBox";
             this.agentComboBox.Size = new System.Drawing.Size(192, 24);
             this.agentComboBox.TabIndex = 3;
@@ -305,16 +309,6 @@
             0,
             0});
             // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(3, 7);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(90, 34);
-            this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Отменна";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
@@ -340,6 +334,16 @@
             this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Импорт";
             this.submitButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Location = new System.Drawing.Point(3, 7);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(90, 34);
+            this.cancelButton.TabIndex = 5;
+            this.cancelButton.Text = "Отменна";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // modeLabel
             // 
@@ -371,6 +375,7 @@
             // fullResetModeRadioButton
             // 
             this.fullResetModeRadioButton.AutoSize = true;
+            this.fullResetModeRadioButton.Checked = true;
             this.fullResetModeRadioButton.Location = new System.Drawing.Point(3, 3);
             this.fullResetModeRadioButton.Name = "fullResetModeRadioButton";
             this.fullResetModeRadioButton.Size = new System.Drawing.Size(310, 21);
@@ -382,7 +387,7 @@
             // ignorModeRadioButton
             // 
             this.ignorModeRadioButton.AutoSize = true;
-            this.ignorModeRadioButton.Location = new System.Drawing.Point(3, 71);
+            this.ignorModeRadioButton.Location = new System.Drawing.Point(3, 73);
             this.ignorModeRadioButton.Name = "ignorModeRadioButton";
             this.ignorModeRadioButton.Size = new System.Drawing.Size(352, 21);
             this.ignorModeRadioButton.TabIndex = 2;
@@ -393,7 +398,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 37);
+            this.radioButton1.Location = new System.Drawing.Point(3, 38);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(341, 21);
             this.radioButton1.TabIndex = 1;

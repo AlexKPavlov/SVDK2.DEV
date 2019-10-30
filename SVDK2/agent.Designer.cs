@@ -77,6 +77,9 @@
             this.insurancePlan_quantity_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer_commission = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -93,6 +96,8 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.generalTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -110,8 +115,8 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(982, 450);
-            this.splitContainer.SplitterDistance = 140;
+            this.splitContainer.Size = new System.Drawing.Size(878, 420);
+            this.splitContainer.SplitterDistance = 125;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             // 
@@ -138,7 +143,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(140, 428);
+            this.agentDataGridView.Size = new System.Drawing.Size(125, 398);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             // 
@@ -193,7 +198,7 @@
             this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.searchTextBox.Location = new System.Drawing.Point(0, 0);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(140, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(125, 22);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Text = "Поиск...";
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
@@ -208,7 +213,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(841, 450);
+            this.tabControl.Size = new System.Drawing.Size(752, 420);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -218,7 +223,7 @@
             this.profileTabPage.Location = new System.Drawing.Point(4, 25);
             this.profileTabPage.Name = "profileTabPage";
             this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.profileTabPage.Size = new System.Drawing.Size(833, 421);
+            this.profileTabPage.Size = new System.Drawing.Size(921, 389);
             this.profileTabPage.TabIndex = 0;
             this.profileTabPage.Text = "Профиль";
             this.profileTabPage.UseVisualStyleBackColor = true;
@@ -231,7 +236,7 @@
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
-            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(827, 415);
+            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(915, 383);
             this.flowLayoutPanel_profile.TabIndex = 0;
             // 
             // mainInformationTableLayoutPanel_profile
@@ -420,7 +425,7 @@
             this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
             this.commissionTabPage.Name = "commissionTabPage";
             this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(833, 421);
+            this.commissionTabPage.Size = new System.Drawing.Size(744, 391);
             this.commissionTabPage.TabIndex = 1;
             this.commissionTabPage.Text = "Комиссионные";
             this.commissionTabPage.UseVisualStyleBackColor = true;
@@ -442,7 +447,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(827, 415);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(738, 385);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // yearLabel_commission
@@ -450,7 +455,7 @@
             this.yearLabel_commission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.yearLabel_commission.AutoSize = true;
-            this.yearLabel_commission.Location = new System.Drawing.Point(3, 383);
+            this.yearLabel_commission.Location = new System.Drawing.Point(3, 353);
             this.yearLabel_commission.Name = "yearLabel_commission";
             this.yearLabel_commission.Size = new System.Drawing.Size(98, 17);
             this.yearLabel_commission.TabIndex = 0;
@@ -462,7 +467,7 @@
             this.yearNumericUpDown_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 386);
+            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 356);
             this.yearNumericUpDown_commission.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -487,11 +492,11 @@
             // 
             this.importButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.importButton_commission.AutoSize = true;
-            this.importButton_commission.Location = new System.Drawing.Point(700, 386);
+            this.importButton_commission.Location = new System.Drawing.Point(615, 356);
             this.importButton_commission.Name = "importButton_commission";
-            this.importButton_commission.Size = new System.Drawing.Size(124, 26);
+            this.importButton_commission.Size = new System.Drawing.Size(120, 26);
             this.importButton_commission.TabIndex = 2;
-            this.importButton_commission.Text = "Импорт данных";
+            this.importButton_commission.Text = "&Импорт данных";
             this.importButton_commission.UseVisualStyleBackColor = true;
             this.importButton_commission.Click += new System.EventHandler(this.importButton_commission_Click);
             // 
@@ -526,7 +531,7 @@
             this.dataGridView_commission.RowHeadersWidth = 51;
             this.dataGridView_commission.RowTemplate.Height = 24;
             this.dataGridView_commission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_commission.Size = new System.Drawing.Size(821, 377);
+            this.dataGridView_commission.Size = new System.Drawing.Size(732, 347);
             this.dataGridView_commission.TabIndex = 3;
             this.dataGridView_commission.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_commission_CellValidated);
             this.dataGridView_commission.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_commission_CellValidating);
@@ -686,12 +691,44 @@
             this.timer_commission.Interval = 1;
             this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(878, 24);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // helpToolStripStatusLabel
+            // 
+            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 18);
+            // 
+            // generalTableLayoutPanel
+            // 
+            this.generalTableLayoutPanel.ColumnCount = 1;
+            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
+            this.generalTableLayoutPanel.Controls.Add(this.statusStrip1, 0, 1);
+            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
+            this.generalTableLayoutPanel.RowCount = 2;
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
+            this.generalTableLayoutPanel.TabIndex = 2;
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 450);
-            this.Controls.Add(this.splitContainer);
+            this.ClientSize = new System.Drawing.Size(878, 444);
+            this.Controls.Add(this.generalTableLayoutPanel);
             this.KeyPreview = true;
             this.Name = "agent";
             this.Text = "Агенты";
@@ -716,6 +753,10 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.generalTableLayoutPanel.ResumeLayout(false);
+            this.generalTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -770,5 +811,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_4;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_4;
         private System.Windows.Forms.Timer timer_commission;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel helpToolStripStatusLabel;
+        private System.Windows.Forms.TableLayoutPanel generalTableLayoutPanel;
     }
 }

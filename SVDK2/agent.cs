@@ -691,7 +691,7 @@ namespace SVDK2
                 comboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
-            if (dataGridView_commission.CurrentCell.Value != null)
+            if (comboBox != null && dataGridView_commission.CurrentCell.Value != null)
                 dataGridView_commission.CurrentCell.ReadOnly = true;
         }
 
@@ -953,7 +953,7 @@ namespace SVDK2
 
         private void importButton_commission_Click(object sender, EventArgs e)
         {
-            importCommission form = new importCommission(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value));
+            importCommission form = new importCommission(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
             form.ShowDialog();
         }
 

@@ -14,14 +14,16 @@ namespace SVDK2
     public partial class importCommission : Form
     {
         SQLiteConnection sqliteConnection;
-        int agent_id;
+        int agent_id, year;
 
-        public importCommission(SQLiteConnection sqliteConnection, int agent_id)
+        public importCommission(SQLiteConnection sqliteConnection, int agent_id, int year)
         {
             InitializeComponent();
 
             this.sqliteConnection = sqliteConnection;
             this.agent_id = agent_id;
+            this.year = year;
+            yearNumericUpDown.Value = Convert.ToDecimal(year);
         }
 
         private void importCommission_Load(object sender, EventArgs e)
@@ -107,14 +109,14 @@ namespace SVDK2
                         reader = loadCommand.ExecuteReader();
                         deleteCommand = new SQLiteCommand("DELETE FROM commissionPersent WHERE agent_id=@id AND commissionPersent_year=@year", sqliteConnection);
                         deleteCommand.Parameters.AddWithValue("@id", agent_id);
-                        deleteCommand.Parameters.AddWithValue("@year", year);
+                        deleteCommand.Parameters.AddWithValue("@year", this.year);
                         deleteCommand.ExecuteNonQuery();
                         while (reader.Read())
                         {
                             addCommand = new SQLiteCommand("INSERT INTO commissionPersent (agent_id, vs_id, commissionPersent_year, commissionPersent_persent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                             addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                             addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
-                            addCommand.Parameters.AddWithValue("@year", year);
+                            addCommand.Parameters.AddWithValue("@year", this.year);
                             addCommand.Parameters.AddWithValue("@persent", reader["commissionPersent_persent"]);
                             addCommand.ExecuteNonQuery();
                         }
@@ -130,7 +132,7 @@ namespace SVDK2
                                 reader = loadCommand.ExecuteReader();
                                 deleteCommand = new SQLiteCommand("DELETE FROM insurancePlan WHERE agent_id=@id AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter", sqliteConnection);
                                 deleteCommand.Parameters.AddWithValue("@id", agent_id);
-                                deleteCommand.Parameters.AddWithValue("@year", year);
+                                deleteCommand.Parameters.AddWithValue("@year", this.year);
                                 deleteCommand.Parameters.AddWithValue("@quarter", i + 1);
                                 deleteCommand.ExecuteNonQuery();
                                 while (reader.Read())
@@ -138,7 +140,7 @@ namespace SVDK2
                                     addCommand = new SQLiteCommand("INSERT INTO insurancePlan (agent_id, vs_id, insurancePlan_year, insurancePlan_quarter, insurancePlan_quantity, insurancePlan_sum) VALUES (@agent_id, @vs_id, @year, @quarter, @quantity, @sum)", sqliteConnection);
                                     addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                     addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
-                                    addCommand.Parameters.AddWithValue("@year", year);
+                                    addCommand.Parameters.AddWithValue("@year", this.year);
                                     addCommand.Parameters.AddWithValue("@quarter", i+1);
                                     addCommand.Parameters.AddWithValue("@quantity", reader["insurancePlan_quantity"]);
                                     addCommand.Parameters.AddWithValue("@sum", reader["insurancePlan_sum"]);
@@ -164,14 +166,14 @@ namespace SVDK2
                         {
                             deleteCommand = new SQLiteCommand("DELETE FROM commissionPersent WHERE agent_id=@id AND commissionPersent_year=@year AND vs_id=@vs_id", sqliteConnection);
                             deleteCommand.Parameters.AddWithValue("@id", agent_id);
-                            deleteCommand.Parameters.AddWithValue("@year", year);
+                            deleteCommand.Parameters.AddWithValue("@year", this.year);
                             deleteCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                             deleteCommand.ExecuteNonQuery();
 
                             addCommand = new SQLiteCommand("INSERT INTO commissionPersent (agent_id, vs_id, commissionPersent_year, commissionPersent_persent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                             addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                             addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
-                            addCommand.Parameters.AddWithValue("@year", year);
+                            addCommand.Parameters.AddWithValue("@year", this.year);
                             addCommand.Parameters.AddWithValue("@persent", reader["commissionPersent_persent"]);
                             addCommand.ExecuteNonQuery();
                         }
@@ -189,7 +191,7 @@ namespace SVDK2
                                 {
                                     deleteCommand = new SQLiteCommand("DELETE FROM insurancePlan WHERE agent_id=@id AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter AND vs_id=@vs_id", sqliteConnection);
                                     deleteCommand.Parameters.AddWithValue("@id", agent_id);
-                                    deleteCommand.Parameters.AddWithValue("@year", year);
+                                    deleteCommand.Parameters.AddWithValue("@year", this.year);
                                     deleteCommand.Parameters.AddWithValue("@quarter", i + 1);
                                     deleteCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                     deleteCommand.ExecuteNonQuery();
@@ -197,7 +199,7 @@ namespace SVDK2
                                     addCommand = new SQLiteCommand("INSERT INTO insurancePlan (agent_id, vs_id, insurancePlan_year, insurancePlan_quarter, insurancePlan_quantity, insurancePlan_sum) VALUES (@agent_id, @vs_id, @year, @quarter, @quantity, @sum)", sqliteConnection);
                                     addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                     addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
-                                    addCommand.Parameters.AddWithValue("@year", year);
+                                    addCommand.Parameters.AddWithValue("@year", this.year);
                                     addCommand.Parameters.AddWithValue("@quarter", i + 1);
                                     addCommand.Parameters.AddWithValue("@quantity", reader["insurancePlan_quantity"]);
                                     addCommand.Parameters.AddWithValue("@sum", reader["insurancePlan_sum"]);

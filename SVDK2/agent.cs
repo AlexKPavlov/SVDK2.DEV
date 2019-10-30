@@ -955,6 +955,7 @@ namespace SVDK2
         {
             importCommission form = new importCommission(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
             form.ShowDialog();
+            loadCommissionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
         }
 
         #endregion

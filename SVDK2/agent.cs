@@ -33,6 +33,7 @@ namespace SVDK2
             quarterNumericUpDown_report.Value = (DateTime.Now.Month + 2) / 3;
         }
 
+
         #region Обработка списка агентов и поиска в нём
         private void loadAgentList()
         {
@@ -1014,7 +1015,8 @@ namespace SVDK2
             reportReader = reportCommand.ExecuteReader();
             while (reportReader.Read())
             {
-                TreeNode nodeParent = treeView_report.Nodes.Add(reportReader["agentReport_id"].ToString(), "");
+                TreeNode nodeParent = treeView_report.Nodes.Add("");
+                nodeParent.Tag = reportReader["agentReport_id"].ToString();
                 decimal sum = 0;
                 int count = 0;
 
@@ -1023,11 +1025,11 @@ namespace SVDK2
                 contentReportReader = contentReportCommand.ExecuteReader();
                 while (contentReportReader.Read())
                 {
-                    nodeParent.Nodes.Add(contentReportReader["agentReportContent_id"].ToString(), contentReportReader["vs_kod"].ToString() +": "+ contentReportReader["vs_name"].ToString()+" X "+ contentReportReader["agentReportContent_count"].ToString()+" шт. = "+ contentReportReader["agentReportContent_sum"].ToString()+" руб.");
+                    nodeParent.Nodes.Add(contentReportReader["vs_kod"].ToString() + ": " + contentReportReader["vs_name"].ToString() + " X " + contentReportReader["agentReportContent_count"].ToString() + " шт. = " + contentReportReader["agentReportContent_sum"].ToString() + " руб.").Tag = contentReportReader["agentReportContent_id"].ToString();
                     sum += Convert.ToDecimal(contentReportReader["agentReportContent_sum"]);
                     count += Convert.ToInt32(contentReportReader["agentReportContent_count"]);
                 }
-                nodeParent.Text = reportReader["agentReport_code"].ToString()+ " от "+ Convert.ToDateTime(reportReader["agentReport_date"]).ToLongDateString() +" ("+count+" шт. за "+sum+" руб.)";
+                nodeParent.Text = reportReader["agentReport_code"].ToString() + " от " + Convert.ToDateTime(reportReader["agentReport_date"]).ToLongDateString() + " (" + count + " шт. за " + sum + " руб.)";
             }
             sqliteConnection.Close();
         }
@@ -1041,10 +1043,27 @@ namespace SVDK2
         {
             loadSelectedUserInCurrentTabPage();
         }
-        #endregion
+
+        private void treeView_report_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (e.Action == TreeViewAction.Unknown)
+                return;
+
+            if (e.Node.Level == 0)
+                foreach (TreeNode item in e.Node.Nodes)
+                    item.Checked = e.Node.Checked;
+            else
+            {
+                e.Node.Parent.Checked = e.Node.Checked;
+                foreach (TreeNode item in e.Node.Parent.Nodes)
+                    if (item.Tag != e.Node.Tag)
+                        item.Checked = e.Node.Checked;
+            }
+        }
 
         #endregion
 
+        #endregion
 
     }
 }

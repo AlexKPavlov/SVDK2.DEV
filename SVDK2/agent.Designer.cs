@@ -76,13 +76,9 @@
             this.insurancePlan_sum_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer_commission = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.reportTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel_report = new System.Windows.Forms.TableLayoutPanel();
-            this.treeView_report = new System.Windows.Forms.TreeView();
+            this.treeView_report = new System.Windows.Forms.TestTreeView();
             this.yearLabel_report = new System.Windows.Forms.Label();
             this.yearNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
             this.quarterLabel_report = new System.Windows.Forms.Label();
@@ -90,6 +86,10 @@
             this.addButton_report = new System.Windows.Forms.Button();
             this.deleteButton_report = new System.Windows.Forms.Button();
             this.exportReportButton_report = new System.Windows.Forms.Button();
+            this.timer_commission = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -106,12 +106,12 @@
             this.tableLayoutPanel_commission.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.generalTableLayoutPanel.SuspendLayout();
             this.reportTabPage.SuspendLayout();
             this.tableLayoutPanel_report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.generalTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -701,43 +701,6 @@
             this.insurancePlan_sum_4.ReadOnly = true;
             this.insurancePlan_sum_4.Width = 103;
             // 
-            // timer_commission
-            // 
-            this.timer_commission.Interval = 1;
-            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(878, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // helpToolStripStatusLabel
-            // 
-            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
-            // 
-            // generalTableLayoutPanel
-            // 
-            this.generalTableLayoutPanel.ColumnCount = 1;
-            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
-            this.generalTableLayoutPanel.Controls.Add(this.statusStrip1, 0, 1);
-            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
-            this.generalTableLayoutPanel.RowCount = 2;
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
-            this.generalTableLayoutPanel.TabIndex = 2;
-            // 
             // reportTabPage
             // 
             this.reportTabPage.Controls.Add(this.tableLayoutPanel_report);
@@ -784,6 +747,7 @@
             this.treeView_report.Name = "treeView_report";
             this.treeView_report.Size = new System.Drawing.Size(738, 355);
             this.treeView_report.TabIndex = 0;
+            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // yearLabel_report
             // 
@@ -881,6 +845,43 @@
             this.exportReportButton_report.Text = "&Экспорт отчёта";
             this.exportReportButton_report.UseVisualStyleBackColor = true;
             // 
+            // timer_commission
+            // 
+            this.timer_commission.Interval = 1;
+            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(878, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // helpToolStripStatusLabel
+            // 
+            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            // 
+            // generalTableLayoutPanel
+            // 
+            this.generalTableLayoutPanel.ColumnCount = 1;
+            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
+            this.generalTableLayoutPanel.Controls.Add(this.statusStrip1, 0, 1);
+            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
+            this.generalTableLayoutPanel.RowCount = 2;
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
+            this.generalTableLayoutPanel.TabIndex = 2;
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -911,15 +912,15 @@
             this.tableLayoutPanel_commission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.generalTableLayoutPanel.ResumeLayout(false);
-            this.generalTableLayoutPanel.PerformLayout();
             this.reportTabPage.ResumeLayout(false);
             this.tableLayoutPanel_report.ResumeLayout(false);
             this.tableLayoutPanel_report.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.generalTableLayoutPanel.ResumeLayout(false);
+            this.generalTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -979,7 +980,6 @@
         private System.Windows.Forms.TableLayoutPanel generalTableLayoutPanel;
         private System.Windows.Forms.TabPage reportTabPage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_report;
-        private System.Windows.Forms.TreeView treeView_report;
         private System.Windows.Forms.Label yearLabel_report;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown_report;
         private System.Windows.Forms.Label quarterLabel_report;
@@ -987,5 +987,20 @@
         private System.Windows.Forms.Button addButton_report;
         private System.Windows.Forms.Button deleteButton_report;
         private System.Windows.Forms.Button exportReportButton_report;
+        private System.Windows.Forms.TestTreeView treeView_report;
+    }
+}
+
+namespace System.Windows.Forms
+{
+    public class TestTreeView : TreeView
+    {
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x203) // identified double click
+                m.Result = IntPtr.Zero;
+            else
+                base.WndProc(ref m);
+        }
     }
 }

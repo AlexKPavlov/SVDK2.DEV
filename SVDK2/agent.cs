@@ -29,6 +29,8 @@ namespace SVDK2
             //preparingProfile();
 
             yearNumericUpDown_commission.Value = DateTime.Now.Year;
+            yearNumericUpDown_report.Value = DateTime.Now.Year;
+            quarterNumericUpDown_report.Value = (DateTime.Now.Month + 2) / 3;
         }
 
         #region Обработка списка агентов и поиска в нём
@@ -317,6 +319,39 @@ namespace SVDK2
                             }
                         }
                         break;
+                    #endregion
+                    #region Отчёты агентов
+                    case "reportTabPage":
+                        {
+                            switch (e.KeyCode)
+                            {
+                                case Keys.S:
+                                    {
+                                        yearNumericUpDown_report.UpButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.X:
+                                    {
+                                        yearNumericUpDown_report.DownButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.D:
+                                    {
+                                        quarterNumericUpDown_report.UpButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.C:
+                                    {
+                                        quarterNumericUpDown_report.DownButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
                         #endregion
                 }
             }
@@ -335,6 +370,9 @@ namespace SVDK2
                     break;
                 case "commissionTabPage":
                     loadCommissionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
+                    break;
+                case "reportTabPage":
+                    loadReportTreeView(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_report.Value), Convert.ToInt32(quarterNumericUpDown_report.Value));
                     break;
             }
         }
@@ -958,6 +996,51 @@ namespace SVDK2
             loadCommissionDataGrid(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value));
         }
 
+
+
+        #endregion
+        #region Агентские отчёты - reportTabPage
+        private void loadReportTreeView(int agent_id, int year, int quarter)
+        {
+            SQLiteCommand reportCommand, contentReportCommand;
+            SQLiteDataReader reportReader, contentReportReader;
+            treeView_report.Nodes.Clear();
+
+            sqliteConnection.Open();
+            reportCommand = new SQLiteCommand("SELECT agentReport_id, agentReport_code, agentReport_date FROM agentReport WHERE agent_id=@agent_id AND cast(strftime('%Y', agentReport_date) as integer)=@year AND ((cast(strftime('%m', agentReport_date) as integer) + 2) / 3)=@quarter", sqliteConnection);
+            reportCommand.Parameters.AddWithValue("@agent_id", agent_id);
+            reportCommand.Parameters.AddWithValue("@year", year);
+            reportCommand.Parameters.AddWithValue("@quarter", quarter);
+            reportReader = reportCommand.ExecuteReader();
+            while (reportReader.Read())
+            {
+                TreeNode nodeParent = treeView_report.Nodes.Add(reportReader["agentReport_id"].ToString(), "");
+                decimal sum = 0;
+                int count = 0;
+
+                contentReportCommand = new SQLiteCommand("SELECT arc.agentReportContent_id, vs.vs_kod, vs.vs_name, arc.agentReportContent_count, arc.agentReportContent_sum FROM agentReportContent AS arc LEFT JOIN vs ON arc.vs_id=vs.vs_id WHERE arc.agentReport_id=@report_id", sqliteConnection);
+                contentReportCommand.Parameters.AddWithValue("@report_id", reportReader["agentReport_id"]);
+                contentReportReader = contentReportCommand.ExecuteReader();
+                while (contentReportReader.Read())
+                {
+                    nodeParent.Nodes.Add(contentReportReader["agentReportContent_id"].ToString(), contentReportReader["vs_kod"].ToString() +": "+ contentReportReader["vs_name"].ToString()+" X "+ contentReportReader["agentReportContent_count"].ToString()+" шт. = "+ contentReportReader["agentReportContent_sum"].ToString()+" руб.");
+                    sum += Convert.ToDecimal(contentReportReader["agentReportContent_sum"]);
+                    count += Convert.ToInt32(contentReportReader["agentReportContent_count"]);
+                }
+                nodeParent.Text = reportReader["agentReport_code"].ToString()+ " от "+ Convert.ToDateTime(reportReader["agentReport_date"]).ToLongDateString() +" ("+count+" шт. за "+sum+" руб.)";
+            }
+            sqliteConnection.Close();
+        }
+
+        private void yearNumericUpDown_report_ValueChanged(object sender, EventArgs e)
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
+
+        private void quarterNumericUpDown_report_ValueChanged(object sender, EventArgs e)
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
         #endregion
 
         #endregion

@@ -55,7 +55,7 @@
             this.saleChanelNumericUpDown_profile = new System.Windows.Forms.NumericUpDown();
             this.addNewAgentButton_profile = new System.Windows.Forms.Button();
             this.commissionTabPage = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_commission = new System.Windows.Forms.TableLayoutPanel();
             this.yearLabel_commission = new System.Windows.Forms.Label();
             this.yearNumericUpDown_commission = new System.Windows.Forms.NumericUpDown();
             this.importButton_commission = new System.Windows.Forms.Button();
@@ -80,6 +80,16 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.reportTabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel_report = new System.Windows.Forms.TableLayoutPanel();
+            this.treeView_report = new System.Windows.Forms.TreeView();
+            this.yearLabel_report = new System.Windows.Forms.Label();
+            this.yearNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
+            this.quarterLabel_report = new System.Windows.Forms.Label();
+            this.quarterNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
+            this.addButton_report = new System.Windows.Forms.Button();
+            this.deleteButton_report = new System.Windows.Forms.Button();
+            this.exportReportButton_report = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -93,11 +103,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).BeginInit();
             this.commissionTabPage.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel_commission.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.generalTableLayoutPanel.SuspendLayout();
+            this.reportTabPage.SuspendLayout();
+            this.tableLayoutPanel_report.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -115,7 +129,7 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(878, 420);
+            this.splitContainer.Size = new System.Drawing.Size(878, 422);
             this.splitContainer.SplitterDistance = 125;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
@@ -143,7 +157,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(125, 398);
+            this.agentDataGridView.Size = new System.Drawing.Size(125, 400);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             // 
@@ -209,11 +223,12 @@
             // 
             this.tabControl.Controls.Add(this.profileTabPage);
             this.tabControl.Controls.Add(this.commissionTabPage);
+            this.tabControl.Controls.Add(this.reportTabPage);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(752, 420);
+            this.tabControl.Size = new System.Drawing.Size(752, 422);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -223,7 +238,7 @@
             this.profileTabPage.Location = new System.Drawing.Point(4, 25);
             this.profileTabPage.Name = "profileTabPage";
             this.profileTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.profileTabPage.Size = new System.Drawing.Size(921, 389);
+            this.profileTabPage.Size = new System.Drawing.Size(744, 393);
             this.profileTabPage.TabIndex = 0;
             this.profileTabPage.Text = "Профиль";
             this.profileTabPage.UseVisualStyleBackColor = true;
@@ -236,7 +251,7 @@
             this.flowLayoutPanel_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_profile.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel_profile.Name = "flowLayoutPanel_profile";
-            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(915, 383);
+            this.flowLayoutPanel_profile.Size = new System.Drawing.Size(738, 387);
             this.flowLayoutPanel_profile.TabIndex = 0;
             // 
             // mainInformationTableLayoutPanel_profile
@@ -421,41 +436,41 @@
             // 
             // commissionTabPage
             // 
-            this.commissionTabPage.Controls.Add(this.tableLayoutPanel1);
+            this.commissionTabPage.Controls.Add(this.tableLayoutPanel_commission);
             this.commissionTabPage.Location = new System.Drawing.Point(4, 25);
             this.commissionTabPage.Name = "commissionTabPage";
             this.commissionTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.commissionTabPage.Size = new System.Drawing.Size(744, 391);
+            this.commissionTabPage.Size = new System.Drawing.Size(744, 393);
             this.commissionTabPage.TabIndex = 1;
             this.commissionTabPage.Text = "Комиссионные";
             this.commissionTabPage.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel_commission
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.yearLabel_commission, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.importButton_commission, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView_commission, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(738, 385);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel_commission.ColumnCount = 3;
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_commission.Controls.Add(this.yearLabel_commission, 0, 1);
+            this.tableLayoutPanel_commission.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
+            this.tableLayoutPanel_commission.Controls.Add(this.importButton_commission, 2, 1);
+            this.tableLayoutPanel_commission.Controls.Add(this.dataGridView_commission, 0, 0);
+            this.tableLayoutPanel_commission.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_commission.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel_commission.Name = "tableLayoutPanel_commission";
+            this.tableLayoutPanel_commission.RowCount = 2;
+            this.tableLayoutPanel_commission.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_commission.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel_commission.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel_commission.Size = new System.Drawing.Size(738, 387);
+            this.tableLayoutPanel_commission.TabIndex = 0;
             // 
             // yearLabel_commission
             // 
             this.yearLabel_commission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.yearLabel_commission.AutoSize = true;
-            this.yearLabel_commission.Location = new System.Drawing.Point(3, 353);
+            this.yearLabel_commission.Location = new System.Drawing.Point(3, 355);
             this.yearLabel_commission.Name = "yearLabel_commission";
             this.yearLabel_commission.Size = new System.Drawing.Size(98, 17);
             this.yearLabel_commission.TabIndex = 0;
@@ -467,7 +482,7 @@
             this.yearNumericUpDown_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 356);
+            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 358);
             this.yearNumericUpDown_commission.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -492,7 +507,7 @@
             // 
             this.importButton_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.importButton_commission.AutoSize = true;
-            this.importButton_commission.Location = new System.Drawing.Point(615, 356);
+            this.importButton_commission.Location = new System.Drawing.Point(615, 358);
             this.importButton_commission.Name = "importButton_commission";
             this.importButton_commission.Size = new System.Drawing.Size(120, 26);
             this.importButton_commission.TabIndex = 2;
@@ -522,7 +537,7 @@
             this.insurancePlan_sum_3,
             this.insurancePlan_quantity_4,
             this.insurancePlan_sum_4});
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView_commission, 3);
+            this.tableLayoutPanel_commission.SetColumnSpan(this.dataGridView_commission, 3);
             this.dataGridView_commission.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_commission.Location = new System.Drawing.Point(3, 3);
             this.dataGridView_commission.MultiSelect = false;
@@ -531,7 +546,7 @@
             this.dataGridView_commission.RowHeadersWidth = 51;
             this.dataGridView_commission.RowTemplate.Height = 24;
             this.dataGridView_commission.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_commission.Size = new System.Drawing.Size(732, 347);
+            this.dataGridView_commission.Size = new System.Drawing.Size(732, 349);
             this.dataGridView_commission.TabIndex = 3;
             this.dataGridView_commission.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_commission_CellValidated);
             this.dataGridView_commission.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_commission_CellValidating);
@@ -697,16 +712,16 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(878, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(878, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // helpToolStripStatusLabel
             // 
             this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 18);
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
             // 
             // generalTableLayoutPanel
             // 
@@ -722,6 +737,149 @@
             this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
             this.generalTableLayoutPanel.TabIndex = 2;
+            // 
+            // reportTabPage
+            // 
+            this.reportTabPage.Controls.Add(this.tableLayoutPanel_report);
+            this.reportTabPage.Location = new System.Drawing.Point(4, 25);
+            this.reportTabPage.Name = "reportTabPage";
+            this.reportTabPage.Size = new System.Drawing.Size(744, 393);
+            this.reportTabPage.TabIndex = 2;
+            this.reportTabPage.Text = "Агентские отчёты";
+            this.reportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel_report
+            // 
+            this.tableLayoutPanel_report.ColumnCount = 7;
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel_report.Controls.Add(this.treeView_report, 0, 0);
+            this.tableLayoutPanel_report.Controls.Add(this.yearLabel_report, 0, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.yearNumericUpDown_report, 1, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.quarterLabel_report, 2, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.quarterNumericUpDown_report, 3, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.addButton_report, 4, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.deleteButton_report, 6, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.exportReportButton_report, 5, 1);
+            this.tableLayoutPanel_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_report.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel_report.Name = "tableLayoutPanel_report";
+            this.tableLayoutPanel_report.RowCount = 2;
+            this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 393);
+            this.tableLayoutPanel_report.TabIndex = 0;
+            // 
+            // treeView_report
+            // 
+            this.treeView_report.CheckBoxes = true;
+            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 7);
+            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_report.Location = new System.Drawing.Point(3, 3);
+            this.treeView_report.Name = "treeView_report";
+            this.treeView_report.Size = new System.Drawing.Size(738, 355);
+            this.treeView_report.TabIndex = 0;
+            // 
+            // yearLabel_report
+            // 
+            this.yearLabel_report.AutoSize = true;
+            this.yearLabel_report.Location = new System.Drawing.Point(3, 361);
+            this.yearLabel_report.Name = "yearLabel_report";
+            this.yearLabel_report.Size = new System.Drawing.Size(96, 17);
+            this.yearLabel_report.TabIndex = 1;
+            this.yearLabel_report.Text = "Год выборки:";
+            // 
+            // yearNumericUpDown_report
+            // 
+            this.yearNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yearNumericUpDown_report.Location = new System.Drawing.Point(109, 364);
+            this.yearNumericUpDown_report.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.yearNumericUpDown_report.Minimum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.yearNumericUpDown_report.Name = "yearNumericUpDown_report";
+            this.yearNumericUpDown_report.Size = new System.Drawing.Size(59, 22);
+            this.yearNumericUpDown_report.TabIndex = 2;
+            this.yearNumericUpDown_report.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.yearNumericUpDown_report.ValueChanged += new System.EventHandler(this.yearNumericUpDown_report_ValueChanged);
+            // 
+            // quarterLabel_report
+            // 
+            this.quarterLabel_report.AutoSize = true;
+            this.quarterLabel_report.Location = new System.Drawing.Point(174, 361);
+            this.quarterLabel_report.Name = "quarterLabel_report";
+            this.quarterLabel_report.Size = new System.Drawing.Size(127, 17);
+            this.quarterLabel_report.TabIndex = 3;
+            this.quarterLabel_report.Text = "Квартал выборки:";
+            // 
+            // quarterNumericUpDown_report
+            // 
+            this.quarterNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quarterNumericUpDown_report.Location = new System.Drawing.Point(308, 364);
+            this.quarterNumericUpDown_report.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.quarterNumericUpDown_report.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quarterNumericUpDown_report.Name = "quarterNumericUpDown_report";
+            this.quarterNumericUpDown_report.Size = new System.Drawing.Size(35, 22);
+            this.quarterNumericUpDown_report.TabIndex = 4;
+            this.quarterNumericUpDown_report.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quarterNumericUpDown_report.ValueChanged += new System.EventHandler(this.quarterNumericUpDown_report_ValueChanged);
+            // 
+            // addButton_report
+            // 
+            this.addButton_report.Dock = System.Windows.Forms.DockStyle.Right;
+            this.addButton_report.Location = new System.Drawing.Point(424, 364);
+            this.addButton_report.Name = "addButton_report";
+            this.addButton_report.Size = new System.Drawing.Size(87, 26);
+            this.addButton_report.TabIndex = 5;
+            this.addButton_report.Text = "&Добавить";
+            this.addButton_report.UseVisualStyleBackColor = true;
+            // 
+            // deleteButton_report
+            // 
+            this.deleteButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteButton_report.Location = new System.Drawing.Point(647, 364);
+            this.deleteButton_report.Name = "deleteButton_report";
+            this.deleteButton_report.Size = new System.Drawing.Size(94, 26);
+            this.deleteButton_report.TabIndex = 6;
+            this.deleteButton_report.Text = "&Удалить";
+            this.deleteButton_report.UseVisualStyleBackColor = true;
+            // 
+            // exportReportButton_report
+            // 
+            this.exportReportButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exportReportButton_report.Location = new System.Drawing.Point(517, 364);
+            this.exportReportButton_report.Name = "exportReportButton_report";
+            this.exportReportButton_report.Size = new System.Drawing.Size(124, 26);
+            this.exportReportButton_report.TabIndex = 7;
+            this.exportReportButton_report.Text = "&Экспорт отчёта";
+            this.exportReportButton_report.UseVisualStyleBackColor = true;
             // 
             // agent
             // 
@@ -749,14 +907,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.branchCodeNumericUpDown_profile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleChanelNumericUpDown_profile)).EndInit();
             this.commissionTabPage.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel_commission.ResumeLayout(false);
+            this.tableLayoutPanel_commission.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_commission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_commission)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.generalTableLayoutPanel.ResumeLayout(false);
             this.generalTableLayoutPanel.PerformLayout();
+            this.reportTabPage.ResumeLayout(false);
+            this.tableLayoutPanel_report.ResumeLayout(false);
+            this.tableLayoutPanel_report.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -789,7 +952,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_commission;
         private System.Windows.Forms.Label yearLabel_commission;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown_commission;
         private System.Windows.Forms.Button importButton_commission;
@@ -814,5 +977,15 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel helpToolStripStatusLabel;
         private System.Windows.Forms.TableLayoutPanel generalTableLayoutPanel;
+        private System.Windows.Forms.TabPage reportTabPage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_report;
+        private System.Windows.Forms.TreeView treeView_report;
+        private System.Windows.Forms.Label yearLabel_report;
+        private System.Windows.Forms.NumericUpDown yearNumericUpDown_report;
+        private System.Windows.Forms.Label quarterLabel_report;
+        private System.Windows.Forms.NumericUpDown quarterNumericUpDown_report;
+        private System.Windows.Forms.Button addButton_report;
+        private System.Windows.Forms.Button deleteButton_report;
+        private System.Windows.Forms.Button exportReportButton_report;
     }
 }

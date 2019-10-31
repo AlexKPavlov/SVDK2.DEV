@@ -1061,9 +1061,53 @@ namespace SVDK2
             }
         }
 
+
         #endregion
 
         #endregion
+
+        #region Подсказки
+        #region Список агентов
+        private void searchTextBox_MouseEnter(object sender, EventArgs e) //Поиск агентов
+        {
+            helpToolStripStatusLabel.Text = "Alt+П - Быстрое переключение на поиск";
+        }
+        private void agentDataGridView_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Ф - Вверх по списку; Alt+Я - Вниз по списку";
+        }
+        #endregion
+        #region Вкладки
+        private void tabControl_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+<Номер вкладки> - Переход к n-ой вкладке";
+        }
+        #region Профиль
+        private void deleteAgentButton_profile_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+У - Удаление агента";
+        }
+        private void addNewAgentButton_profile_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Д - Добавление агента";
+        }
+
+        #endregion
+        #region Комиссионные
+        private void yearNumericUpDown_commission_DragEnter(object sender, DragEventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Ы - Увеличить год; Alt+Ч - Уменьшить год";
+        }
+        private void importButton_commission_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+И - Импорт";
+        }
+        #endregion
+
+        #endregion
+
+        #endregion
+
 
     }
 }

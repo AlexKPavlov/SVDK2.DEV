@@ -86,6 +86,12 @@
     <Compile Include="agent.Designer.cs">
       <DependentUpon>agent.cs</DependentUpon>
     </Compile>
+    <Compile Include="agentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="agentReport.Designer.cs">
+      <DependentUpon>agentReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="importCommission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="agent.resx">
       <DependentUpon>agent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="agentReport.resx">
+      <DependentUpon>agentReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="importCommission.resx">
       <DependentUpon>importCommission.cs</DependentUpon>

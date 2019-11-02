@@ -78,6 +78,7 @@
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel_report = new System.Windows.Forms.TableLayoutPanel();
+            this.treeView_report = new System.Windows.Forms.TestTreeView();
             this.yearLabel_report = new System.Windows.Forms.Label();
             this.yearNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
             this.quarterLabel_report = new System.Windows.Forms.Label();
@@ -85,11 +86,11 @@
             this.addButton_report = new System.Windows.Forms.Button();
             this.deleteButton_report = new System.Windows.Forms.Button();
             this.exportReportButton_report = new System.Windows.Forms.Button();
+            this.editButton_report = new System.Windows.Forms.Button();
             this.timer_commission = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.treeView_report = new System.Windows.Forms.TestTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -110,7 +111,7 @@
             this.tableLayoutPanel_report.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).BeginInit();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.generalTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,7 +130,7 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(878, 422);
+            this.splitContainer.Size = new System.Drawing.Size(878, 420);
             this.splitContainer.SplitterDistance = 125;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
@@ -157,7 +158,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(125, 400);
+            this.agentDataGridView.Size = new System.Drawing.Size(125, 398);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             this.agentDataGridView.MouseEnter += new System.EventHandler(this.agentDataGridView_MouseEnter);
@@ -230,7 +231,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(752, 422);
+            this.tabControl.Size = new System.Drawing.Size(752, 420);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             this.tabControl.MouseEnter += new System.EventHandler(this.tabControl_MouseEnter);
@@ -453,8 +454,8 @@
             // tableLayoutPanel_commission
             // 
             this.tableLayoutPanel_commission.ColumnCount = 3;
-            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_commission.Controls.Add(this.yearLabel_commission, 0, 1);
             this.tableLayoutPanel_commission.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
@@ -477,17 +478,18 @@
             this.yearLabel_commission.AutoSize = true;
             this.yearLabel_commission.Location = new System.Drawing.Point(3, 355);
             this.yearLabel_commission.Name = "yearLabel_commission";
-            this.yearLabel_commission.Size = new System.Drawing.Size(98, 17);
+            this.yearLabel_commission.Size = new System.Drawing.Size(39, 17);
             this.yearLabel_commission.TabIndex = 0;
-            this.yearLabel_commission.Text = "Год выборки:";
+            this.yearLabel_commission.Text = "Год:";
             this.yearLabel_commission.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.yearLabel_commission.MouseEnter += new System.EventHandler(this.yearLabel_commission_MouseEnter);
             // 
             // yearNumericUpDown_commission
             // 
             this.yearNumericUpDown_commission.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(107, 358);
+            this.yearNumericUpDown_commission.Location = new System.Drawing.Point(48, 358);
             this.yearNumericUpDown_commission.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -499,7 +501,7 @@
             0,
             0});
             this.yearNumericUpDown_commission.Name = "yearNumericUpDown_commission";
-            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(98, 22);
+            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(54, 22);
             this.yearNumericUpDown_commission.TabIndex = 1;
             this.yearNumericUpDown_commission.Value = new decimal(new int[] {
             2000,
@@ -507,7 +509,6 @@
             0,
             0});
             this.yearNumericUpDown_commission.ValueChanged += new System.EventHandler(this.yearNumericUpDown_commission_ValueChanged);
-            this.yearNumericUpDown_commission.DragEnter += new System.Windows.Forms.DragEventHandler(this.yearNumericUpDown_commission_DragEnter);
             // 
             // importButton_commission
             // 
@@ -634,7 +635,7 @@
             this.commissionPersent_persent.ReadOnly = true;
             this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 56;
+            this.commissionPersent_persent.Width = 50;
             // 
             // insurancePlan_quantity_1
             // 
@@ -643,7 +644,7 @@
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
-            this.insurancePlan_quantity_1.Width = 115;
+            this.insurancePlan_quantity_1.Width = 106;
             // 
             // insurancePlan_sum_1
             // 
@@ -652,7 +653,7 @@
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
-            this.insurancePlan_sum_1.Width = 112;
+            this.insurancePlan_sum_1.Width = 103;
             // 
             // insurancePlan_quantity_2
             // 
@@ -661,7 +662,7 @@
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
-            this.insurancePlan_quantity_2.Width = 115;
+            this.insurancePlan_quantity_2.Width = 106;
             // 
             // insurancePlan_sum_2
             // 
@@ -670,7 +671,7 @@
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
-            this.insurancePlan_sum_2.Width = 112;
+            this.insurancePlan_sum_2.Width = 103;
             // 
             // insurancePlan_quantity_3
             // 
@@ -679,7 +680,7 @@
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
-            this.insurancePlan_quantity_3.Width = 115;
+            this.insurancePlan_quantity_3.Width = 106;
             // 
             // insurancePlan_sum_3
             // 
@@ -688,7 +689,7 @@
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
-            this.insurancePlan_sum_3.Width = 112;
+            this.insurancePlan_sum_3.Width = 103;
             // 
             // insurancePlan_quantity_4
             // 
@@ -697,7 +698,7 @@
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
-            this.insurancePlan_quantity_4.Width = 115;
+            this.insurancePlan_quantity_4.Width = 106;
             // 
             // insurancePlan_sum_4
             // 
@@ -706,58 +707,72 @@
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
-            this.insurancePlan_sum_4.Width = 112;
+            this.insurancePlan_sum_4.Width = 103;
             // 
             // reportTabPage
             // 
             this.reportTabPage.Controls.Add(this.tableLayoutPanel_report);
             this.reportTabPage.Location = new System.Drawing.Point(4, 25);
             this.reportTabPage.Name = "reportTabPage";
-            this.reportTabPage.Size = new System.Drawing.Size(744, 393);
+            this.reportTabPage.Size = new System.Drawing.Size(744, 391);
             this.reportTabPage.TabIndex = 2;
             this.reportTabPage.Text = "Агентские отчёты";
             this.reportTabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel_report
             // 
-            this.tableLayoutPanel_report.ColumnCount = 7;
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel_report.ColumnCount = 8;
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel_report.Controls.Add(this.treeView_report, 0, 0);
             this.tableLayoutPanel_report.Controls.Add(this.yearLabel_report, 0, 1);
             this.tableLayoutPanel_report.Controls.Add(this.yearNumericUpDown_report, 1, 1);
             this.tableLayoutPanel_report.Controls.Add(this.quarterLabel_report, 2, 1);
             this.tableLayoutPanel_report.Controls.Add(this.quarterNumericUpDown_report, 3, 1);
             this.tableLayoutPanel_report.Controls.Add(this.addButton_report, 4, 1);
-            this.tableLayoutPanel_report.Controls.Add(this.deleteButton_report, 6, 1);
-            this.tableLayoutPanel_report.Controls.Add(this.exportReportButton_report, 5, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.deleteButton_report, 7, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.exportReportButton_report, 6, 1);
+            this.tableLayoutPanel_report.Controls.Add(this.editButton_report, 5, 1);
             this.tableLayoutPanel_report.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_report.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel_report.Name = "tableLayoutPanel_report";
             this.tableLayoutPanel_report.RowCount = 2;
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 393);
+            this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 391);
             this.tableLayoutPanel_report.TabIndex = 0;
+            // 
+            // treeView_report
+            // 
+            this.treeView_report.CheckBoxes = true;
+            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 8);
+            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_report.Location = new System.Drawing.Point(3, 3);
+            this.treeView_report.Name = "treeView_report";
+            this.treeView_report.Size = new System.Drawing.Size(738, 353);
+            this.treeView_report.TabIndex = 0;
+            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // yearLabel_report
             // 
             this.yearLabel_report.AutoSize = true;
-            this.yearLabel_report.Location = new System.Drawing.Point(3, 361);
+            this.yearLabel_report.Location = new System.Drawing.Point(3, 359);
             this.yearLabel_report.Name = "yearLabel_report";
-            this.yearLabel_report.Size = new System.Drawing.Size(96, 17);
+            this.yearLabel_report.Size = new System.Drawing.Size(36, 17);
             this.yearLabel_report.TabIndex = 1;
-            this.yearLabel_report.Text = "Год выборки:";
+            this.yearLabel_report.Text = "Год:";
+            this.yearLabel_report.MouseEnter += new System.EventHandler(this.yearLabel_report_MouseEnter);
             // 
             // yearNumericUpDown_report
             // 
             this.yearNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yearNumericUpDown_report.Location = new System.Drawing.Point(109, 364);
+            this.yearNumericUpDown_report.Location = new System.Drawing.Point(47, 362);
             this.yearNumericUpDown_report.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -769,7 +784,7 @@
             0,
             0});
             this.yearNumericUpDown_report.Name = "yearNumericUpDown_report";
-            this.yearNumericUpDown_report.Size = new System.Drawing.Size(59, 22);
+            this.yearNumericUpDown_report.Size = new System.Drawing.Size(56, 22);
             this.yearNumericUpDown_report.TabIndex = 2;
             this.yearNumericUpDown_report.Value = new decimal(new int[] {
             2000,
@@ -781,16 +796,17 @@
             // quarterLabel_report
             // 
             this.quarterLabel_report.AutoSize = true;
-            this.quarterLabel_report.Location = new System.Drawing.Point(174, 361);
+            this.quarterLabel_report.Location = new System.Drawing.Point(109, 359);
             this.quarterLabel_report.Name = "quarterLabel_report";
-            this.quarterLabel_report.Size = new System.Drawing.Size(127, 17);
+            this.quarterLabel_report.Size = new System.Drawing.Size(67, 17);
             this.quarterLabel_report.TabIndex = 3;
-            this.quarterLabel_report.Text = "Квартал выборки:";
+            this.quarterLabel_report.Text = "Квартал:";
+            this.quarterLabel_report.MouseEnter += new System.EventHandler(this.quarterLabel_report_MouseEnter);
             // 
             // quarterNumericUpDown_report
             // 
             this.quarterNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quarterNumericUpDown_report.Location = new System.Drawing.Point(308, 364);
+            this.quarterNumericUpDown_report.Location = new System.Drawing.Point(184, 362);
             this.quarterNumericUpDown_report.Maximum = new decimal(new int[] {
             4,
             0,
@@ -802,7 +818,7 @@
             0,
             0});
             this.quarterNumericUpDown_report.Name = "quarterNumericUpDown_report";
-            this.quarterNumericUpDown_report.Size = new System.Drawing.Size(35, 22);
+            this.quarterNumericUpDown_report.Size = new System.Drawing.Size(33, 22);
             this.quarterNumericUpDown_report.TabIndex = 4;
             this.quarterNumericUpDown_report.Value = new decimal(new int[] {
             1,
@@ -814,61 +830,76 @@
             // addButton_report
             // 
             this.addButton_report.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addButton_report.Location = new System.Drawing.Point(424, 364);
+            this.addButton_report.Location = new System.Drawing.Point(317, 362);
             this.addButton_report.Name = "addButton_report";
             this.addButton_report.Size = new System.Drawing.Size(87, 26);
             this.addButton_report.TabIndex = 5;
             this.addButton_report.Text = "&Добавить";
             this.addButton_report.UseVisualStyleBackColor = true;
+            this.addButton_report.Click += new System.EventHandler(this.addButton_report_Click);
+            this.addButton_report.MouseEnter += new System.EventHandler(this.addButton_report_MouseEnter);
             // 
             // deleteButton_report
             // 
             this.deleteButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton_report.Location = new System.Drawing.Point(647, 364);
+            this.deleteButton_report.Location = new System.Drawing.Point(665, 362);
             this.deleteButton_report.Name = "deleteButton_report";
-            this.deleteButton_report.Size = new System.Drawing.Size(94, 26);
+            this.deleteButton_report.Size = new System.Drawing.Size(76, 26);
             this.deleteButton_report.TabIndex = 6;
             this.deleteButton_report.Text = "&Удалить";
             this.deleteButton_report.UseVisualStyleBackColor = true;
+            this.deleteButton_report.MouseEnter += new System.EventHandler(this.deleteButton_report_MouseEnter);
             // 
             // exportReportButton_report
             // 
             this.exportReportButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exportReportButton_report.Location = new System.Drawing.Point(517, 364);
+            this.exportReportButton_report.Location = new System.Drawing.Point(532, 362);
             this.exportReportButton_report.Name = "exportReportButton_report";
-            this.exportReportButton_report.Size = new System.Drawing.Size(124, 26);
+            this.exportReportButton_report.Size = new System.Drawing.Size(127, 26);
             this.exportReportButton_report.TabIndex = 7;
             this.exportReportButton_report.Text = "&Экспорт отчёта";
             this.exportReportButton_report.UseVisualStyleBackColor = true;
+            this.exportReportButton_report.MouseEnter += new System.EventHandler(this.exportReportButton_report_MouseEnter);
+            // 
+            // editButton_report
+            // 
+            this.editButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editButton_report.Location = new System.Drawing.Point(410, 362);
+            this.editButton_report.Name = "editButton_report";
+            this.editButton_report.Size = new System.Drawing.Size(116, 26);
+            this.editButton_report.TabIndex = 8;
+            this.editButton_report.Text = "&Редактировать";
+            this.editButton_report.UseVisualStyleBackColor = true;
+            this.editButton_report.MouseEnter += new System.EventHandler(this.editButton_report_MouseEnter);
             // 
             // timer_commission
             // 
             this.timer_commission.Interval = 1;
             this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 422);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(878, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(878, 24);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip1";
             // 
             // helpToolStripStatusLabel
             // 
             this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 18);
             // 
             // generalTableLayoutPanel
             // 
             this.generalTableLayoutPanel.ColumnCount = 1;
             this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
-            this.generalTableLayoutPanel.Controls.Add(this.statusStrip1, 0, 1);
+            this.generalTableLayoutPanel.Controls.Add(this.statusStrip, 0, 1);
             this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
@@ -877,17 +908,6 @@
             this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
             this.generalTableLayoutPanel.TabIndex = 2;
-            // 
-            // treeView_report
-            // 
-            this.treeView_report.CheckBoxes = true;
-            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 7);
-            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_report.Location = new System.Drawing.Point(3, 3);
-            this.treeView_report.Name = "treeView_report";
-            this.treeView_report.Size = new System.Drawing.Size(738, 355);
-            this.treeView_report.TabIndex = 0;
-            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // agent
             // 
@@ -924,8 +944,8 @@
             this.tableLayoutPanel_report.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_report)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_report)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.generalTableLayoutPanel.ResumeLayout(false);
             this.generalTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -982,7 +1002,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_4;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_4;
         private System.Windows.Forms.Timer timer_commission;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel helpToolStripStatusLabel;
         private System.Windows.Forms.TableLayoutPanel generalTableLayoutPanel;
         private System.Windows.Forms.TabPage reportTabPage;
@@ -995,6 +1015,7 @@
         private System.Windows.Forms.Button deleteButton_report;
         private System.Windows.Forms.Button exportReportButton_report;
         private System.Windows.Forms.TestTreeView treeView_report;
+        private System.Windows.Forms.Button editButton_report;
     }
 }
 

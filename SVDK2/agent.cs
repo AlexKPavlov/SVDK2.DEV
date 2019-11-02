@@ -1061,7 +1061,10 @@ namespace SVDK2
             }
         }
 
+        private void addButton_report_Click(object sender, EventArgs e)
+        {
 
+        }
         #endregion
 
         #endregion
@@ -1094,7 +1097,7 @@ namespace SVDK2
 
         #endregion
         #region Комиссионные
-        private void yearNumericUpDown_commission_DragEnter(object sender, DragEventArgs e)
+        private void yearLabel_commission_MouseEnter(object sender, EventArgs e)
         {
             helpToolStripStatusLabel.Text = "Alt+Ы - Увеличить год; Alt+Ч - Уменьшить год";
         }
@@ -1102,12 +1105,40 @@ namespace SVDK2
         {
             helpToolStripStatusLabel.Text = "Alt+И - Импорт";
         }
+
+        #endregion
+        #region Агентские отчёты
+        private void yearLabel_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Ы - Увеличить год; Alt+Ч - Уменьшить год";
+        }
+        private void quarterLabel_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+В - Увеличить квартал; Alt+С - Уменьшить квартал";
+        }
+        private void addButton_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Д - Добавить отчёт";
+        }
+        private void editButton_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Р - Редактировать отчёт";
+        }
+        private void exportReportButton_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Э - Экспортировать выбранные отчёты";
+        }
+        private void deleteButton_report_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+У - Удалить выбранные отчёты";
+        }
+
         #endregion
 
         #endregion
 
         #endregion
 
-
+        
     }
 }

@@ -130,7 +130,7 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(878, 420);
+            this.splitContainer.Size = new System.Drawing.Size(878, 422);
             this.splitContainer.SplitterDistance = 125;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
@@ -158,7 +158,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(125, 398);
+            this.agentDataGridView.Size = new System.Drawing.Size(125, 400);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             this.agentDataGridView.MouseEnter += new System.EventHandler(this.agentDataGridView_MouseEnter);
@@ -231,7 +231,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(752, 420);
+            this.tabControl.Size = new System.Drawing.Size(752, 422);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             this.tabControl.MouseEnter += new System.EventHandler(this.tabControl_MouseEnter);
@@ -714,7 +714,7 @@
             this.reportTabPage.Controls.Add(this.tableLayoutPanel_report);
             this.reportTabPage.Location = new System.Drawing.Point(4, 25);
             this.reportTabPage.Name = "reportTabPage";
-            this.reportTabPage.Size = new System.Drawing.Size(744, 391);
+            this.reportTabPage.Size = new System.Drawing.Size(744, 393);
             this.reportTabPage.TabIndex = 2;
             this.reportTabPage.Text = "Агентские отчёты";
             this.reportTabPage.UseVisualStyleBackColor = true;
@@ -745,7 +745,7 @@
             this.tableLayoutPanel_report.RowCount = 2;
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 391);
+            this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 393);
             this.tableLayoutPanel_report.TabIndex = 0;
             // 
             // treeView_report
@@ -755,14 +755,14 @@
             this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView_report.Location = new System.Drawing.Point(3, 3);
             this.treeView_report.Name = "treeView_report";
-            this.treeView_report.Size = new System.Drawing.Size(738, 353);
+            this.treeView_report.Size = new System.Drawing.Size(738, 355);
             this.treeView_report.TabIndex = 0;
             this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // yearLabel_report
             // 
             this.yearLabel_report.AutoSize = true;
-            this.yearLabel_report.Location = new System.Drawing.Point(3, 359);
+            this.yearLabel_report.Location = new System.Drawing.Point(3, 361);
             this.yearLabel_report.Name = "yearLabel_report";
             this.yearLabel_report.Size = new System.Drawing.Size(36, 17);
             this.yearLabel_report.TabIndex = 1;
@@ -772,7 +772,7 @@
             // yearNumericUpDown_report
             // 
             this.yearNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yearNumericUpDown_report.Location = new System.Drawing.Point(47, 362);
+            this.yearNumericUpDown_report.Location = new System.Drawing.Point(47, 364);
             this.yearNumericUpDown_report.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -796,7 +796,7 @@
             // quarterLabel_report
             // 
             this.quarterLabel_report.AutoSize = true;
-            this.quarterLabel_report.Location = new System.Drawing.Point(109, 359);
+            this.quarterLabel_report.Location = new System.Drawing.Point(109, 361);
             this.quarterLabel_report.Name = "quarterLabel_report";
             this.quarterLabel_report.Size = new System.Drawing.Size(67, 17);
             this.quarterLabel_report.TabIndex = 3;
@@ -806,7 +806,7 @@
             // quarterNumericUpDown_report
             // 
             this.quarterNumericUpDown_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quarterNumericUpDown_report.Location = new System.Drawing.Point(184, 362);
+            this.quarterNumericUpDown_report.Location = new System.Drawing.Point(184, 364);
             this.quarterNumericUpDown_report.Maximum = new decimal(new int[] {
             4,
             0,
@@ -830,7 +830,7 @@
             // addButton_report
             // 
             this.addButton_report.Dock = System.Windows.Forms.DockStyle.Right;
-            this.addButton_report.Location = new System.Drawing.Point(317, 362);
+            this.addButton_report.Location = new System.Drawing.Point(317, 364);
             this.addButton_report.Name = "addButton_report";
             this.addButton_report.Size = new System.Drawing.Size(87, 26);
             this.addButton_report.TabIndex = 5;
@@ -842,7 +842,7 @@
             // deleteButton_report
             // 
             this.deleteButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton_report.Location = new System.Drawing.Point(665, 362);
+            this.deleteButton_report.Location = new System.Drawing.Point(665, 364);
             this.deleteButton_report.Name = "deleteButton_report";
             this.deleteButton_report.Size = new System.Drawing.Size(76, 26);
             this.deleteButton_report.TabIndex = 6;
@@ -853,7 +853,7 @@
             // exportReportButton_report
             // 
             this.exportReportButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exportReportButton_report.Location = new System.Drawing.Point(532, 362);
+            this.exportReportButton_report.Location = new System.Drawing.Point(532, 364);
             this.exportReportButton_report.Name = "exportReportButton_report";
             this.exportReportButton_report.Size = new System.Drawing.Size(127, 26);
             this.exportReportButton_report.TabIndex = 7;
@@ -864,7 +864,7 @@
             // editButton_report
             // 
             this.editButton_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editButton_report.Location = new System.Drawing.Point(410, 362);
+            this.editButton_report.Location = new System.Drawing.Point(410, 364);
             this.editButton_report.Name = "editButton_report";
             this.editButton_report.Size = new System.Drawing.Size(116, 26);
             this.editButton_report.TabIndex = 8;
@@ -883,16 +883,16 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 420);
+            this.statusStrip.Location = new System.Drawing.Point(0, 422);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(878, 24);
+            this.statusStrip.Size = new System.Drawing.Size(878, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
             // helpToolStripStatusLabel
             // 
             this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 18);
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
             // 
             // generalTableLayoutPanel
             // 

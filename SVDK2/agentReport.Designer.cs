@@ -31,15 +31,19 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.codeLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.codeTextBox = new System.Windows.Forms.TextBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.helpStatusStrip = new System.Windows.Forms.StatusStrip();
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.agentReportContent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -51,7 +55,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.Controls.Add(this.codeLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.codeTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.helpStatusStrip, 0, 4);
@@ -87,24 +91,33 @@
             this.dateLabel.TabIndex = 0;
             this.dateLabel.Text = "Дата отчёта:";
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.agentReportContent_id});
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 61);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(551, 314);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.agentReportContent_id,
+            this.vs_name,
+            this.count,
+            this.sum,
+            this.percent});
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView, 4);
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(3, 61);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridView.RowTemplate.Height = 24;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(551, 314);
+            this.dataGridView.TabIndex = 3;
+            this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
             // 
             // codeTextBox
             // 
             this.codeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.codeTextBox.Location = new System.Drawing.Point(160, 3);
+            this.codeTextBox.MaxLength = 20;
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.Size = new System.Drawing.Size(158, 22);
             this.codeTextBox.TabIndex = 1;
@@ -148,12 +161,47 @@
             // 
             // agentReportContent_id
             // 
+            this.agentReportContent_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.agentReportContent_id.HeaderText = "Код строки";
             this.agentReportContent_id.MinimumWidth = 6;
             this.agentReportContent_id.Name = "agentReportContent_id";
             this.agentReportContent_id.ReadOnly = true;
             this.agentReportContent_id.Visible = false;
-            this.agentReportContent_id.Width = 125;
+            this.agentReportContent_id.Width = 88;
+            // 
+            // vs_name
+            // 
+            this.vs_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.vs_name.HeaderText = "Вид страхования";
+            this.vs_name.MinimumWidth = 6;
+            this.vs_name.Name = "vs_name";
+            this.vs_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.vs_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.vs_name.Width = 136;
+            // 
+            // count
+            // 
+            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.count.HeaderText = "Количество";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 115;
+            // 
+            // sum
+            // 
+            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sum.HeaderText = "Сумма";
+            this.sum.MinimumWidth = 6;
+            this.sum.Name = "sum";
+            this.sum.Width = 79;
+            // 
+            // percent
+            // 
+            this.percent.HeaderText = "%";
+            this.percent.MinimumWidth = 6;
+            this.percent.Name = "percent";
+            this.percent.Visible = false;
+            this.percent.Width = 125;
             // 
             // agentReport
             // 
@@ -164,9 +212,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "agentReport";
             this.Text = "agentReport";
+            this.Load += new System.EventHandler(this.agentReport_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,12 +225,16 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label codeLabel;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.StatusStrip helpStatusStrip;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn agentReportContent_id;
+        private System.Windows.Forms.DataGridViewComboBoxColumn vs_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn percent;
     }
 }

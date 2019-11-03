@@ -1063,7 +1063,8 @@ namespace SVDK2
 
         private void addButton_report_Click(object sender, EventArgs e)
         {
-
+            agentReport form = new agentReport(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_report.Value), Convert.ToInt32(quarterNumericUpDown_report.Value));
+            form.ShowDialog();
         }
         #endregion
 

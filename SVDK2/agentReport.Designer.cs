@@ -111,6 +111,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(551, 314);
             this.dataGridView.TabIndex = 3;
+            this.dataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_CellValidating);
             this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
             // 
             // codeTextBox
@@ -148,6 +149,7 @@
             this.submitButton.TabIndex = 5;
             this.submitButton.Text = "&Подтвердить";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // cancelButton
             // 
@@ -158,6 +160,7 @@
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "&Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // agentReportContent_id
             // 

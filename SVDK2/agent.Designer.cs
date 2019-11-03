@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(agent));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.agentDataGridView = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +79,6 @@
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel_report = new System.Windows.Forms.TableLayoutPanel();
-            this.treeView_report = new System.Windows.Forms.TestTreeView();
             this.yearLabel_report = new System.Windows.Forms.Label();
             this.yearNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
             this.quarterLabel_report = new System.Windows.Forms.Label();
@@ -91,6 +91,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.treeView_report = new System.Windows.Forms.TestTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -635,7 +636,7 @@
             this.commissionPersent_persent.ReadOnly = true;
             this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 50;
+            this.commissionPersent_persent.Width = 56;
             // 
             // insurancePlan_quantity_1
             // 
@@ -644,7 +645,7 @@
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
-            this.insurancePlan_quantity_1.Width = 106;
+            this.insurancePlan_quantity_1.Width = 115;
             // 
             // insurancePlan_sum_1
             // 
@@ -653,7 +654,7 @@
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
-            this.insurancePlan_sum_1.Width = 103;
+            this.insurancePlan_sum_1.Width = 112;
             // 
             // insurancePlan_quantity_2
             // 
@@ -662,7 +663,7 @@
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
-            this.insurancePlan_quantity_2.Width = 106;
+            this.insurancePlan_quantity_2.Width = 115;
             // 
             // insurancePlan_sum_2
             // 
@@ -671,7 +672,7 @@
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
-            this.insurancePlan_sum_2.Width = 103;
+            this.insurancePlan_sum_2.Width = 112;
             // 
             // insurancePlan_quantity_3
             // 
@@ -680,7 +681,7 @@
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
-            this.insurancePlan_quantity_3.Width = 106;
+            this.insurancePlan_quantity_3.Width = 115;
             // 
             // insurancePlan_sum_3
             // 
@@ -689,7 +690,7 @@
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
-            this.insurancePlan_sum_3.Width = 103;
+            this.insurancePlan_sum_3.Width = 112;
             // 
             // insurancePlan_quantity_4
             // 
@@ -698,7 +699,7 @@
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
-            this.insurancePlan_quantity_4.Width = 106;
+            this.insurancePlan_quantity_4.Width = 115;
             // 
             // insurancePlan_sum_4
             // 
@@ -707,7 +708,7 @@
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
-            this.insurancePlan_sum_4.Width = 103;
+            this.insurancePlan_sum_4.Width = 112;
             // 
             // reportTabPage
             // 
@@ -747,17 +748,6 @@
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel_report.Size = new System.Drawing.Size(744, 393);
             this.tableLayoutPanel_report.TabIndex = 0;
-            // 
-            // treeView_report
-            // 
-            this.treeView_report.CheckBoxes = true;
-            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 8);
-            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_report.Location = new System.Drawing.Point(3, 3);
-            this.treeView_report.Name = "treeView_report";
-            this.treeView_report.Size = new System.Drawing.Size(738, 355);
-            this.treeView_report.TabIndex = 0;
-            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // yearLabel_report
             // 
@@ -909,12 +899,24 @@
             this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
             this.generalTableLayoutPanel.TabIndex = 2;
             // 
+            // treeView_report
+            // 
+            this.treeView_report.CheckBoxes = true;
+            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 8);
+            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_report.Location = new System.Drawing.Point(3, 3);
+            this.treeView_report.Name = "treeView_report";
+            this.treeView_report.Size = new System.Drawing.Size(738, 355);
+            this.treeView_report.TabIndex = 0;
+            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 444);
             this.Controls.Add(this.generalTableLayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "agent";
             this.Text = "Агенты";

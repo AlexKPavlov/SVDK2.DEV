@@ -142,7 +142,7 @@
             this.agentComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.agentComboBox.Enabled = false;
             this.agentComboBox.FormattingEnabled = true;
-            this.agentComboBox.Location = new System.Drawing.Point(397, 186);
+            this.agentComboBox.Location = new System.Drawing.Point(397, 185);
             this.agentComboBox.Name = "agentComboBox";
             this.agentComboBox.Size = new System.Drawing.Size(192, 24);
             this.agentComboBox.TabIndex = 3;

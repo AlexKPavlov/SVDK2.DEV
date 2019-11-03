@@ -43,7 +43,7 @@
             this.insuranceToolStripButton_main});
             this.toolStrip_main.Location = new System.Drawing.Point(0, 0);
             this.toolStrip_main.Name = "toolStrip_main";
-            this.toolStrip_main.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip_main.Size = new System.Drawing.Size(800, 31);
             this.toolStrip_main.TabIndex = 0;
             this.toolStrip_main.Text = "toolStrip1";
             // 
@@ -53,7 +53,7 @@
             this.AgentToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("AgentToolStripButton_main.Image")));
             this.AgentToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AgentToolStripButton_main.Name = "AgentToolStripButton_main";
-            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 24);
+            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 28);
             this.AgentToolStripButton_main.Text = "&Агенты";
             this.AgentToolStripButton_main.Click += new System.EventHandler(this.AgentToolStripButton_main_Click);
             // 
@@ -63,7 +63,7 @@
             this.insuranceToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("insuranceToolStripButton_main.Image")));
             this.insuranceToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.insuranceToolStripButton_main.Name = "insuranceToolStripButton_main";
-            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 24);
+            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 28);
             this.insuranceToolStripButton_main.Text = "&Виды страхований";
             this.insuranceToolStripButton_main.Click += new System.EventHandler(this.insuranceToolStripButton_main_Click);
             // 
@@ -73,6 +73,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.toolStrip_main);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
             this.Text = "СВДК2";
             this.toolStrip_main.ResumeLayout(false);

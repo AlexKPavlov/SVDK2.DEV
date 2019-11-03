@@ -32,16 +32,16 @@
             this.codeLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.codeTextBox = new System.Windows.Forms.TextBox();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.helpStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.submitButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.agentReportContent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeTextBox = new System.Windows.Forms.TextBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.helpStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +114,50 @@
             this.dataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_CellValidating);
             this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
             // 
+            // agentReportContent_id
+            // 
+            this.agentReportContent_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.agentReportContent_id.HeaderText = "Код строки";
+            this.agentReportContent_id.MinimumWidth = 6;
+            this.agentReportContent_id.Name = "agentReportContent_id";
+            this.agentReportContent_id.ReadOnly = true;
+            this.agentReportContent_id.Visible = false;
+            this.agentReportContent_id.Width = 125;
+            // 
+            // vs_name
+            // 
+            this.vs_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.vs_name.HeaderText = "Вид страхования";
+            this.vs_name.MinimumWidth = 6;
+            this.vs_name.Name = "vs_name";
+            this.vs_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.vs_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.vs_name.Width = 136;
+            // 
+            // count
+            // 
+            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.count.HeaderText = "Количество";
+            this.count.MinimumWidth = 6;
+            this.count.Name = "count";
+            this.count.Width = 115;
+            // 
+            // sum
+            // 
+            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sum.HeaderText = "Сумма";
+            this.sum.MinimumWidth = 6;
+            this.sum.Name = "sum";
+            this.sum.Width = 79;
+            // 
+            // percent
+            // 
+            this.percent.HeaderText = "%";
+            this.percent.MinimumWidth = 6;
+            this.percent.Name = "percent";
+            this.percent.Visible = false;
+            this.percent.Width = 125;
+            // 
             // codeTextBox
             // 
             this.codeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -161,50 +205,6 @@
             this.cancelButton.Text = "&Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // agentReportContent_id
-            // 
-            this.agentReportContent_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.agentReportContent_id.HeaderText = "Код строки";
-            this.agentReportContent_id.MinimumWidth = 6;
-            this.agentReportContent_id.Name = "agentReportContent_id";
-            this.agentReportContent_id.ReadOnly = true;
-            this.agentReportContent_id.Visible = false;
-            this.agentReportContent_id.Width = 88;
-            // 
-            // vs_name
-            // 
-            this.vs_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.vs_name.HeaderText = "Вид страхования";
-            this.vs_name.MinimumWidth = 6;
-            this.vs_name.Name = "vs_name";
-            this.vs_name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vs_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vs_name.Width = 136;
-            // 
-            // count
-            // 
-            this.count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.count.HeaderText = "Количество";
-            this.count.MinimumWidth = 6;
-            this.count.Name = "count";
-            this.count.Width = 115;
-            // 
-            // sum
-            // 
-            this.sum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.sum.HeaderText = "Сумма";
-            this.sum.MinimumWidth = 6;
-            this.sum.Name = "sum";
-            this.sum.Width = 79;
-            // 
-            // percent
-            // 
-            this.percent.HeaderText = "%";
-            this.percent.MinimumWidth = 6;
-            this.percent.Name = "percent";
-            this.percent.Visible = false;
-            this.percent.Width = 125;
             // 
             // agentReport
             // 

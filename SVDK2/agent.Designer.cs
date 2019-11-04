@@ -838,6 +838,7 @@
             this.deleteButton_report.TabIndex = 6;
             this.deleteButton_report.Text = "&Удалить";
             this.deleteButton_report.UseVisualStyleBackColor = true;
+            this.deleteButton_report.Click += new System.EventHandler(this.deleteButton_report_Click);
             this.deleteButton_report.MouseEnter += new System.EventHandler(this.deleteButton_report_MouseEnter);
             // 
             // exportReportButton_report
@@ -849,6 +850,7 @@
             this.exportReportButton_report.TabIndex = 7;
             this.exportReportButton_report.Text = "&Экспорт отчёта";
             this.exportReportButton_report.UseVisualStyleBackColor = true;
+            this.exportReportButton_report.Click += new System.EventHandler(this.exportReportButton_report_Click);
             this.exportReportButton_report.MouseEnter += new System.EventHandler(this.exportReportButton_report_MouseEnter);
             // 
             // editButton_report
@@ -860,6 +862,7 @@
             this.editButton_report.TabIndex = 8;
             this.editButton_report.Text = "&Редактировать";
             this.editButton_report.UseVisualStyleBackColor = true;
+            this.editButton_report.Click += new System.EventHandler(this.editButton_report_Click);
             this.editButton_report.MouseEnter += new System.EventHandler(this.editButton_report_MouseEnter);
             // 
             // timer_commission

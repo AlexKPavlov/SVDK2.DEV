@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using Microsoft.Office.Interop.Excel;
+
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace SVDK2
 {
@@ -26,11 +29,19 @@ namespace SVDK2
         {
             loadAgentList();
             refreshAgentDataGrid();
+            loadSettings();
             //preparingProfile();
 
             yearNumericUpDown_commission.Value = DateTime.Now.Year;
             yearNumericUpDown_report.Value = DateTime.Now.Year;
             quarterNumericUpDown_report.Value = (DateTime.Now.Month + 2) / 3;
+        }
+
+        private void loadSettings()
+        {
+            IniFile settingsIni = new IniFile(@"setting.ini");
+            this.Text = this.Text.Split(new string[] { @" (" }, StringSplitOptions.RemoveEmptyEntries)[0] + @" (" + settingsIni.Read("name", "settings") + ")";
+            statusStrip.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
         }
 
 
@@ -557,7 +568,7 @@ namespace SVDK2
             dataGridView_commission.Rows.Add();
             DataGridViewComboBoxCell comboBoxCell = new DataGridViewComboBoxCell();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT vs_id as id, (vs_kod || ': ' || vs_name) as name FROM vs", sqliteConnection);
-            DataTable tableVs = new DataTable();
+            System.Data.DataTable tableVs = new System.Data.DataTable();
             adapter.AcceptChangesDuringFill = false;
             adapter.Fill(tableVs);
             comboBoxCell.DisplayMember = "name";
@@ -1065,6 +1076,51 @@ namespace SVDK2
         {
             agentReport form = new agentReport(sqliteConnection, Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_report.Value), Convert.ToInt32(quarterNumericUpDown_report.Value));
             form.ShowDialog();
+            loadSelectedUserInCurrentTabPage();
+        }
+
+        private void editButton_report_Click(object sender, EventArgs e)
+        {
+            List<TreeNode> collection = new List<TreeNode> { };
+            foreach (TreeNode item in treeView_report.Nodes)
+                if (item.Checked)
+                    collection.Add(item);
+
+            if (collection.Count > 1)
+                if (MessageBox.Show("Вы отметили для редактирования больше 1 отчёта.\nОтчёты будут редактироваться по очереди.\nЖелаете продолжить редактирование?", "Продолжить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
+
+            for (int i = 0; i < collection.Count; i++)
+            {
+                agentReport form = new agentReport(sqliteConnection, Convert.ToInt32(collection[i].Tag));
+                form.ShowDialog();
+                loadSelectedUserInCurrentTabPage();
+                if (i < collection.Count - 1)
+                    if (MessageBox.Show("Осталось " + (collection.Count - (i + 1)) + " отчётов.\nПродолжить редактирование?", "Продолжить?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
+                        return;
+            }
+        }
+
+        private void deleteButton_report_Click(object sender, EventArgs e)
+        {
+            List<TreeNode> collection = new List<TreeNode> { };
+            foreach (TreeNode item in treeView_report.Nodes)
+                if (item.Checked)
+                    collection.Add(item);
+
+            if (collection.Count > 0)
+                if (MessageBox.Show("Вы действительно хотите удалить " + collection.Count + " отчётов?", "Вы уверены?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    return;
+
+            sqliteConnection.Open();
+            foreach (TreeNode item in collection)
+            {
+                SQLiteCommand command = new SQLiteCommand("DELETE FROM agentReport WHERE agentReport_id=@id; DELETE FROM agentReportContent WHERE agentReport_id=@id", sqliteConnection);
+                command.Parameters.AddWithValue("@id", item.Tag);
+                command.ExecuteNonQuery();
+            }
+            sqliteConnection.Close();
+            loadSelectedUserInCurrentTabPage();
         }
         #endregion
 
@@ -1134,12 +1190,94 @@ namespace SVDK2
             helpToolStripStatusLabel.Text = "Alt+У - Удалить выбранные отчёты";
         }
 
-        #endregion
+
 
         #endregion
 
         #endregion
 
-        
+        #endregion
+
+        private void exportReportButton_report_Click(object sender, EventArgs e)
+        {
+            List<TreeNode> collection = new List<TreeNode> { };
+            foreach (TreeNode item in treeView_report.Nodes)
+                if (item.Checked)
+                    collection.Add(item);
+
+            if (collection.Count == 0)
+                return;
+
+            try
+            {
+                Application application = new Application { DisplayAlerts = false };
+                Workbook workBook;
+                Worksheet worksheet;
+
+                string template = Environment.CurrentDirectory + @"\template\agentReport.xlsm";
+                workBook = application.Workbooks.Open(template, ReadOnly: true);
+                worksheet = workBook.ActiveSheet as Worksheet;
+                int row = 1;
+
+                sqliteConnection.Open();
+                foreach (TreeNode item in collection)
+                {
+                    SQLiteCommand command = new SQLiteCommand("SELECT (agent.agent_name || ' (' || agent.agent_branch_code|| ')') AS agent_name, agentReport.agentReport_date, agentReport.agentReport_code FROM agentReport LEFT JOIN agent ON agentReport.agent_id=agent.agent_id WHERE agentReport.agentReport_id=@report_id", sqliteConnection);
+                    command.Parameters.AddWithValue("@report_id", item.Tag);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    if (row > 1)
+                    {
+                        row++;
+                        worksheet.Range["H1:M4"].Copy();
+                        worksheet.Range["A" + row + ":F" + (row + 3)].PasteSpecial();
+                    }
+                    while (reader.Read())
+                    {
+                        worksheet.Range["B" + (row++)].Value = reader["agent_name"].ToString();
+                        worksheet.Range["B" + (row++)].Value = reader["agentReport_code"].ToString();
+                        worksheet.Range["B" + (row++)].Value = DateTime.Parse(reader["agentReport_date"].ToString()).ToShortDateString();
+                    }
+                    command = new SQLiteCommand("SELECT vs.vs_kod, vs.vs_name, agentReportContent.agentReportContent_count, agentReportContent.agentReportContent_sum, (CASE WHEN commissionPersent.commissionPersent_persent IS NOT NULL THEN commissionPersent.commissionPersent_persent ELSE 0 END) AS commissionPersent_persent FROM agentReportContent " +
+                                                "LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id " +
+                                                "LEFT JOIN agentReport ON agentReport.agentReport_id=agentReportContent.agentReport_id " +
+                                                "LEFT JOIN commissionPersent ON (commissionPersent.agent_id=agentReport.agent_id AND commissionPersent.vs_id=agentReportContent.vs_id AND commissionPersent.commissionPersent_year=strftime('%Y', agentReport.agentReport_date)) " +
+                                                "WHERE agentReportContent.agentReport_id=@report_id", sqliteConnection);
+                    command.Parameters.AddWithValue("@report_id", item.Tag);
+                    reader = command.ExecuteReader();
+                    row++;
+                    int startRow = row;
+                    while (reader.Read())
+                    {
+                        worksheet.Range["A" + row].Value = Convert.ToInt32(reader["vs_kod"]);
+                        worksheet.Range["B" + row].Value = reader["vs_name"].ToString();
+                        worksheet.Range["C" + row].Value = Convert.ToInt32(reader["agentReportContent_count"]);
+                        worksheet.Range["D" + row].Value = Convert.ToDecimal(reader["agentReportContent_sum"]);
+                        worksheet.Range["E" + row].Value = Convert.ToDecimal(reader["commissionPersent_persent"]);
+                        worksheet.Range["F" + row].Formula = "=D" + row + "*E" + row;
+                        row++;
+                    }
+                    worksheet.Range["A" + row].Value = "Сумма:";
+                    worksheet.Range["C" + row].Formula = "=SUM(C" + startRow + ":C" + (row - 1) + ")";
+                    worksheet.Range["D" + row].Formula = "=SUM(D" + startRow + ":D" + (row - 1) + ")";
+                    worksheet.Range["F" + row].Formula = "=SUM(F" + startRow + ":F" + (row - 1) + ")";
+                    row++;
+
+                    worksheet.Range["A" + startRow + ":F" + (row - 1)].Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                    worksheet.Range["A" + startRow + ":F" + (row - 1)].Borders.Weight = Microsoft.Office.Interop.Excel.XlBorderWeight.xlThin;
+                }
+                worksheet.PageSetup.PrintArea = "A1:F" + (row - 1);
+                sqliteConnection.Close();
+
+                application.Visible = true;
+                TopMost = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Похоже у вас не установлен Microsoft Excel", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+
+            
+        }
     }
 }

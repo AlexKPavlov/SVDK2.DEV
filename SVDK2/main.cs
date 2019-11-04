@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.IO.Compression;
 using System.Diagnostics;
 using System.Data.SQLite;
 
@@ -37,6 +38,8 @@ namespace SVDK2
                 settingsIni.Write("help", "true", "settings");
             helpToolStripMenuItem_main.Checked = Convert.ToBoolean(settingsIni.Read("help", "settings"));
             helpStatusStrip_main.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
+            if (settingsIni.Read("countDayBackup", "settings").Length == 0)
+                settingsIni.Write("countDayBackup", "30", "settings");
 
             yearNumericUpDown_main.Value = DateTime.Now.Year;
             quarterNumericUpDown_main.Value = (int)((DateTime.Now.Month + 2) / 3);
@@ -78,6 +81,16 @@ namespace SVDK2
             helpToolStripMenuItem_main.Checked = !helpToolStripMenuItem_main.Checked;
             settingsIni.Write("help", helpToolStripMenuItem_main.Checked.ToString(), "settings");
             helpStatusStrip_main.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
+        }
+        private void countDayBackupsToolStripTextBox_main_Validating(object sender, CancelEventArgs e)
+        {
+            UInt32 count = 30;
+            if (!UInt32.TryParse(countDayBackupsToolStripTextBox_main.Text, out count))
+            {
+                MessageBox.Show("Количество дней должно быть целым положительным числом!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            settingsIni.Write("countDayBackup", count.ToString(), "settings");
         }
         #endregion
 
@@ -129,6 +142,19 @@ namespace SVDK2
             }
 
             sqliteConnection.Close();
+        }
+
+        private void main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Вы хотите создать резервную копию?", "Резервная копия?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                return;
+
+            RemoveOldFile.DeleteOldFiles(Directory.GetCurrentDirectory() + @"//backup", Convert.ToUInt32(settingsIni.Read("countDayBackup", "settings")));
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"//temp");
+            File.Copy(Directory.GetCurrentDirectory() + @"//db.db", Directory.GetCurrentDirectory() + @"//temp//db.db");
+            Random random = new Random();
+            ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory() + @"//temp", Directory.GetCurrentDirectory() + @"//backup//" + DateTime.Now.ToString("d")+"-"+random.Next(2147483647) +".zip");
+            Directory.Delete(Directory.GetCurrentDirectory() + @"//temp", true);
         }
     }
 }

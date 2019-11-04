@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip_main = new System.Windows.Forms.ToolStrip();
             this.AgentToolStripButton_main = new System.Windows.Forms.ToolStripButton();
             this.insuranceToolStripButton_main = new System.Windows.Forms.ToolStripButton();
@@ -48,6 +48,8 @@
             this.yearNumericUpDown_main = new System.Windows.Forms.NumericUpDown();
             this.quarterNumericUpDown_main = new System.Windows.Forms.NumericUpDown();
             this.helpToolStripStatusLabel_main = new System.Windows.Forms.ToolStripStatusLabel();
+            this.countDayBackupToolStripMenuItem_main = new System.Windows.Forms.ToolStripMenuItem();
+            this.countDayBackupsToolStripTextBox_main = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip_main.SuspendLayout();
             this.tableLayoutPanel_main.SuspendLayout();
             this.helpStatusStrip_main.SuspendLayout();
@@ -94,7 +96,8 @@
             this.toolStripDropDownButton_main.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton_main.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.forFioToolStripMenuItem_main,
-            this.helpToolStripMenuItem_main});
+            this.helpToolStripMenuItem_main,
+            this.countDayBackupToolStripMenuItem_main});
             this.toolStripDropDownButton_main.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_main.Image")));
             this.toolStripDropDownButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton_main.Name = "toolStripDropDownButton_main";
@@ -106,7 +109,7 @@
             this.forFioToolStripMenuItem_main.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fioToolStripTextBox_main});
             this.forFioToolStripMenuItem_main.Name = "forFioToolStripMenuItem_main";
-            this.forFioToolStripMenuItem_main.Size = new System.Drawing.Size(224, 26);
+            this.forFioToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
             this.forFioToolStripMenuItem_main.Text = "ФИО";
             // 
             // fioToolStripTextBox_main
@@ -121,7 +124,7 @@
             // helpToolStripMenuItem_main
             // 
             this.helpToolStripMenuItem_main.Name = "helpToolStripMenuItem_main";
-            this.helpToolStripMenuItem_main.Size = new System.Drawing.Size(224, 26);
+            this.helpToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
             this.helpToolStripMenuItem_main.Text = "Подсказки";
             this.helpToolStripMenuItem_main.Click += new System.EventHandler(this.helpToolStripMenuItem_main_Click);
             // 
@@ -166,26 +169,26 @@
             // 
             // chart_main
             // 
-            chartArea1.AxisX.MaximumAutoSize = 85F;
-            chartArea1.Name = "ChartArea1";
-            this.chart_main.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.MaximumAutoSize = 85F;
+            chartArea2.Name = "ChartArea1";
+            this.chart_main.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel_main.SetColumnSpan(this.chart_main, 5);
             this.chart_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart_main.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chart_main.Legends.Add(legend2);
             this.chart_main.Location = new System.Drawing.Point(3, 3);
             this.chart_main.Name = "chart_main";
             this.tableLayoutPanel_main.SetRowSpan(this.chart_main, 2);
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.LegendText = "Выполнение плана\\nпо количеству (%)";
-            series1.Name = "count";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.LegendText = "Выполнение плана\\nпо сумме (%)";
-            series2.Name = "sum";
-            this.chart_main.Series.Add(series1);
-            this.chart_main.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.LegendText = "Выполнение плана\\nпо количеству (%)";
+            series3.Name = "count";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.LegendText = "Выполнение плана\\nпо сумме (%)";
+            series4.Name = "sum";
+            this.chart_main.Series.Add(series3);
+            this.chart_main.Series.Add(series4);
             this.chart_main.Size = new System.Drawing.Size(794, 389);
             this.chart_main.TabIndex = 1;
             this.chart_main.Text = "chart1";
@@ -259,6 +262,21 @@
             this.helpToolStripStatusLabel_main.Name = "helpToolStripStatusLabel_main";
             this.helpToolStripStatusLabel_main.Size = new System.Drawing.Size(0, 16);
             // 
+            // countDayBackupToolStripMenuItem_main
+            // 
+            this.countDayBackupToolStripMenuItem_main.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.countDayBackupsToolStripTextBox_main});
+            this.countDayBackupToolStripMenuItem_main.Name = "countDayBackupToolStripMenuItem_main";
+            this.countDayBackupToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
+            this.countDayBackupToolStripMenuItem_main.Text = "Срок хранения рез. коп.";
+            // 
+            // countDayBackupsToolStripTextBox_main
+            // 
+            this.countDayBackupsToolStripTextBox_main.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.countDayBackupsToolStripTextBox_main.Name = "countDayBackupsToolStripTextBox_main";
+            this.countDayBackupsToolStripTextBox_main.Size = new System.Drawing.Size(100, 27);
+            this.countDayBackupsToolStripTextBox_main.Validating += new System.ComponentModel.CancelEventHandler(this.countDayBackupsToolStripTextBox_main_Validating);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -269,6 +287,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "main";
             this.Text = "СВДК2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_FormClosing);
             this.Load += new System.EventHandler(this.main_Load);
             this.toolStrip_main.ResumeLayout(false);
             this.toolStrip_main.PerformLayout();
@@ -301,6 +320,8 @@
         private System.Windows.Forms.Label quarterLabel_main;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown_main;
         private System.Windows.Forms.NumericUpDown quarterNumericUpDown_main;
+        private System.Windows.Forms.ToolStripMenuItem countDayBackupToolStripMenuItem_main;
+        private System.Windows.Forms.ToolStripTextBox countDayBackupsToolStripTextBox_main;
     }
 }
 

@@ -36,7 +36,7 @@
             this.agentComboBox = new System.Windows.Forms.ComboBox();
             this.itemForImportLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.commissionPersentCheckBox = new System.Windows.Forms.CheckBox();
+            this.commissionPercentCheckBox = new System.Windows.Forms.CheckBox();
             this.insurancePlan1CheckBox = new System.Windows.Forms.CheckBox();
             this.insurancePlan2CheckBox = new System.Windows.Forms.CheckBox();
             this.insurancePlan3CheckBox = new System.Windows.Forms.CheckBox();
@@ -162,7 +162,7 @@
             this.tableLayoutPanel.SetColumnSpan(this.tableLayoutPanel2, 2);
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.commissionPersentCheckBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.commissionPercentCheckBox, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.insurancePlan1CheckBox, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.insurancePlan2CheckBox, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.insurancePlan3CheckBox, 0, 3);
@@ -179,15 +179,15 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(389, 140);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // commissionPersentCheckBox
+            // commissionPercentCheckBox
             // 
-            this.commissionPersentCheckBox.AutoSize = true;
-            this.commissionPersentCheckBox.Location = new System.Drawing.Point(3, 3);
-            this.commissionPersentCheckBox.Name = "commissionPersentCheckBox";
-            this.commissionPersentCheckBox.Size = new System.Drawing.Size(154, 21);
-            this.commissionPersentCheckBox.TabIndex = 0;
-            this.commissionPersentCheckBox.Text = "% вознаграждения";
-            this.commissionPersentCheckBox.UseVisualStyleBackColor = true;
+            this.commissionPercentCheckBox.AutoSize = true;
+            this.commissionPercentCheckBox.Location = new System.Drawing.Point(3, 3);
+            this.commissionPercentCheckBox.Name = "commissionPercentCheckBox";
+            this.commissionPercentCheckBox.Size = new System.Drawing.Size(154, 21);
+            this.commissionPercentCheckBox.TabIndex = 0;
+            this.commissionPercentCheckBox.Text = "% вознаграждения";
+            this.commissionPercentCheckBox.UseVisualStyleBackColor = true;
             // 
             // insurancePlan1CheckBox
             // 
@@ -391,7 +391,7 @@
         private System.Windows.Forms.ComboBox agentComboBox;
         private System.Windows.Forms.Label itemForImportLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.CheckBox commissionPersentCheckBox;
+        private System.Windows.Forms.CheckBox commissionPercentCheckBox;
         private System.Windows.Forms.CheckBox insurancePlan1CheckBox;
         private System.Windows.Forms.CheckBox insurancePlan2CheckBox;
         private System.Windows.Forms.CheckBox insurancePlan3CheckBox;

@@ -643,7 +643,7 @@ namespace SVDK2
             {
                 vs_id.Add(Convert.ToInt32(reader[0]));
             }
-            command = new SQLiteCommand("SELECT DISTINCT commissionPersent.vs_id FROM commissionPersent WHERE commissionPersent.agent_id=$agent_id AND commissionPersent.commissionPersent_year=$year", sqliteConnection);
+            command = new SQLiteCommand("SELECT DISTINCT commissionPercent.vs_id FROM commissionPercent WHERE commissionPercent.agent_id=$agent_id AND commissionPercent.commissionPercent_year=$year", sqliteConnection);
             command.Parameters.AddWithValue("$agent_id", agent_id);
             command.Parameters.AddWithValue("$year", Convert.ToInt32(yearNumericUpDown_commission.Value));
             reader = command.ExecuteReader();
@@ -665,12 +665,12 @@ namespace SVDK2
                 dataGridView_commission.Rows[index].Visible = true;
 
                 int commissionId;
-                decimal commissionPersent;
-                findIdOrCreateCommission(agent_id, item, year, out commissionId, out commissionPersent);
-                dataGridView_commission.Rows[index].Cells["commissionPersent_id"].Value = commissionId;
-                dataGridView_commission.Rows[index].Cells["commissionPersent_id"].ReadOnly = false;
-                dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].Value = commissionPersent;
-                dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].ReadOnly = false;
+                decimal commissionPercent;
+                findIdOrCreateCommission(agent_id, item, year, out commissionId, out commissionPercent);
+                dataGridView_commission.Rows[index].Cells["commissionPercent_id"].Value = commissionId;
+                dataGridView_commission.Rows[index].Cells["commissionPercent_id"].ReadOnly = false;
+                dataGridView_commission.Rows[index].Cells["commissionPercent_persent"].Value = commissionPercent;
+                dataGridView_commission.Rows[index].Cells["commissionPercent_persent"].ReadOnly = false;
 
                 for (int i = 1; i <= 4; i++)
                 {
@@ -688,17 +688,17 @@ namespace SVDK2
             sqliteConnection.Close();
         }
 
-        private void findIdOrCreateCommission(int agent_id, int vs_id, int year, out int commissionId, out decimal commissionPersent)
+        private void findIdOrCreateCommission(int agent_id, int vs_id, int year, out int commissionId, out decimal commissionPercent)
         {
             commissionId = -1;
-            commissionPersent = 0;
+            commissionPercent = 0;
             Boolean connectionOpen = false;
             if (sqliteConnection.State == ConnectionState.Open)
                 connectionOpen = true;
             if (!connectionOpen)
                 sqliteConnection.Open();
 
-            SQLiteCommand command = new SQLiteCommand("SELECT commissionPersent_id AS id, commissionPersent_persent AS persent FROM commissionPersent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPersent_year=@year", sqliteConnection);
+            SQLiteCommand command = new SQLiteCommand("SELECT commissionPercent_id AS id, commissionPercent_persent AS persent FROM commissionPercent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPercent_year=@year", sqliteConnection);
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@vs_id", vs_id);
             command.Parameters.AddWithValue("@year", year);
@@ -706,12 +706,12 @@ namespace SVDK2
             while (reader.Read())
             {
                 commissionId = Convert.ToInt32(reader[0]);
-                commissionPersent = Convert.ToDecimal(reader[1]);
+                commissionPercent = Convert.ToDecimal(reader[1]);
             }
             if (commissionId != -1)
                 return;
 
-            command = new SQLiteCommand("INSERT INTO commissionPersent (agent_id, vs_id, commissionPersent_year, commissionPersent_persent) VALUES (@agent_id, @vs_id, @year, @persent); SELECT last_insert_rowid()", sqliteConnection);
+            command = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_persent) VALUES (@agent_id, @vs_id, @year, @persent); SELECT last_insert_rowid()", sqliteConnection);
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@vs_id", vs_id);
             command.Parameters.AddWithValue("@year", year);
@@ -720,7 +720,7 @@ namespace SVDK2
             while (reader.Read())
             {
                 commissionId = Convert.ToInt32(reader[0]);
-                commissionPersent = 0;
+                commissionPercent = 0;
             }
 
             if (!connectionOpen)
@@ -790,7 +790,7 @@ namespace SVDK2
             {
                 switch (dataGridView_commission.Columns[e.ColumnIndex].Name)
                 {
-                    case "commissionPersent_persent":
+                    case "commissionPercent_persent":
                         {
                             decimal persent;
                             if (!decimal.TryParse(e.FormattedValue.ToString(), out persent))
@@ -801,9 +801,9 @@ namespace SVDK2
                             }
 
                             sqliteConnection.Open();
-                            SQLiteCommand command = new SQLiteCommand("UPDATE commissionPersent SET commissionPersent_persent=@persent WHERE commissionPersent_id=@id", sqliteConnection);
+                            SQLiteCommand command = new SQLiteCommand("UPDATE commissionPercent SET commissionPercent_persent=@persent WHERE commissionPercent_id=@id", sqliteConnection);
                             command.Parameters.AddWithValue("@persent", persent);
-                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["commissionPersent_id"].Value);
+                            command.Parameters.AddWithValue("@id", dataGridView_commission.Rows[e.RowIndex].Cells["commissionPercent_id"].Value);
                             command.ExecuteNonQuery();
                             sqliteConnection.Close();
                         }
@@ -982,12 +982,12 @@ namespace SVDK2
             int index = dataGridView_commission.Rows.Count - 2;
             dataGridView_commission.Rows[index].Cells["vs_name"].ReadOnly = true;
             int commissionId;
-            decimal commissionPersent;
-            findIdOrCreateCommission(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(dataGridView_commission.Rows[index].Cells["vs_id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value), out commissionId, out commissionPersent);
-            dataGridView_commission.Rows[index].Cells["commissionPersent_id"].Value = commissionId;
-            dataGridView_commission.Rows[index].Cells["commissionPersent_id"].ReadOnly = false;
-            dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].Value = commissionPersent;
-            dataGridView_commission.Rows[index].Cells["commissionPersent_persent"].ReadOnly = false;
+            decimal commissionPercent;
+            findIdOrCreateCommission(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(dataGridView_commission.Rows[index].Cells["vs_id"].Value), Convert.ToInt32(yearNumericUpDown_commission.Value), out commissionId, out commissionPercent);
+            dataGridView_commission.Rows[index].Cells["commissionPercent_id"].Value = commissionId;
+            dataGridView_commission.Rows[index].Cells["commissionPercent_id"].ReadOnly = false;
+            dataGridView_commission.Rows[index].Cells["commissionPercent_persent"].Value = commissionPercent;
+            dataGridView_commission.Rows[index].Cells["commissionPercent_persent"].ReadOnly = false;
 
             for (int i = 1; i <= 4; i++)
             {
@@ -1027,8 +1027,8 @@ namespace SVDK2
                 if (dataGridView_commission.SelectedRows[0].Index == dataGridView_commission.Rows.Count - 2)
                     return;
                 sqliteConnection.Open();
-                SQLiteCommand command = new SQLiteCommand("DELETE FROM commissionPersent WHERE commissionPersent_id=@commissionPersent_id; DELETE FROM insurancePlan WHERE insurancePlan_id=@insurancePlan_id1 OR insurancePlan_id=@insurancePlan_id2 OR insurancePlan_id=@insurancePlan_id3 OR insurancePlan_id=@insurancePlan_id4;", sqliteConnection);
-                command.Parameters.AddWithValue("@commissionPersent_id", dataGridView_commission.SelectedRows[0].Cells["commissionPersent_id"].Value);
+                SQLiteCommand command = new SQLiteCommand("DELETE FROM commissionPercent WHERE commissionPercent_id=@commissionPercent_id; DELETE FROM insurancePlan WHERE insurancePlan_id=@insurancePlan_id1 OR insurancePlan_id=@insurancePlan_id2 OR insurancePlan_id=@insurancePlan_id3 OR insurancePlan_id=@insurancePlan_id4;", sqliteConnection);
+                command.Parameters.AddWithValue("@commissionPercent_id", dataGridView_commission.SelectedRows[0].Cells["commissionPercent_id"].Value);
                 command.Parameters.AddWithValue("@insurancePlan_id1", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_1"].Value);
                 command.Parameters.AddWithValue("@insurancePlan_id2", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_2"].Value);
                 command.Parameters.AddWithValue("@insurancePlan_id3", dataGridView_commission.SelectedRows[0].Cells["insurancePlan_id_3"].Value);
@@ -1216,10 +1216,10 @@ namespace SVDK2
                         worksheet.Range["B" + (row++)].Value = reader["agentReport_code"].ToString();
                         worksheet.Range["B" + (row++)].Value = DateTime.Parse(reader["agentReport_date"].ToString()).ToShortDateString();
                     }
-                    command = new SQLiteCommand("SELECT vs.vs_kod, vs.vs_name, agentReportContent.agentReportContent_count, agentReportContent.agentReportContent_sum, (CASE WHEN commissionPersent.commissionPersent_persent IS NOT NULL THEN commissionPersent.commissionPersent_persent ELSE 0 END) AS commissionPersent_persent FROM agentReportContent " +
+                    command = new SQLiteCommand("SELECT vs.vs_kod, vs.vs_name, agentReportContent.agentReportContent_count, agentReportContent.agentReportContent_sum, (CASE WHEN commissionPercent.commissionPercent_persent IS NOT NULL THEN commissionPercent.commissionPercent_persent ELSE 0 END) AS commissionPercent_persent FROM agentReportContent " +
                                                 "LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id " +
                                                 "LEFT JOIN agentReport ON agentReport.agentReport_id=agentReportContent.agentReport_id " +
-                                                "LEFT JOIN commissionPersent ON (commissionPersent.agent_id=agentReport.agent_id AND commissionPersent.vs_id=agentReportContent.vs_id AND commissionPersent.commissionPersent_year=strftime('%Y', agentReport.agentReport_date)) " +
+                                                "LEFT JOIN commissionPercent ON (commissionPercent.agent_id=agentReport.agent_id AND commissionPercent.vs_id=agentReportContent.vs_id AND commissionPercent.commissionPercent_year=strftime('%Y', agentReport.agentReport_date)) " +
                                                 "WHERE agentReportContent.agentReport_id=@report_id", sqliteConnection);
                     command.Parameters.AddWithValue("@report_id", item.Tag);
                     reader = command.ExecuteReader();
@@ -1231,7 +1231,7 @@ namespace SVDK2
                         worksheet.Range["B" + row].Value = reader["vs_name"].ToString();
                         worksheet.Range["C" + row].Value = Convert.ToInt32(reader["agentReportContent_count"]);
                         worksheet.Range["D" + row].Value = Convert.ToDecimal(reader["agentReportContent_sum"]);
-                        worksheet.Range["E" + row].Value = Convert.ToDecimal(reader["commissionPersent_persent"]);
+                        worksheet.Range["E" + row].Value = Convert.ToDecimal(reader["commissionPercent_persent"]);
                         worksheet.Range["F" + row].Formula = "=D" + row + "*E" + row;
                         row++;
                     }
@@ -1269,13 +1269,7 @@ namespace SVDK2
                 return;
 
             sqliteConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT vs.vs_kod, vs.vs_name, (CASE WHEN commissionPersent.commissionPersent_persent IS NOT NULL THEN commissionPersent.commissionPersent_persent ELSE 0 END) AS persent, SUM(CASE WHEN agentReportContent.agentReportContent_count IS NOT NULL THEN agentReportContent.agentReportContent_count ELSE 0 END) AS countNow, SUM(CASE WHEN agentReportContent.agentReportContent_sum IS NOT NULL THEN agentReportContent.agentReportContent_sum ELSE 0 END) AS sumNow, SUM(CASE WHEN insurancePlan.insurancePlan_quantity IS NOT NULL THEN insurancePlan.insurancePlan_quantity ELSE 0 END) AS countRequired, SUM(CASE WHEN insurancePlan.insurancePlan_sum IS NOT NULL THEN insurancePlan.insurancePlan_sum ELSE 0 END) AS sumRequired FROM agentReport " +
-                                                      "LEFT JOIN agentReportContent ON agentReport.agentReport_id=agentReportContent.agentReport_id " +
-                                                      "LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id " +
-                                                      "LEFT JOIN commissionPersent ON (commissionPersent.agent_id=agentReport.agent_id AND commissionPersent.vs_id=agentReportContent.vs_id AND commissionPersent.commissionPersent_year=strftime('%Y', agentReport.agentReport_date)) " +
-                                                      "LEFT JOIN insurancePlan ON (insurancePlan.agent_id=agentReport.agentReport_id AND insurancePlan.vs_id=agentReportContent.vs_id AND insurancePlan.insurancePlan_quarter=((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3) AND insurancePlan.insurancePlan_year=strftime('%Y', agentReport.agentReport_date)) " +
-                                                      "WHERE agentReport.agent_id=@agent_id AND (strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) " +
-                                                      "GROUP BY vs.vs_kod", sqliteConnection);
+            SQLiteCommand command = new SQLiteCommand("SELECT ", sqliteConnection);
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@year", year.ToString());
             command.Parameters.AddWithValue("@quarter", quarter);

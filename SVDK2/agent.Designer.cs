@@ -62,13 +62,13 @@
             this.importButton_commission = new System.Windows.Forms.Button();
             this.dataGridView_commission = new System.Windows.Forms.DataGridView();
             this.vs_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commissionPersent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commissionPercent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.commissionPersent_persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commissionPercent_persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +79,7 @@
             this.insurancePlan_sum_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportTabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel_report = new System.Windows.Forms.TableLayoutPanel();
+            this.treeView_report = new System.Windows.Forms.TestTreeView();
             this.yearLabel_report = new System.Windows.Forms.Label();
             this.yearNumericUpDown_report = new System.Windows.Forms.NumericUpDown();
             this.quarterLabel_report = new System.Windows.Forms.Label();
@@ -94,10 +95,6 @@
             this.quarterLabel_analytical = new System.Windows.Forms.Label();
             this.quarterNumericUpDown_analytical = new System.Windows.Forms.NumericUpDown();
             this.dataGridView__analytical = new System.Windows.Forms.DataGridView();
-            this.timer_commission = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.vs_kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,7 +106,10 @@
             this.sumLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agentSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agentSumPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treeView_report = new System.Windows.Forms.TestTreeView();
+            this.timer_commission = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -555,13 +555,13 @@
             this.dataGridView_commission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_commission.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.vs_id,
-            this.commissionPersent_id,
+            this.commissionPercent_id,
             this.insurancePlan_id_1,
             this.insurancePlan_id_2,
             this.insurancePlan_id_3,
             this.insurancePlan_id_4,
             this.vs_name,
-            this.commissionPersent_persent,
+            this.commissionPercent_persent,
             this.insurancePlan_quantity_1,
             this.insurancePlan_sum_1,
             this.insurancePlan_quantity_2,
@@ -597,15 +597,15 @@
             this.vs_id.Visible = false;
             this.vs_id.Width = 150;
             // 
-            // commissionPersent_id
+            // commissionPercent_id
             // 
-            this.commissionPersent_id.HeaderText = "ИД записи комиссионных вознаграждений";
-            this.commissionPersent_id.MinimumWidth = 6;
-            this.commissionPersent_id.Name = "commissionPersent_id";
-            this.commissionPersent_id.ReadOnly = true;
-            this.commissionPersent_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_id.Visible = false;
-            this.commissionPersent_id.Width = 125;
+            this.commissionPercent_id.HeaderText = "ИД записи комиссионных вознаграждений";
+            this.commissionPercent_id.MinimumWidth = 6;
+            this.commissionPercent_id.Name = "commissionPercent_id";
+            this.commissionPercent_id.ReadOnly = true;
+            this.commissionPercent_id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.commissionPercent_id.Visible = false;
+            this.commissionPercent_id.Width = 125;
             // 
             // insurancePlan_id_1
             // 
@@ -657,16 +657,16 @@
             this.vs_name.ReadOnly = true;
             this.vs_name.Width = 150;
             // 
-            // commissionPersent_persent
+            // commissionPercent_persent
             // 
-            this.commissionPersent_persent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.commissionPersent_persent.HeaderText = "% воз.";
-            this.commissionPersent_persent.MinimumWidth = 6;
-            this.commissionPersent_persent.Name = "commissionPersent_persent";
-            this.commissionPersent_persent.ReadOnly = true;
-            this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 56;
+            this.commissionPercent_persent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.commissionPercent_persent.HeaderText = "% воз.";
+            this.commissionPercent_persent.MinimumWidth = 6;
+            this.commissionPercent_persent.Name = "commissionPercent_persent";
+            this.commissionPercent_persent.ReadOnly = true;
+            this.commissionPercent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.commissionPercent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.commissionPercent_persent.Width = 50;
             // 
             // insurancePlan_quantity_1
             // 
@@ -676,7 +676,7 @@
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
             this.insurancePlan_quantity_1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_quantity_1.Width = 92;
+            this.insurancePlan_quantity_1.Width = 83;
             // 
             // insurancePlan_sum_1
             // 
@@ -686,7 +686,7 @@
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
             this.insurancePlan_sum_1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_sum_1.Width = 89;
+            this.insurancePlan_sum_1.Width = 80;
             // 
             // insurancePlan_quantity_2
             // 
@@ -696,7 +696,7 @@
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
             this.insurancePlan_quantity_2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_quantity_2.Width = 92;
+            this.insurancePlan_quantity_2.Width = 83;
             // 
             // insurancePlan_sum_2
             // 
@@ -706,7 +706,7 @@
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
             this.insurancePlan_sum_2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_sum_2.Width = 89;
+            this.insurancePlan_sum_2.Width = 80;
             // 
             // insurancePlan_quantity_3
             // 
@@ -716,7 +716,7 @@
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
             this.insurancePlan_quantity_3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_quantity_3.Width = 92;
+            this.insurancePlan_quantity_3.Width = 83;
             // 
             // insurancePlan_sum_3
             // 
@@ -726,7 +726,7 @@
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
             this.insurancePlan_sum_3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_sum_3.Width = 89;
+            this.insurancePlan_sum_3.Width = 80;
             // 
             // insurancePlan_quantity_4
             // 
@@ -736,7 +736,7 @@
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
             this.insurancePlan_quantity_4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_quantity_4.Width = 92;
+            this.insurancePlan_quantity_4.Width = 83;
             // 
             // insurancePlan_sum_4
             // 
@@ -746,7 +746,7 @@
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
             this.insurancePlan_sum_4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.insurancePlan_sum_4.Width = 89;
+            this.insurancePlan_sum_4.Width = 80;
             // 
             // reportTabPage
             // 
@@ -786,6 +786,17 @@
             this.tableLayoutPanel_report.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel_report.Size = new System.Drawing.Size(666, 393);
             this.tableLayoutPanel_report.TabIndex = 0;
+            // 
+            // treeView_report
+            // 
+            this.treeView_report.CheckBoxes = true;
+            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 8);
+            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_report.Location = new System.Drawing.Point(3, 3);
+            this.treeView_report.Name = "treeView_report";
+            this.treeView_report.Size = new System.Drawing.Size(660, 355);
+            this.treeView_report.TabIndex = 0;
+            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
             // yearLabel_report
             // 
@@ -1034,43 +1045,6 @@
             this.dataGridView__analytical.Size = new System.Drawing.Size(660, 355);
             this.dataGridView__analytical.TabIndex = 5;
             // 
-            // timer_commission
-            // 
-            this.timer_commission.Interval = 1;
-            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 422);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(786, 22);
-            this.statusStrip.TabIndex = 1;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // helpToolStripStatusLabel
-            // 
-            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
-            // 
-            // generalTableLayoutPanel
-            // 
-            this.generalTableLayoutPanel.ColumnCount = 1;
-            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
-            this.generalTableLayoutPanel.Controls.Add(this.statusStrip, 0, 1);
-            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
-            this.generalTableLayoutPanel.RowCount = 2;
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.generalTableLayoutPanel.Size = new System.Drawing.Size(786, 444);
-            this.generalTableLayoutPanel.TabIndex = 2;
-            // 
             // vs_kod
             // 
             this.vs_kod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -1166,16 +1140,42 @@
             this.agentSumPlan.ReadOnly = true;
             this.agentSumPlan.Width = 90;
             // 
-            // treeView_report
+            // timer_commission
             // 
-            this.treeView_report.CheckBoxes = true;
-            this.tableLayoutPanel_report.SetColumnSpan(this.treeView_report, 8);
-            this.treeView_report.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_report.Location = new System.Drawing.Point(3, 3);
-            this.treeView_report.Name = "treeView_report";
-            this.treeView_report.Size = new System.Drawing.Size(660, 355);
-            this.treeView_report.TabIndex = 0;
-            this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
+            this.timer_commission.Interval = 1;
+            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 422);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(786, 22);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // helpToolStripStatusLabel
+            // 
+            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            // 
+            // generalTableLayoutPanel
+            // 
+            this.generalTableLayoutPanel.ColumnCount = 1;
+            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
+            this.generalTableLayoutPanel.Controls.Add(this.statusStrip, 0, 1);
+            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
+            this.generalTableLayoutPanel.RowCount = 2;
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.generalTableLayoutPanel.Size = new System.Drawing.Size(786, 444);
+            this.generalTableLayoutPanel.TabIndex = 2;
             // 
             // agent
             // 
@@ -1276,13 +1276,13 @@
         private System.Windows.Forms.TestTreeView treeView_report;
         private System.Windows.Forms.Button editButton_report;
         private System.Windows.Forms.DataGridViewTextBoxColumn vs_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPersent_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPercent_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_2;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_3;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_4;
         private System.Windows.Forms.DataGridViewComboBoxColumn vs_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPersent_persent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPercent_persent;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_2;

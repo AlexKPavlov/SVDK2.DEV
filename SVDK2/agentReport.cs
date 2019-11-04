@@ -177,7 +177,7 @@ namespace SVDK2
                         isOpen = true;
                     if (!isOpen)
                         sqliteConnection.Open();
-                    SQLiteCommand command = new SQLiteCommand("SELECT commissionPersent_persent AS percent FROM commissionPersent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPersent_year=@year", sqliteConnection);
+                    SQLiteCommand command = new SQLiteCommand("SELECT commissionPercent_persent AS percent FROM commissionPercent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPercent_year=@year", sqliteConnection);
                     command.Parameters.AddWithValue("@agent_id", agent_id);
                     command.Parameters.AddWithValue("@vs_id", dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                     command.Parameters.AddWithValue("@year", dateTimePicker.Value.Year);
@@ -252,7 +252,7 @@ namespace SVDK2
         private void loadVsList()
         {
             sqliteConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM commissionPersent LEFT JOIN vs ON vs.vs_id=commissionPersent.vs_id WHERE commissionPersent.agent_id=@agent_id AND commissionPersent.commissionPersent_year=@year UNION SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM agentReportContent LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id WHERE agentReportContent.agentReport_id=@report_id", sqliteConnection);
+            SQLiteCommand command = new SQLiteCommand("SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM commissionPercent LEFT JOIN vs ON vs.vs_id=commissionPercent.vs_id WHERE commissionPercent.agent_id=@agent_id AND commissionPercent.commissionPercent_year=@year UNION SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM agentReportContent LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id WHERE agentReportContent.agentReport_id=@report_id", sqliteConnection);
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@year", year);
             command.Parameters.AddWithValue("@report_id", report_id); //На случай если удалиться запись процента страхования из бд

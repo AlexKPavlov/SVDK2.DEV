@@ -1289,18 +1289,54 @@ namespace SVDK2
             foreach (DataGridViewRow item in dataGridView__analytical.Rows)
             {
 
-                command = new SQLiteCommand("SELECT commissionPercent_percent", sqliteConnection);
-               
-                /*dataGridView__analytical.Rows[index].Cells["percent"].Value = Convert.ToDecimal(reader["persent"]);
-                dataGridView__analytical.Rows[index].Cells["countNow"].Value = Convert.ToInt32(reader["countNow"]);
-                dataGridView__analytical.Rows[index].Cells["sumNow"].Value = Convert.ToDecimal(reader["sumNow"]);
-                dataGridView__analytical.Rows[index].Cells["countRequired"].Value = Convert.ToInt32(reader["countRequired"]);
-                dataGridView__analytical.Rows[index].Cells["sumRequired"].Value = Convert.ToDecimal(reader["sumRequired"]);
-                dataGridView__analytical.Rows[index].Cells["countLeft1"].Value = Convert.ToInt32(dataGridView__analytical.Rows[index].Cells["countRequired"].Value) - Convert.ToInt32(dataGridView__analytical.Rows[index].Cells["countNow"].Value);
-                dataGridView__analytical.Rows[index].Cells["sumLeft"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) - Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value);
-                dataGridView__analytical.Rows[index].Cells["agentSum"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
-                dataGridView__analytical.Rows[index].Cells["agentSumPlan"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
-                */
+                command = new SQLiteCommand("SELECT (CASE WHEN commissionPercent_percent IS NOT NULL THEN commissionPercent_percent ELSE 0 END) AS percent FROM commissionPercent WHERE agent_id=@agent_id AND commissionPercent_year=@year AND vs_id=@vs_id", sqliteConnection);
+                command.Parameters.AddWithValue("@agent_id", agent_id);
+                command.Parameters.AddWithValue("@year", year.ToString());
+                command.Parameters.AddWithValue("@vs_id", Convert.ToInt32(item.Cells["vs_id1"].Value));
+                reader = command.ExecuteReader();
+                item.Cells["percent"].Value = 0;
+                while (reader.Read())
+                {
+                    item.Cells["percent"].Value = Convert.ToDecimal(reader["percent"]);
+                }
+
+                command = new SQLiteCommand("SELECT SUM(agentReportContent.agentReportContent_count) AS count, SUM(agentReportContent.agentReportContent_sum) AS sum  FROM agentReport, agentReportContent WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND (strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) AND agentReportContent.vs_id=@vs_id AND agentReport.agent_id=@agent_id", sqliteConnection);
+                command.Parameters.AddWithValue("@agent_id", agent_id);
+                command.Parameters.AddWithValue("@year", year.ToString());
+                command.Parameters.AddWithValue("@quarter", Convert.ToInt32(quarter));
+                command.Parameters.AddWithValue("@vs_id", Convert.ToInt32(item.Cells["vs_id1"].Value));
+                reader = command.ExecuteReader();
+                item.Cells["countNow"].Value = 0;
+                item.Cells["sumNow"].Value = Convert.ToDecimal(0);
+                while (reader.Read())
+                {
+                    if (reader["count"] != DBNull.Value)
+                        item.Cells["countNow"].Value = Convert.ToInt32(reader["count"]);
+                    if (reader["sum"] != DBNull.Value)
+                        item.Cells["sumNow"].Value = Convert.ToDecimal(reader["sum"]);
+                }
+
+                command = new SQLiteCommand("SELECT sum(CASE WHEN insurancePlan_quantity IS NOT NULL THEN insurancePlan_quantity ELSE 0 END) AS quantity, sum(CASE WHEN insurancePlan_sum IS NOT NULL THEN insurancePlan_sum ELSE 0 END) AS sum FROM insurancePlan WHERE agent_id=@agent_id AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter AND vs_id=@vs_id", sqliteConnection);
+                command.Parameters.AddWithValue("@agent_id", agent_id);
+                command.Parameters.AddWithValue("@year", year.ToString());
+                command.Parameters.AddWithValue("@quarter", quarter);
+                command.Parameters.AddWithValue("@vs_id", Convert.ToInt32(item.Cells["vs_id1"].Value));
+                reader = command.ExecuteReader();
+                item.Cells["countRequired"].Value = 0;
+                item.Cells["sumRequired"].Value = Convert.ToDecimal(0);
+                while (reader.Read())
+                {
+                    if (reader["quantity"] != DBNull.Value)
+                        item.Cells["countRequired"].Value = Convert.ToInt32(reader["quantity"]);
+                    if (reader["sum"] != DBNull.Value)
+                        item.Cells["sumRequired"].Value = Convert.ToDecimal(reader["sum"]);
+                }
+
+                item.Cells["countLeft1"].Value = Convert.ToInt32(item.Cells["countRequired"].Value) - Convert.ToInt32(item.Cells["countNow"].Value);
+                item.Cells["sumLeft"].Value = Convert.ToDecimal(item.Cells["sumRequired"].Value) - Convert.ToDecimal(item.Cells["sumNow"].Value);
+                item.Cells["agentSum"].Value = Convert.ToDecimal(item.Cells["sumNow"].Value) * (Convert.ToDecimal(item.Cells["percent"].Value) / 100);
+                item.Cells["agentSumPlan"].Value = Convert.ToDecimal(item.Cells["sumRequired"].Value) * (Convert.ToDecimal(item.Cells["percent"].Value) / 100);
+                
             }
 
 

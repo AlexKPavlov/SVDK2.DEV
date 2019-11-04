@@ -456,7 +456,7 @@
             // 
             this.tableLayoutPanel_commission.ColumnCount = 3;
             this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel_commission.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_commission.Controls.Add(this.yearLabel_commission, 0, 1);
             this.tableLayoutPanel_commission.Controls.Add(this.yearNumericUpDown_commission, 1, 1);
@@ -502,7 +502,7 @@
             0,
             0});
             this.yearNumericUpDown_commission.Name = "yearNumericUpDown_commission";
-            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(54, 22);
+            this.yearNumericUpDown_commission.Size = new System.Drawing.Size(62, 22);
             this.yearNumericUpDown_commission.TabIndex = 1;
             this.yearNumericUpDown_commission.Value = new decimal(new int[] {
             2000,
@@ -636,7 +636,7 @@
             this.commissionPersent_persent.ReadOnly = true;
             this.commissionPersent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.commissionPersent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPersent_persent.Width = 56;
+            this.commissionPersent_persent.Width = 50;
             // 
             // insurancePlan_quantity_1
             // 
@@ -645,7 +645,7 @@
             this.insurancePlan_quantity_1.MinimumWidth = 6;
             this.insurancePlan_quantity_1.Name = "insurancePlan_quantity_1";
             this.insurancePlan_quantity_1.ReadOnly = true;
-            this.insurancePlan_quantity_1.Width = 115;
+            this.insurancePlan_quantity_1.Width = 106;
             // 
             // insurancePlan_sum_1
             // 
@@ -654,7 +654,7 @@
             this.insurancePlan_sum_1.MinimumWidth = 6;
             this.insurancePlan_sum_1.Name = "insurancePlan_sum_1";
             this.insurancePlan_sum_1.ReadOnly = true;
-            this.insurancePlan_sum_1.Width = 112;
+            this.insurancePlan_sum_1.Width = 103;
             // 
             // insurancePlan_quantity_2
             // 
@@ -663,7 +663,7 @@
             this.insurancePlan_quantity_2.MinimumWidth = 6;
             this.insurancePlan_quantity_2.Name = "insurancePlan_quantity_2";
             this.insurancePlan_quantity_2.ReadOnly = true;
-            this.insurancePlan_quantity_2.Width = 115;
+            this.insurancePlan_quantity_2.Width = 106;
             // 
             // insurancePlan_sum_2
             // 
@@ -672,7 +672,7 @@
             this.insurancePlan_sum_2.MinimumWidth = 6;
             this.insurancePlan_sum_2.Name = "insurancePlan_sum_2";
             this.insurancePlan_sum_2.ReadOnly = true;
-            this.insurancePlan_sum_2.Width = 112;
+            this.insurancePlan_sum_2.Width = 103;
             // 
             // insurancePlan_quantity_3
             // 
@@ -681,7 +681,7 @@
             this.insurancePlan_quantity_3.MinimumWidth = 6;
             this.insurancePlan_quantity_3.Name = "insurancePlan_quantity_3";
             this.insurancePlan_quantity_3.ReadOnly = true;
-            this.insurancePlan_quantity_3.Width = 115;
+            this.insurancePlan_quantity_3.Width = 106;
             // 
             // insurancePlan_sum_3
             // 
@@ -690,7 +690,7 @@
             this.insurancePlan_sum_3.MinimumWidth = 6;
             this.insurancePlan_sum_3.Name = "insurancePlan_sum_3";
             this.insurancePlan_sum_3.ReadOnly = true;
-            this.insurancePlan_sum_3.Width = 112;
+            this.insurancePlan_sum_3.Width = 103;
             // 
             // insurancePlan_quantity_4
             // 
@@ -699,7 +699,7 @@
             this.insurancePlan_quantity_4.MinimumWidth = 6;
             this.insurancePlan_quantity_4.Name = "insurancePlan_quantity_4";
             this.insurancePlan_quantity_4.ReadOnly = true;
-            this.insurancePlan_quantity_4.Width = 115;
+            this.insurancePlan_quantity_4.Width = 106;
             // 
             // insurancePlan_sum_4
             // 
@@ -708,7 +708,7 @@
             this.insurancePlan_sum_4.MinimumWidth = 6;
             this.insurancePlan_sum_4.Name = "insurancePlan_sum_4";
             this.insurancePlan_sum_4.ReadOnly = true;
-            this.insurancePlan_sum_4.Width = 112;
+            this.insurancePlan_sum_4.Width = 103;
             // 
             // reportTabPage
             // 
@@ -724,9 +724,9 @@
             // 
             this.tableLayoutPanel_report.ColumnCount = 8;
             this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
             this.tableLayoutPanel_report.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
@@ -774,7 +774,7 @@
             0,
             0});
             this.yearNumericUpDown_report.Name = "yearNumericUpDown_report";
-            this.yearNumericUpDown_report.Size = new System.Drawing.Size(56, 22);
+            this.yearNumericUpDown_report.Size = new System.Drawing.Size(61, 22);
             this.yearNumericUpDown_report.TabIndex = 2;
             this.yearNumericUpDown_report.Value = new decimal(new int[] {
             2000,
@@ -786,9 +786,9 @@
             // quarterLabel_report
             // 
             this.quarterLabel_report.AutoSize = true;
-            this.quarterLabel_report.Location = new System.Drawing.Point(109, 361);
+            this.quarterLabel_report.Location = new System.Drawing.Point(114, 361);
             this.quarterLabel_report.Name = "quarterLabel_report";
-            this.quarterLabel_report.Size = new System.Drawing.Size(67, 17);
+            this.quarterLabel_report.Size = new System.Drawing.Size(63, 32);
             this.quarterLabel_report.TabIndex = 3;
             this.quarterLabel_report.Text = "Квартал:";
             this.quarterLabel_report.MouseEnter += new System.EventHandler(this.quarterLabel_report_MouseEnter);
@@ -808,7 +808,7 @@
             0,
             0});
             this.quarterNumericUpDown_report.Name = "quarterNumericUpDown_report";
-            this.quarterNumericUpDown_report.Size = new System.Drawing.Size(33, 22);
+            this.quarterNumericUpDown_report.Size = new System.Drawing.Size(39, 22);
             this.quarterNumericUpDown_report.TabIndex = 4;
             this.quarterNumericUpDown_report.Value = new decimal(new int[] {
             1,

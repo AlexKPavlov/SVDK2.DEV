@@ -1274,7 +1274,7 @@ namespace SVDK2
             catch (Exception)
             {
                 MessageBox.Show("Похоже у вас не установлен Microsoft Excel", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                return;
             }
 
             

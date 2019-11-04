@@ -1173,7 +1173,7 @@ namespace SVDK2
             sqliteConnection.Open();
             foreach (TreeNode item in collection)
             {
-                SQLiteCommand command = new SQLiteCommand("DELETE FROM agentReport WHERE agentReport_id=@id; DELETE FROM agentReportContent WHERE agentReport_id=@id", sqliteConnection);
+                SQLiteCommand command = new SQLiteCommand("DELETE FROM agentReport WHERE agentReport_id=@id", sqliteConnection);
                 command.Parameters.AddWithValue("@id", item.Tag);
                 command.ExecuteNonQuery();
             }

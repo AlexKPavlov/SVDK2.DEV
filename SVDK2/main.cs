@@ -25,6 +25,7 @@ namespace SVDK2
             if (settingsIni.Read("dbPath", "db").Length == 0)
                 settingsIni.Write("dbPath", @"db.db", "db");
             sqliteConnection = new SQLiteConnection(@"Data Source=" + settingsIni.Read("dbPath", "db") + @"; Version=3;");
+            sqliteConnection.ConnectionString += "foreign keys=true;";
         }
 
         private void main_Load(object sender, EventArgs e)

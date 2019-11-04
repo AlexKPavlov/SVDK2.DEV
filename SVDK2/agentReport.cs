@@ -177,7 +177,7 @@ namespace SVDK2
                         isOpen = true;
                     if (!isOpen)
                         sqliteConnection.Open();
-                    SQLiteCommand command = new SQLiteCommand("SELECT commissionPercent_persent AS percent FROM commissionPercent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPercent_year=@year", sqliteConnection);
+                    SQLiteCommand command = new SQLiteCommand("SELECT commissionPercent_percent AS percent FROM commissionPercent WHERE agent_id=@agent_id AND vs_id=@vs_id AND commissionPercent_year=@year", sqliteConnection);
                     command.Parameters.AddWithValue("@agent_id", agent_id);
                     command.Parameters.AddWithValue("@vs_id", dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                     command.Parameters.AddWithValue("@year", dateTimePicker.Value.Year);

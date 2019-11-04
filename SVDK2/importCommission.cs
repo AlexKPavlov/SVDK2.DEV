@@ -105,7 +105,7 @@ namespace SVDK2
 
                         if (commissionPercentEnabled)
                         {
-                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_persent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
+                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
                             reader = loadCommand.ExecuteReader();
@@ -115,11 +115,11 @@ namespace SVDK2
                             deleteCommand.ExecuteNonQuery();
                             while (reader.Read())
                             {
-                                addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_persent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
+                                addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                 addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                 addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                 addCommand.Parameters.AddWithValue("@year", this.year);
-                                addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_persent"]);
+                                addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_percent"]);
                                 addCommand.ExecuteNonQuery();
                             }
                         }
@@ -163,7 +163,7 @@ namespace SVDK2
 
                         if (commissionPercentEnabled)
                         {
-                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_persent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
+                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
                             reader = loadCommand.ExecuteReader();
@@ -175,11 +175,11 @@ namespace SVDK2
                                 deleteCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                 deleteCommand.ExecuteNonQuery();
 
-                                addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_persent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
+                                addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                 addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                 addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                 addCommand.Parameters.AddWithValue("@year", this.year);
-                                addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_persent"]);
+                                addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_percent"]);
                                 addCommand.ExecuteNonQuery();
                             }
                         }
@@ -233,7 +233,7 @@ namespace SVDK2
                             checkCommand.Parameters.AddWithValue("@year", this.year);
                             checkAdapter = new SQLiteDataAdapter(checkCommand);
                             checkAdapter.Fill(currentData);
-                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_persent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
+                            loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
                             reader = loadCommand.ExecuteReader();
@@ -245,11 +245,11 @@ namespace SVDK2
                                         itExist = true;
                                 if (!itExist)
                                 {
-                                    addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_persent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
+                                    addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                     addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                     addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                     addCommand.Parameters.AddWithValue("@year", this.year);
-                                    addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_persent"]);
+                                    addCommand.Parameters.AddWithValue("@persent", reader["commissionPercent_percent"]);
                                     addCommand.ExecuteNonQuery();
                                 }
                             }

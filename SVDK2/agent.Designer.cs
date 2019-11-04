@@ -68,7 +68,7 @@
             this.insurancePlan_id_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_id_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.commissionPercent_persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commissionPercent_percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_sum_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insurancePlan_quantity_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -562,7 +562,7 @@
             this.insurancePlan_id_3,
             this.insurancePlan_id_4,
             this.vs_name,
-            this.commissionPercent_persent,
+            this.commissionPercent_percent,
             this.insurancePlan_quantity_1,
             this.insurancePlan_sum_1,
             this.insurancePlan_quantity_2,
@@ -658,16 +658,16 @@
             this.vs_name.ReadOnly = true;
             this.vs_name.Width = 150;
             // 
-            // commissionPercent_persent
+            // commissionPercent_percent
             // 
-            this.commissionPercent_persent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.commissionPercent_persent.HeaderText = "% воз.";
-            this.commissionPercent_persent.MinimumWidth = 6;
-            this.commissionPercent_persent.Name = "commissionPercent_persent";
-            this.commissionPercent_persent.ReadOnly = true;
-            this.commissionPercent_persent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.commissionPercent_persent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.commissionPercent_persent.Width = 50;
+            this.commissionPercent_percent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.commissionPercent_percent.HeaderText = "% воз.";
+            this.commissionPercent_percent.MinimumWidth = 6;
+            this.commissionPercent_percent.Name = "commissionPercent_percent";
+            this.commissionPercent_percent.ReadOnly = true;
+            this.commissionPercent_percent.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.commissionPercent_percent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.commissionPercent_percent.Width = 50;
             // 
             // insurancePlan_quantity_1
             // 
@@ -1293,7 +1293,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_3;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_id_4;
         private System.Windows.Forms.DataGridViewComboBoxColumn vs_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPercent_persent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commissionPercent_percent;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_sum_1;
         private System.Windows.Forms.DataGridViewTextBoxColumn insurancePlan_quantity_2;

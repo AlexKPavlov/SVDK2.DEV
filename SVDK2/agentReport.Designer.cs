@@ -32,11 +32,6 @@
             this.codeLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.codeTextBox = new System.Windows.Forms.TextBox();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.helpStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.submitButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.agentReportContent_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +39,12 @@
             this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumForAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeTextBox = new System.Windows.Forms.TextBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.helpStatusStrip = new System.Windows.Forms.StatusStrip();
             this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.helpStatusStrip.SuspendLayout();
@@ -124,58 +124,6 @@
             this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView_UserDeletingRow);
             this.dataGridView.MouseEnter += new System.EventHandler(this.dataGridView_MouseEnter);
             // 
-            // codeTextBox
-            // 
-            this.codeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.codeTextBox.Location = new System.Drawing.Point(160, 3);
-            this.codeTextBox.MaxLength = 20;
-            this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(158, 22);
-            this.codeTextBox.TabIndex = 1;
-            // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Location = new System.Drawing.Point(160, 34);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(158, 22);
-            this.dateTimePicker.TabIndex = 2;
-            // 
-            // helpStatusStrip
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.helpStatusStrip, 4);
-            this.helpStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.helpStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripStatusLabel});
-            this.helpStatusStrip.Location = new System.Drawing.Point(0, 417);
-            this.helpStatusStrip.Name = "helpStatusStrip";
-            this.helpStatusStrip.Size = new System.Drawing.Size(557, 22);
-            this.helpStatusStrip.TabIndex = 5;
-            this.helpStatusStrip.Text = "statusStrip1";
-            // 
-            // submitButton
-            // 
-            this.submitButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.submitButton.Location = new System.Drawing.Point(440, 381);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(114, 33);
-            this.submitButton.TabIndex = 5;
-            this.submitButton.Text = "&Подтвердить";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
-            this.submitButton.MouseEnter += new System.EventHandler(this.submitButton_MouseEnter);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cancelButton.Location = new System.Drawing.Point(339, 381);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(95, 33);
-            this.cancelButton.TabIndex = 4;
-            this.cancelButton.Text = "&Отмена";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            this.cancelButton.MouseEnter += new System.EventHandler(this.cancelButton_MouseEnter);
-            // 
             // agentReportContent_id
             // 
             this.agentReportContent_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -184,7 +132,7 @@
             this.agentReportContent_id.Name = "agentReportContent_id";
             this.agentReportContent_id.ReadOnly = true;
             this.agentReportContent_id.Visible = false;
-            this.agentReportContent_id.Width = 88;
+            this.agentReportContent_id.Width = 125;
             // 
             // vs_name
             // 
@@ -237,11 +185,63 @@
             this.delete.Visible = false;
             this.delete.Width = 125;
             // 
+            // codeTextBox
+            // 
+            this.codeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.codeTextBox.Location = new System.Drawing.Point(160, 3);
+            this.codeTextBox.MaxLength = 20;
+            this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.Size = new System.Drawing.Size(158, 22);
+            this.codeTextBox.TabIndex = 1;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(160, 34);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(158, 22);
+            this.dateTimePicker.TabIndex = 2;
+            // 
+            // helpStatusStrip
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.helpStatusStrip, 4);
+            this.helpStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.helpStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripStatusLabel});
+            this.helpStatusStrip.Location = new System.Drawing.Point(0, 417);
+            this.helpStatusStrip.Name = "helpStatusStrip";
+            this.helpStatusStrip.Size = new System.Drawing.Size(557, 22);
+            this.helpStatusStrip.TabIndex = 5;
+            this.helpStatusStrip.Text = "statusStrip1";
+            // 
             // helpToolStripStatusLabel
             // 
             this.helpToolStripStatusLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 18);
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            // 
+            // submitButton
+            // 
+            this.submitButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.submitButton.Location = new System.Drawing.Point(440, 381);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(114, 33);
+            this.submitButton.TabIndex = 5;
+            this.submitButton.Text = "&Подтвердить";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            this.submitButton.MouseEnter += new System.EventHandler(this.submitButton_MouseEnter);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cancelButton.Location = new System.Drawing.Point(339, 381);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(95, 33);
+            this.cancelButton.TabIndex = 4;
+            this.cancelButton.Text = "&Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.MouseEnter += new System.EventHandler(this.cancelButton_MouseEnter);
             // 
             // agentReport
             // 

@@ -57,7 +57,7 @@
             this.toolStripDropDownButton_main});
             this.toolStrip_main.Location = new System.Drawing.Point(0, 0);
             this.toolStrip_main.Name = "toolStrip_main";
-            this.toolStrip_main.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip_main.Size = new System.Drawing.Size(800, 31);
             this.toolStrip_main.TabIndex = 0;
             this.toolStrip_main.Text = "toolStrip1";
             // 
@@ -67,7 +67,7 @@
             this.AgentToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("AgentToolStripButton_main.Image")));
             this.AgentToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AgentToolStripButton_main.Name = "AgentToolStripButton_main";
-            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 24);
+            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 28);
             this.AgentToolStripButton_main.Text = "&Агенты";
             this.AgentToolStripButton_main.Click += new System.EventHandler(this.AgentToolStripButton_main_Click);
             // 
@@ -77,7 +77,7 @@
             this.insuranceToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("insuranceToolStripButton_main.Image")));
             this.insuranceToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.insuranceToolStripButton_main.Name = "insuranceToolStripButton_main";
-            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 24);
+            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 28);
             this.insuranceToolStripButton_main.Text = "&Виды страхований";
             this.insuranceToolStripButton_main.Click += new System.EventHandler(this.insuranceToolStripButton_main_Click);
             // 
@@ -90,7 +90,7 @@
             this.toolStripDropDownButton_main.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_main.Image")));
             this.toolStripDropDownButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton_main.Name = "toolStripDropDownButton_main";
-            this.toolStripDropDownButton_main.Size = new System.Drawing.Size(98, 24);
+            this.toolStripDropDownButton_main.Size = new System.Drawing.Size(98, 28);
             this.toolStripDropDownButton_main.Text = "Настройки";
             // 
             // forFioToolStripMenuItem_main
@@ -124,18 +124,18 @@
             this.tableLayoutPanel_main.Controls.Add(this.helpStatusStrip_main, 0, 1);
             this.tableLayoutPanel_main.Controls.Add(this.chart1, 0, 0);
             this.tableLayoutPanel_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel_main.Location = new System.Drawing.Point(0, 27);
+            this.tableLayoutPanel_main.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel_main.Name = "tableLayoutPanel_main";
             this.tableLayoutPanel_main.RowCount = 2;
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel_main.Size = new System.Drawing.Size(800, 423);
+            this.tableLayoutPanel_main.Size = new System.Drawing.Size(800, 419);
             this.tableLayoutPanel_main.TabIndex = 1;
             // 
             // helpStatusStrip_main
             // 
             this.helpStatusStrip_main.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.helpStatusStrip_main.Location = new System.Drawing.Point(0, 401);
+            this.helpStatusStrip_main.Location = new System.Drawing.Point(0, 397);
             this.helpStatusStrip_main.Name = "helpStatusStrip_main";
             this.helpStatusStrip_main.Size = new System.Drawing.Size(800, 22);
             this.helpStatusStrip_main.TabIndex = 0;
@@ -161,7 +161,7 @@
             series2.Name = "sum";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(794, 395);
+            this.chart1.Size = new System.Drawing.Size(794, 391);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 

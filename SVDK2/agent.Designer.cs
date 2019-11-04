@@ -95,6 +95,11 @@
             this.quarterLabel_analytical = new System.Windows.Forms.Label();
             this.quarterNumericUpDown_analytical = new System.Windows.Forms.NumericUpDown();
             this.dataGridView__analytical = new System.Windows.Forms.DataGridView();
+            this.timer_commission = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.vs_id1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vs_name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,10 +111,6 @@
             this.sumLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agentSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agentSumPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timer_commission = new System.Windows.Forms.Timer(this.components);
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.helpToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.generalTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -1024,6 +1025,7 @@
             this.dataGridView__analytical.AllowUserToResizeRows = false;
             this.dataGridView__analytical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView__analytical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.vs_id1,
             this.vs_kod,
             this.vs_name1,
             this.percent,
@@ -1044,6 +1046,52 @@
             this.dataGridView__analytical.RowTemplate.Height = 24;
             this.dataGridView__analytical.Size = new System.Drawing.Size(660, 355);
             this.dataGridView__analytical.TabIndex = 5;
+            // 
+            // timer_commission
+            // 
+            this.timer_commission.Interval = 1;
+            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 422);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(786, 22);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // helpToolStripStatusLabel
+            // 
+            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
+            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
+            // 
+            // generalTableLayoutPanel
+            // 
+            this.generalTableLayoutPanel.ColumnCount = 1;
+            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
+            this.generalTableLayoutPanel.Controls.Add(this.statusStrip, 0, 1);
+            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
+            this.generalTableLayoutPanel.RowCount = 2;
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.generalTableLayoutPanel.Size = new System.Drawing.Size(786, 444);
+            this.generalTableLayoutPanel.TabIndex = 2;
+            // 
+            // vs_id1
+            // 
+            this.vs_id1.HeaderText = "ид";
+            this.vs_id1.MinimumWidth = 6;
+            this.vs_id1.Name = "vs_id1";
+            this.vs_id1.ReadOnly = true;
+            this.vs_id1.Visible = false;
+            this.vs_id1.Width = 125;
             // 
             // vs_kod
             // 
@@ -1139,43 +1187,6 @@
             this.agentSumPlan.Name = "agentSumPlan";
             this.agentSumPlan.ReadOnly = true;
             this.agentSumPlan.Width = 90;
-            // 
-            // timer_commission
-            // 
-            this.timer_commission.Interval = 1;
-            this.timer_commission.Tick += new System.EventHandler(this.timer_commission_Tick);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 422);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(786, 22);
-            this.statusStrip.TabIndex = 1;
-            this.statusStrip.Text = "statusStrip1";
-            // 
-            // helpToolStripStatusLabel
-            // 
-            this.helpToolStripStatusLabel.Name = "helpToolStripStatusLabel";
-            this.helpToolStripStatusLabel.Size = new System.Drawing.Size(0, 16);
-            // 
-            // generalTableLayoutPanel
-            // 
-            this.generalTableLayoutPanel.ColumnCount = 1;
-            this.generalTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.Controls.Add(this.splitContainer, 0, 0);
-            this.generalTableLayoutPanel.Controls.Add(this.statusStrip, 0, 1);
-            this.generalTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generalTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.generalTableLayoutPanel.Name = "generalTableLayoutPanel";
-            this.generalTableLayoutPanel.RowCount = 2;
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.generalTableLayoutPanel.Size = new System.Drawing.Size(786, 444);
-            this.generalTableLayoutPanel.TabIndex = 2;
             // 
             // agent
             // 
@@ -1298,6 +1309,7 @@
         private System.Windows.Forms.Label quarterLabel_analytical;
         private System.Windows.Forms.NumericUpDown quarterNumericUpDown_analytical;
         private System.Windows.Forms.DataGridView dataGridView__analytical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_id1;
         private System.Windows.Forms.DataGridViewTextBoxColumn vs_kod;
         private System.Windows.Forms.DataGridViewTextBoxColumn vs_name1;
         private System.Windows.Forms.DataGridViewTextBoxColumn percent;

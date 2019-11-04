@@ -1269,7 +1269,12 @@ namespace SVDK2
                 return;
 
             sqliteConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("SELECT ", sqliteConnection);
+            SQLiteCommand command = new SQLiteCommand("SELECT DISTINCT vs.vs_id, vs.vs_kod, vs.vs_name FROM agentReport, agentReportContent LEFT JOIN vs ON agentReportContent.vs_id=vs.vs_id WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND agentReport.agent_id=@agent_id AND strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter " +
+                "GROUP BY vs.vs_id " +
+                "UNION SELECT vs.vs_id, vs.vs_kod, vs.vs_name FROM commissionPercent LEFT JOIN vs ON commissionPercent.vs_id=vs.vs_id WHERE commissionPercent.agent_id=@agent_id AND commissionPercent.commissionPercent_year=@year " +
+                "GROUP BY vs.vs_id " +
+                "UNION SELECT vs.vs_id, vs.vs_kod, vs.vs_name FROM insurancePlan LEFT JOIN vs ON insurancePlan.vs_id=vs.vs_id WHERE insurancePlan.agent_id=@agent_id AND insurancePlan.insurancePlan_year=@year AND insurancePlan.insurancePlan_quarter=@quarter " +
+                "GROUP BY vs.vs_id", sqliteConnection);
             command.Parameters.AddWithValue("@agent_id", agent_id);
             command.Parameters.AddWithValue("@year", year.ToString());
             command.Parameters.AddWithValue("@quarter", quarter);
@@ -1277,9 +1282,16 @@ namespace SVDK2
             while (reader.Read())
             {
                 int index = dataGridView__analytical.Rows.Add();
+                dataGridView__analytical.Rows[index].Cells["vs_id1"].Value = reader["vs_id"].ToString();
                 dataGridView__analytical.Rows[index].Cells["vs_kod"].Value = reader["vs_kod"].ToString();
                 dataGridView__analytical.Rows[index].Cells["vs_name1"].Value = reader["vs_name"].ToString();
-                dataGridView__analytical.Rows[index].Cells["percent"].Value = Convert.ToDecimal(reader["persent"]);
+            }
+            foreach (DataGridViewRow item in dataGridView__analytical.Rows)
+            {
+
+                command = new SQLiteCommand("", sqliteConnection);
+               
+                /*dataGridView__analytical.Rows[index].Cells["percent"].Value = Convert.ToDecimal(reader["persent"]);
                 dataGridView__analytical.Rows[index].Cells["countNow"].Value = Convert.ToInt32(reader["countNow"]);
                 dataGridView__analytical.Rows[index].Cells["sumNow"].Value = Convert.ToDecimal(reader["sumNow"]);
                 dataGridView__analytical.Rows[index].Cells["countRequired"].Value = Convert.ToInt32(reader["countRequired"]);
@@ -1288,7 +1300,9 @@ namespace SVDK2
                 dataGridView__analytical.Rows[index].Cells["sumLeft"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) - Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value);
                 dataGridView__analytical.Rows[index].Cells["agentSum"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
                 dataGridView__analytical.Rows[index].Cells["agentSumPlan"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
+                */
             }
+
 
             sqliteConnection.Close();
         }

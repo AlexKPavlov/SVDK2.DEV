@@ -96,9 +96,20 @@
             this.yearLabel_analytical = new System.Windows.Forms.Label();
             this.yearNumericUpDown_analytical = new System.Windows.Forms.NumericUpDown();
             this.quarterLabel_analytical = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.quarterNumericUpDown_analytical = new System.Windows.Forms.NumericUpDown();
+            this.dataGridView__analytical = new System.Windows.Forms.DataGridView();
             this.treeView_report = new System.Windows.Forms.TestTreeView();
+            this.vs_kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.va_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countNow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumNow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countRequired = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumRequired = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CountLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumLeft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agentSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agentSumPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -124,8 +135,8 @@
             this.analyticalTabPage.SuspendLayout();
             this.tableLayoutPanel_analytical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_analytical)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_analytical)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView__analytical)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -143,8 +154,8 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.tabControl);
-            this.splitContainer.Size = new System.Drawing.Size(878, 422);
-            this.splitContainer.SplitterDistance = 125;
+            this.splitContainer.Size = new System.Drawing.Size(640, 422);
+            this.splitContainer.SplitterDistance = 91;
             this.splitContainer.SplitterWidth = 1;
             this.splitContainer.TabIndex = 0;
             // 
@@ -171,7 +182,7 @@
             this.agentDataGridView.RowHeadersWidth = 51;
             this.agentDataGridView.RowTemplate.Height = 24;
             this.agentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.agentDataGridView.Size = new System.Drawing.Size(125, 400);
+            this.agentDataGridView.Size = new System.Drawing.Size(91, 400);
             this.agentDataGridView.TabIndex = 1;
             this.agentDataGridView.CurrentCellChanged += new System.EventHandler(this.agentDataGridView_CurrentCellChanged);
             this.agentDataGridView.MouseEnter += new System.EventHandler(this.agentDataGridView_MouseEnter);
@@ -227,7 +238,7 @@
             this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.searchTextBox.Location = new System.Drawing.Point(0, 0);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(125, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(91, 22);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Text = "Поиск...";
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
@@ -245,7 +256,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(752, 422);
+            this.tabControl.Size = new System.Drawing.Size(548, 422);
             this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             this.tabControl.MouseEnter += new System.EventHandler(this.tabControl_MouseEnter);
@@ -743,7 +754,7 @@
             this.helpToolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 422);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(878, 22);
+            this.statusStrip.Size = new System.Drawing.Size(640, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -764,7 +775,7 @@
             this.generalTableLayoutPanel.RowCount = 2;
             this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.generalTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.generalTableLayoutPanel.Size = new System.Drawing.Size(878, 444);
+            this.generalTableLayoutPanel.Size = new System.Drawing.Size(640, 444);
             this.generalTableLayoutPanel.TabIndex = 2;
             // 
             // vs_id
@@ -934,7 +945,7 @@
             this.analyticalTabPage.Controls.Add(this.tableLayoutPanel_analytical);
             this.analyticalTabPage.Location = new System.Drawing.Point(4, 25);
             this.analyticalTabPage.Name = "analyticalTabPage";
-            this.analyticalTabPage.Size = new System.Drawing.Size(744, 393);
+            this.analyticalTabPage.Size = new System.Drawing.Size(540, 393);
             this.analyticalTabPage.TabIndex = 3;
             this.analyticalTabPage.Text = "Аналитика";
             this.analyticalTabPage.UseVisualStyleBackColor = true;
@@ -953,15 +964,15 @@
             this.tableLayoutPanel_analytical.Controls.Add(this.yearLabel_analytical, 0, 1);
             this.tableLayoutPanel_analytical.Controls.Add(this.yearNumericUpDown_analytical, 1, 1);
             this.tableLayoutPanel_analytical.Controls.Add(this.quarterLabel_analytical, 2, 1);
-            this.tableLayoutPanel_analytical.Controls.Add(this.numericUpDown2, 3, 1);
-            this.tableLayoutPanel_analytical.Controls.Add(this.dataGridView1, 0, 0);
+            this.tableLayoutPanel_analytical.Controls.Add(this.quarterNumericUpDown_analytical, 3, 1);
+            this.tableLayoutPanel_analytical.Controls.Add(this.dataGridView__analytical, 0, 0);
             this.tableLayoutPanel_analytical.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_analytical.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel_analytical.Name = "tableLayoutPanel_analytical";
             this.tableLayoutPanel_analytical.RowCount = 2;
             this.tableLayoutPanel_analytical.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_analytical.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel_analytical.Size = new System.Drawing.Size(744, 393);
+            this.tableLayoutPanel_analytical.Size = new System.Drawing.Size(540, 393);
             this.tableLayoutPanel_analytical.TabIndex = 1;
             // 
             // yearLabel_analytical
@@ -1005,40 +1016,56 @@
             this.quarterLabel_analytical.TabIndex = 3;
             this.quarterLabel_analytical.Text = "Квартал:";
             // 
-            // numericUpDown2
+            // quarterNumericUpDown_analytical
             // 
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(184, 364);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.quarterNumericUpDown_analytical.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quarterNumericUpDown_analytical.Location = new System.Drawing.Point(184, 364);
+            this.quarterNumericUpDown_analytical.Maximum = new decimal(new int[] {
             4,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.quarterNumericUpDown_analytical.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(39, 22);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.quarterNumericUpDown_analytical.Name = "quarterNumericUpDown_analytical";
+            this.quarterNumericUpDown_analytical.Size = new System.Drawing.Size(39, 22);
+            this.quarterNumericUpDown_analytical.TabIndex = 4;
+            this.quarterNumericUpDown_analytical.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // dataGridView1
+            // dataGridView__analytical
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel_analytical.SetColumnSpan(this.dataGridView1, 5);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(738, 355);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridView__analytical.AllowUserToAddRows = false;
+            this.dataGridView__analytical.AllowUserToDeleteRows = false;
+            this.dataGridView__analytical.AllowUserToResizeRows = false;
+            this.dataGridView__analytical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView__analytical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.vs_kod,
+            this.va_name,
+            this.percent,
+            this.countNow,
+            this.sumNow,
+            this.countRequired,
+            this.sumRequired,
+            this.CountLeft,
+            this.sumLeft,
+            this.agentSum,
+            this.agentSumPlan});
+            this.tableLayoutPanel_analytical.SetColumnSpan(this.dataGridView__analytical, 5);
+            this.dataGridView__analytical.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView__analytical.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView__analytical.Name = "dataGridView__analytical";
+            this.dataGridView__analytical.RowHeadersVisible = false;
+            this.dataGridView__analytical.RowHeadersWidth = 51;
+            this.dataGridView__analytical.RowTemplate.Height = 24;
+            this.dataGridView__analytical.Size = new System.Drawing.Size(534, 355);
+            this.dataGridView__analytical.TabIndex = 5;
             // 
             // treeView_report
             // 
@@ -1051,11 +1078,106 @@
             this.treeView_report.TabIndex = 0;
             this.treeView_report.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView_report_AfterCheck);
             // 
+            // vs_kod
+            // 
+            this.vs_kod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.vs_kod.HeaderText = "Код вида";
+            this.vs_kod.MinimumWidth = 60;
+            this.vs_kod.Name = "vs_kod";
+            this.vs_kod.ReadOnly = true;
+            this.vs_kod.Width = 60;
+            // 
+            // va_name
+            // 
+            this.va_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.va_name.HeaderText = "Вид страхования";
+            this.va_name.MinimumWidth = 100;
+            this.va_name.Name = "va_name";
+            this.va_name.ReadOnly = true;
+            // 
+            // percent
+            // 
+            this.percent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.percent.HeaderText = "Комиссионное вознаграждение (%)";
+            this.percent.MinimumWidth = 125;
+            this.percent.Name = "percent";
+            this.percent.ReadOnly = true;
+            this.percent.Width = 125;
+            // 
+            // countNow
+            // 
+            this.countNow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.countNow.HeaderText = "Текущее количество (шт.)";
+            this.countNow.MinimumWidth = 100;
+            this.countNow.Name = "countNow";
+            this.countNow.ReadOnly = true;
+            // 
+            // sumNow
+            // 
+            this.sumNow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sumNow.HeaderText = "Текущая сумма (руб.)";
+            this.sumNow.MinimumWidth = 75;
+            this.sumNow.Name = "sumNow";
+            this.sumNow.ReadOnly = true;
+            this.sumNow.Width = 75;
+            // 
+            // countRequired
+            // 
+            this.countRequired.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.countRequired.HeaderText = "Необходимое количество (шт.)";
+            this.countRequired.MinimumWidth = 100;
+            this.countRequired.Name = "countRequired";
+            this.countRequired.ReadOnly = true;
+            // 
+            // sumRequired
+            // 
+            this.sumRequired.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sumRequired.HeaderText = "Необходимая сумма (руб.)";
+            this.sumRequired.MinimumWidth = 100;
+            this.sumRequired.Name = "sumRequired";
+            this.sumRequired.ReadOnly = true;
+            // 
+            // CountLeft
+            // 
+            this.CountLeft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.CountLeft.HeaderText = "Осталось (шт.)";
+            this.CountLeft.MinimumWidth = 75;
+            this.CountLeft.Name = "CountLeft";
+            this.CountLeft.ReadOnly = true;
+            this.CountLeft.Width = 75;
+            // 
+            // sumLeft
+            // 
+            this.sumLeft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.sumLeft.HeaderText = "Осталось (руб.)";
+            this.sumLeft.MinimumWidth = 75;
+            this.sumLeft.Name = "sumLeft";
+            this.sumLeft.ReadOnly = true;
+            this.sumLeft.Width = 75;
+            // 
+            // agentSum
+            // 
+            this.agentSum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.agentSum.HeaderText = "Агент заработал (руб.)";
+            this.agentSum.MinimumWidth = 90;
+            this.agentSum.Name = "agentSum";
+            this.agentSum.ReadOnly = true;
+            this.agentSum.Width = 90;
+            // 
+            // agentSumPlan
+            // 
+            this.agentSumPlan.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.agentSumPlan.HeaderText = "Агент заработает по плану (руб.)";
+            this.agentSumPlan.MinimumWidth = 90;
+            this.agentSumPlan.Name = "agentSumPlan";
+            this.agentSumPlan.ReadOnly = true;
+            this.agentSumPlan.Width = 90;
+            // 
             // agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 444);
+            this.ClientSize = new System.Drawing.Size(640, 444);
             this.Controls.Add(this.generalTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -1095,8 +1217,8 @@
             this.tableLayoutPanel_analytical.ResumeLayout(false);
             this.tableLayoutPanel_analytical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown_analytical)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quarterNumericUpDown_analytical)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView__analytical)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1170,8 +1292,19 @@
         private System.Windows.Forms.Label yearLabel_analytical;
         private System.Windows.Forms.NumericUpDown yearNumericUpDown_analytical;
         private System.Windows.Forms.Label quarterLabel_analytical;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.NumericUpDown quarterNumericUpDown_analytical;
+        private System.Windows.Forms.DataGridView dataGridView__analytical;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs_kod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn va_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn percent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countNow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumNow;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countRequired;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumRequired;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CountLeft;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumLeft;
+        private System.Windows.Forms.DataGridViewTextBoxColumn agentSum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn agentSumPlan;
     }
 }
 

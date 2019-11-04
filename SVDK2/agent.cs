@@ -35,6 +35,8 @@ namespace SVDK2
             yearNumericUpDown_commission.Value = DateTime.Now.Year;
             yearNumericUpDown_report.Value = DateTime.Now.Year;
             quarterNumericUpDown_report.Value = (DateTime.Now.Month + 2) / 3;
+            yearNumericUpDown_analytical.Value = DateTime.Now.Year;
+            quarterNumericUpDown_analytical.Value = (DateTime.Now.Month + 2) / 3;
         }
 
         private void loadSettings()
@@ -364,6 +366,39 @@ namespace SVDK2
                             }
                         }
                         break;
+                    #endregion
+                    #region Аналитика
+                    case "analyticalTabPage":
+                        {
+                            switch (e.KeyCode)
+                            {
+                                case Keys.S:
+                                    {
+                                        yearNumericUpDown_analytical.UpButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.X:
+                                    {
+                                        yearNumericUpDown_analytical.DownButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.D:
+                                    {
+                                        quarterNumericUpDown_analytical.UpButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                                case Keys.C:
+                                    {
+                                        quarterNumericUpDown_analytical.DownButton();
+                                        e.SuppressKeyPress = true;
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
                         #endregion
                 }
             }
@@ -387,7 +422,7 @@ namespace SVDK2
                     loadReportTreeView(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_report.Value), Convert.ToInt32(quarterNumericUpDown_report.Value));
                     break;
                 case "analyticalTabPage":
-                    loadReportTreeView(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_report.Value), Convert.ToInt32(quarterNumericUpDown_report.Value));
+                    loadAnalyticalDataGridView(Convert.ToInt32(agentDataGridView.CurrentRow.Cells["id"].Value), Convert.ToInt32(yearNumericUpDown_analytical.Value), Convert.ToInt32(quarterNumericUpDown_analytical.Value));
                     break;
             }
         }
@@ -1225,7 +1260,54 @@ namespace SVDK2
 
         }
         #endregion
+        #region Аналитика - analyticalTabPage
+        private void loadAnalyticalDataGridView(int agent_id, int year, int quarter)
+        {
+            dataGridView__analytical.Rows.Clear();
 
+            if (agent_id == -1)
+                return;
+
+            sqliteConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("SELECT vs.vs_kod, vs.vs_name, (CASE WHEN commissionPersent.commissionPersent_persent IS NOT NULL THEN commissionPersent.commissionPersent_persent ELSE 0 END) AS persent, SUM(CASE WHEN agentReportContent.agentReportContent_count IS NOT NULL THEN agentReportContent.agentReportContent_count ELSE 0 END) AS countNow, SUM(CASE WHEN agentReportContent.agentReportContent_sum IS NOT NULL THEN agentReportContent.agentReportContent_sum ELSE 0 END) AS sumNow, SUM(CASE WHEN insurancePlan.insurancePlan_quantity IS NOT NULL THEN insurancePlan.insurancePlan_quantity ELSE 0 END) AS countRequired, SUM(CASE WHEN insurancePlan.insurancePlan_sum IS NOT NULL THEN insurancePlan.insurancePlan_sum ELSE 0 END) AS sumRequired FROM agentReport " +
+                                                      "LEFT JOIN agentReportContent ON agentReport.agentReport_id=agentReportContent.agentReport_id " +
+                                                      "LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id " +
+                                                      "LEFT JOIN commissionPersent ON (commissionPersent.agent_id=agentReport.agent_id AND commissionPersent.vs_id=agentReportContent.vs_id AND commissionPersent.commissionPersent_year=strftime('%Y', agentReport.agentReport_date)) " +
+                                                      "LEFT JOIN insurancePlan ON (insurancePlan.agent_id=agentReport.agentReport_id AND insurancePlan.vs_id=agentReportContent.vs_id AND insurancePlan.insurancePlan_quarter=((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3) AND insurancePlan.insurancePlan_year=strftime('%Y', agentReport.agentReport_date)) " +
+                                                      "WHERE agentReport.agent_id=@agent_id AND (strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) " +
+                                                      "GROUP BY vs.vs_kod", sqliteConnection);
+            command.Parameters.AddWithValue("@agent_id", agent_id);
+            command.Parameters.AddWithValue("@year", year.ToString());
+            command.Parameters.AddWithValue("@quarter", quarter);
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                int index = dataGridView__analytical.Rows.Add();
+                dataGridView__analytical.Rows[index].Cells["vs_kod"].Value = reader["vs_kod"].ToString();
+                dataGridView__analytical.Rows[index].Cells["vs_name1"].Value = reader["vs_name"].ToString();
+                dataGridView__analytical.Rows[index].Cells["percent"].Value = Convert.ToDecimal(reader["persent"]);
+                dataGridView__analytical.Rows[index].Cells["countNow"].Value = Convert.ToInt32(reader["countNow"]);
+                dataGridView__analytical.Rows[index].Cells["sumNow"].Value = Convert.ToDecimal(reader["sumNow"]);
+                dataGridView__analytical.Rows[index].Cells["countRequired"].Value = Convert.ToInt32(reader["countRequired"]);
+                dataGridView__analytical.Rows[index].Cells["sumRequired"].Value = Convert.ToDecimal(reader["sumRequired"]);
+                dataGridView__analytical.Rows[index].Cells["countLeft1"].Value = Convert.ToInt32(dataGridView__analytical.Rows[index].Cells["countRequired"].Value) - Convert.ToInt32(dataGridView__analytical.Rows[index].Cells["countNow"].Value);
+                dataGridView__analytical.Rows[index].Cells["sumLeft"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) - Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value);
+                dataGridView__analytical.Rows[index].Cells["agentSum"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumNow"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
+                dataGridView__analytical.Rows[index].Cells["agentSumPlan"].Value = Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["sumRequired"].Value) * (Convert.ToDecimal(dataGridView__analytical.Rows[index].Cells["percent"].Value) / 100);
+            }
+
+            sqliteConnection.Close();
+        }
+
+        private void yearNumericUpDown_analytical_ValueChanged(object sender, EventArgs e)
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
+        private void quarterNumericUpDown_analytical_ValueChanged(object sender, EventArgs e)
+        {
+            loadSelectedUserInCurrentTabPage();
+        }
+        #endregion
         #endregion
 
         #region Подсказки
@@ -1291,11 +1373,17 @@ namespace SVDK2
         {
             helpToolStripStatusLabel.Text = "Alt+У - Удалить выбранные отчёты";
         }
-
-
-
         #endregion
-
+        #region Аналитика
+        private void yearLabel_analytical_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+Ы - Увеличить год; Alt+Ч - Уменьшить год";
+        }
+        private void quarterLabel_analytical_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel.Text = "Alt+В - Увеличить квартал; Alt+С - Уменьшить квартал";
+        }
+        #endregion
         #endregion
 
         #endregion

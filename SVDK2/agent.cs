@@ -553,11 +553,15 @@ namespace SVDK2
             update.ExecuteNonQuery();
             sqliteConnection.Close();
         }
-        private void activeCheckBox_profile_Leave(object sender, EventArgs e)
+
+        private void activeCheckBox_profile_Click(object sender, EventArgs e)
         {
             sqliteConnection.Open();
             SQLiteCommand update = new SQLiteCommand("UPDATE agent SET agent_active=$active WHERE agent_id=$id", sqliteConnection);
-            update.Parameters.AddWithValue("$active", activeCheckBox_profile.Checked);
+            if (activeCheckBox_profile.Checked)
+                update.Parameters.AddWithValue("$active", "true");
+            else
+                update.Parameters.AddWithValue("$active", "false");
             update.Parameters.AddWithValue("$id", agentDataGridView.SelectedRows[0].Cells["id"].Value);
             update.ExecuteNonQuery();
             sqliteConnection.Close();
@@ -1428,10 +1432,16 @@ namespace SVDK2
             helpToolStripStatusLabel.Text = "Alt+В - Увеличить квартал; Alt+С - Уменьшить квартал";
         }
         #endregion
-        #endregion
 
         #endregion
 
+        #endregion
 
+        private void agent_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            helpToolStripStatusLabel.Select();
+        }
+
+        
     }
 }

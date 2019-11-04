@@ -387,7 +387,7 @@
             this.activeCheckBox_profile.TabIndex = 10;
             this.activeCheckBox_profile.Text = "Активность";
             this.activeCheckBox_profile.UseVisualStyleBackColor = true;
-            this.activeCheckBox_profile.Leave += new System.EventHandler(this.activeCheckBox_profile_Leave);
+            this.activeCheckBox_profile.Click += new System.EventHandler(this.activeCheckBox_profile_Click);
             // 
             // deleteAgentButton_profile
             // 
@@ -1198,6 +1198,7 @@
             this.KeyPreview = true;
             this.Name = "agent";
             this.Text = "Агенты";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.agent_FormClosing);
             this.Load += new System.EventHandler(this.agent_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.agent_KeyDown);
             this.splitContainer.Panel1.ResumeLayout(false);

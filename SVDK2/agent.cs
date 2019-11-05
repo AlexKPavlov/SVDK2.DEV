@@ -1366,7 +1366,7 @@ namespace SVDK2
         }
         private void agentDataGridView_MouseEnter(object sender, EventArgs e)
         {
-            helpToolStripStatusLabel.Text = "Alt+Ф - Вверх по списку; Alt+Я - Вниз по списку";
+            helpToolStripStatusLabel.Text = "Alt+Ф - Вверх по списку; Alt+Я - Вниз по списку; Alt+О - Обновить список(*)";
         }
         #endregion
         #region Вкладки

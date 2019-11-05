@@ -40,6 +40,7 @@ namespace SVDK2
             helpStatusStrip_main.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
             if (settingsIni.Read("countDayBackup", "settings").Length == 0)
                 settingsIni.Write("countDayBackup", "30", "settings");
+            countDayBackupsToolStripTextBox_main.TextBox.Text = settingsIni.Read("countDayBackup", "settings");
 
             yearNumericUpDown_main.Value = DateTime.Now.Year;
             quarterNumericUpDown_main.Value = (int)((DateTime.Now.Month + 2) / 3);
@@ -82,16 +83,6 @@ namespace SVDK2
             settingsIni.Write("help", helpToolStripMenuItem_main.Checked.ToString(), "settings");
             helpStatusStrip_main.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
         }
-        private void countDayBackupsToolStripTextBox_main_Validating(object sender, CancelEventArgs e)
-        {
-            UInt32 count = 30;
-            if (!UInt32.TryParse(countDayBackupsToolStripTextBox_main.Text, out count))
-            {
-                MessageBox.Show("Количество дней должно быть целым положительным числом!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            settingsIni.Write("countDayBackup", count.ToString(), "settings");
-        }
         #endregion
 
         #endregion
@@ -100,9 +91,11 @@ namespace SVDK2
         {
             sqliteConnection.Open();
             SQLiteCommand command = new SQLiteCommand("SELECT agent.agent_lnr, agent.agent_name, " +
-                                                      "(SELECT SUM(agentReportContent.agentReportContent_count) FROM agentReport, agentReportContent WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND agentReport.agent_id=agent.agent_id AND strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) as countCur, " +
+                                                      "(SELECT SUM(agentReportContent.agentReportContent_count) FROM agentReport, agentReportContent WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND agentReport.agent_id=agent.agent_id AND strftime('%Y', " +
+                                                      " agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) as countCur, " +
                                                       "(SELECT SUM(insurancePlan.insurancePlan_quantity) FROM insurancePlan WHERE insurancePlan.agent_id=agent.agent_id AND insurancePlan.insurancePlan_year=@year AND insurancePlan.insurancePlan_quarter=@quarter) as countReq, " +
-                                                      "(SELECT SUM(agentReportContent.agentReportContent_sum) FROM agentReport, agentReportContent WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND agentReport.agent_id=agent.agent_id AND strftime('%Y', agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) as sumCur, " +
+                                                      "(SELECT SUM(agentReportContent.agentReportContent_sum) FROM agentReport, agentReportContent WHERE agentReport.agentReport_id=agentReportContent.agentReport_id AND agentReport.agent_id=agent.agent_id AND strftime('%Y', " +
+                                                      " agentReport.agentReport_date)=@year AND ((cast(strftime('%m', agentReport.agentReport_date) as integer) + 2) / 3)=@quarter) as sumCur, " +
                                                       "(SELECT SUM(insurancePlan.insurancePlan_sum) FROM insurancePlan WHERE insurancePlan.agent_id=agent.agent_id AND insurancePlan.insurancePlan_year=@year AND insurancePlan.insurancePlan_quarter=@quarter) as sumReq " +
                                                       "FROM agent WHERE agent.agent_active='true'", sqliteConnection);
             command.Parameters.AddWithValue("@year", yearNumericUpDown_main.Value.ToString());
@@ -153,8 +146,76 @@ namespace SVDK2
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"//temp");
             File.Copy(Directory.GetCurrentDirectory() + @"//db.db", Directory.GetCurrentDirectory() + @"//temp//db.db");
             Random random = new Random();
-            ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory() + @"//temp", Directory.GetCurrentDirectory() + @"//backup//" + DateTime.Now.ToString("d")+"-"+random.Next(2147483647) +".zip");
+            ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory() + @"//temp", Directory.GetCurrentDirectory() + @"//backup//" + DateTime.Now.ToString("d") + "-" + random.Next(2147483647) + ".zip");
             Directory.Delete(Directory.GetCurrentDirectory() + @"//temp", true);
+        }
+
+        #region Подсказки
+        private void AgentToolStripButton_main_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel_main.Text = "Alt+А - Агенты;";
+        }
+        private void insuranceToolStripButton_main_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel_main.Text = "Alt+В - Виды страхования;";
+        }
+
+        private void yearLabel_main_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel_main.Text = "Alt+Ф - Увеличить год; Alt+Я - Уменьшить год";
+        }
+
+        private void quarterLabel_main_MouseEnter(object sender, EventArgs e)
+        {
+            helpToolStripStatusLabel_main.Text = "Alt+Ы - Увеличить квартал; Alt+Ч - Уменьшить квартал";
+        }
+        #endregion
+
+        private void main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt)
+                switch (e.KeyCode)
+                {
+                    case Keys.A:
+                        {
+                            yearNumericUpDown_main.UpButton();
+                            loadChart();
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
+                    case Keys.Z:
+                        {
+                            yearNumericUpDown_main.DownButton();
+                            loadChart();
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
+                    case Keys.S:
+                        {
+                            quarterNumericUpDown_main.UpButton();
+                            loadChart();
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
+                    case Keys.X:
+                        {
+                            quarterNumericUpDown_main.DownButton();
+                            loadChart();
+                            e.SuppressKeyPress = true;
+                        }
+                        break;
+                }
+        }
+
+        private void countDayBackupsToolStripTextBox_main_TextChanged(object sender, EventArgs e)
+        {
+            UInt32 count = 30;
+            if (!UInt32.TryParse(countDayBackupsToolStripTextBox_main.Text, out count))
+            {
+                MessageBox.Show("Количество дней должно быть целым положительным числом!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            settingsIni.Write("countDayBackup", count.ToString(), "settings");
         }
     }
 }

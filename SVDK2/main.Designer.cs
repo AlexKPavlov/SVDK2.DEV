@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip_main = new System.Windows.Forms.ToolStrip();
             this.AgentToolStripButton_main = new System.Windows.Forms.ToolStripButton();
             this.insuranceToolStripButton_main = new System.Windows.Forms.ToolStripButton();
@@ -40,16 +40,16 @@
             this.forFioToolStripMenuItem_main = new System.Windows.Forms.ToolStripMenuItem();
             this.fioToolStripTextBox_main = new System.Windows.Forms.ToolStripTextBox();
             this.helpToolStripMenuItem_main = new System.Windows.Forms.ToolStripMenuItem();
+            this.countDayBackupToolStripMenuItem_main = new System.Windows.Forms.ToolStripMenuItem();
+            this.countDayBackupsToolStripTextBox_main = new System.Windows.Forms.ToolStripTextBox();
             this.tableLayoutPanel_main = new System.Windows.Forms.TableLayoutPanel();
             this.helpStatusStrip_main = new System.Windows.Forms.StatusStrip();
+            this.helpToolStripStatusLabel_main = new System.Windows.Forms.ToolStripStatusLabel();
             this.chart_main = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.yearLabel_main = new System.Windows.Forms.Label();
             this.quarterLabel_main = new System.Windows.Forms.Label();
             this.yearNumericUpDown_main = new System.Windows.Forms.NumericUpDown();
             this.quarterNumericUpDown_main = new System.Windows.Forms.NumericUpDown();
-            this.helpToolStripStatusLabel_main = new System.Windows.Forms.ToolStripStatusLabel();
-            this.countDayBackupToolStripMenuItem_main = new System.Windows.Forms.ToolStripMenuItem();
-            this.countDayBackupsToolStripTextBox_main = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip_main.SuspendLayout();
             this.tableLayoutPanel_main.SuspendLayout();
             this.helpStatusStrip_main.SuspendLayout();
@@ -80,6 +80,7 @@
             this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 24);
             this.AgentToolStripButton_main.Text = "&Агенты";
             this.AgentToolStripButton_main.Click += new System.EventHandler(this.AgentToolStripButton_main_Click);
+            this.AgentToolStripButton_main.MouseEnter += new System.EventHandler(this.AgentToolStripButton_main_MouseEnter);
             // 
             // insuranceToolStripButton_main
             // 
@@ -90,6 +91,7 @@
             this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 24);
             this.insuranceToolStripButton_main.Text = "&Виды страхований";
             this.insuranceToolStripButton_main.Click += new System.EventHandler(this.insuranceToolStripButton_main_Click);
+            this.insuranceToolStripButton_main.MouseEnter += new System.EventHandler(this.insuranceToolStripButton_main_MouseEnter);
             // 
             // toolStripDropDownButton_main
             // 
@@ -127,6 +129,21 @@
             this.helpToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
             this.helpToolStripMenuItem_main.Text = "Подсказки";
             this.helpToolStripMenuItem_main.Click += new System.EventHandler(this.helpToolStripMenuItem_main_Click);
+            // 
+            // countDayBackupToolStripMenuItem_main
+            // 
+            this.countDayBackupToolStripMenuItem_main.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.countDayBackupsToolStripTextBox_main});
+            this.countDayBackupToolStripMenuItem_main.Name = "countDayBackupToolStripMenuItem_main";
+            this.countDayBackupToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
+            this.countDayBackupToolStripMenuItem_main.Text = "Срок хранения рез. коп.";
+            // 
+            // countDayBackupsToolStripTextBox_main
+            // 
+            this.countDayBackupsToolStripTextBox_main.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.countDayBackupsToolStripTextBox_main.Name = "countDayBackupsToolStripTextBox_main";
+            this.countDayBackupsToolStripTextBox_main.Size = new System.Drawing.Size(100, 27);
+            this.countDayBackupsToolStripTextBox_main.TextChanged += new System.EventHandler(this.countDayBackupsToolStripTextBox_main_TextChanged);
             // 
             // tableLayoutPanel_main
             // 
@@ -167,28 +184,33 @@
             this.helpStatusStrip_main.TabIndex = 0;
             this.helpStatusStrip_main.Text = "statusStrip1";
             // 
+            // helpToolStripStatusLabel_main
+            // 
+            this.helpToolStripStatusLabel_main.Name = "helpToolStripStatusLabel_main";
+            this.helpToolStripStatusLabel_main.Size = new System.Drawing.Size(0, 16);
+            // 
             // chart_main
             // 
-            chartArea2.AxisX.MaximumAutoSize = 85F;
-            chartArea2.Name = "ChartArea1";
-            this.chart_main.ChartAreas.Add(chartArea2);
+            chartArea3.AxisX.MaximumAutoSize = 85F;
+            chartArea3.Name = "ChartArea1";
+            this.chart_main.ChartAreas.Add(chartArea3);
             this.tableLayoutPanel_main.SetColumnSpan(this.chart_main, 5);
             this.chart_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart_main.Legends.Add(legend2);
+            legend3.Name = "Legend1";
+            this.chart_main.Legends.Add(legend3);
             this.chart_main.Location = new System.Drawing.Point(3, 3);
             this.chart_main.Name = "chart_main";
             this.tableLayoutPanel_main.SetRowSpan(this.chart_main, 2);
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.LegendText = "Выполнение плана\\nпо количеству (%)";
-            series3.Name = "count";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.LegendText = "Выполнение плана\\nпо сумме (%)";
-            series4.Name = "sum";
-            this.chart_main.Series.Add(series3);
-            this.chart_main.Series.Add(series4);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.LegendText = "Выполнение плана\\nпо количеству (%)";
+            series5.Name = "count";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.LegendText = "Выполнение плана\\nпо сумме (%)";
+            series6.Name = "sum";
+            this.chart_main.Series.Add(series5);
+            this.chart_main.Series.Add(series6);
             this.chart_main.Size = new System.Drawing.Size(794, 389);
             this.chart_main.TabIndex = 1;
             this.chart_main.Text = "chart1";
@@ -201,6 +223,7 @@
             this.yearLabel_main.Size = new System.Drawing.Size(36, 17);
             this.yearLabel_main.TabIndex = 2;
             this.yearLabel_main.Text = "Год:";
+            this.yearLabel_main.MouseEnter += new System.EventHandler(this.yearLabel_main_MouseEnter);
             // 
             // quarterLabel_main
             // 
@@ -210,6 +233,7 @@
             this.quarterLabel_main.Size = new System.Drawing.Size(67, 17);
             this.quarterLabel_main.TabIndex = 4;
             this.quarterLabel_main.Text = "Квартал:";
+            this.quarterLabel_main.MouseEnter += new System.EventHandler(this.quarterLabel_main_MouseEnter);
             // 
             // yearNumericUpDown_main
             // 
@@ -257,26 +281,6 @@
             0,
             0});
             // 
-            // helpToolStripStatusLabel_main
-            // 
-            this.helpToolStripStatusLabel_main.Name = "helpToolStripStatusLabel_main";
-            this.helpToolStripStatusLabel_main.Size = new System.Drawing.Size(0, 16);
-            // 
-            // countDayBackupToolStripMenuItem_main
-            // 
-            this.countDayBackupToolStripMenuItem_main.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.countDayBackupsToolStripTextBox_main});
-            this.countDayBackupToolStripMenuItem_main.Name = "countDayBackupToolStripMenuItem_main";
-            this.countDayBackupToolStripMenuItem_main.Size = new System.Drawing.Size(260, 26);
-            this.countDayBackupToolStripMenuItem_main.Text = "Срок хранения рез. коп.";
-            // 
-            // countDayBackupsToolStripTextBox_main
-            // 
-            this.countDayBackupsToolStripTextBox_main.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.countDayBackupsToolStripTextBox_main.Name = "countDayBackupsToolStripTextBox_main";
-            this.countDayBackupsToolStripTextBox_main.Size = new System.Drawing.Size(100, 27);
-            this.countDayBackupsToolStripTextBox_main.Validating += new System.ComponentModel.CancelEventHandler(this.countDayBackupsToolStripTextBox_main_Validating);
-            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -285,10 +289,12 @@
             this.Controls.Add(this.tableLayoutPanel_main);
             this.Controls.Add(this.toolStrip_main);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "main";
             this.Text = "СВДК2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_FormClosing);
             this.Load += new System.EventHandler(this.main_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.main_KeyDown);
             this.toolStrip_main.ResumeLayout(false);
             this.toolStrip_main.PerformLayout();
             this.tableLayoutPanel_main.ResumeLayout(false);

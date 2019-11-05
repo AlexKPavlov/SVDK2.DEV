@@ -17,7 +17,7 @@ namespace SVDK2
         int agent_id, year, quarter, report_id;
         DataTable listVS = new DataTable();
 
-        public agentReport(SQLiteConnection sqliteConnection, int agent_id, int year, int quarter)
+        public agentReport(SQLiteConnection sqliteConnection, int agent_id, int year, int quarter)  //Для добавление нового
         {
             InitializeComponent();
 
@@ -27,14 +27,14 @@ namespace SVDK2
             this.quarter = quarter;
             this.report_id = -1;
         }
-        public agentReport(SQLiteConnection sqliteConnection, int report_id)
+        public agentReport(SQLiteConnection sqliteConnection, int report_id)    //Для изменения существующего
         {
             InitializeComponent();
 
             this.sqliteConnection = sqliteConnection;
             this.report_id = report_id;
 
-            sqliteConnection.Open();
+            sqliteConnection.Open();    //Получение информации о укзанном отчёте
             SQLiteCommand command = new SQLiteCommand("SELECT agent_id, agentReport_date, agentReport_code FROM agentReport WHERE agentReport_id=@report_id", sqliteConnection);
             command.Parameters.AddWithValue("@report_id", report_id);
             SQLiteDataReader reader = command.ExecuteReader();
@@ -56,9 +56,9 @@ namespace SVDK2
 
         private void agentReport_Load(object sender, EventArgs e)
         {
-            loadVsList();
+            loadVsList();   //Загрузка выпадающего списка
 
-            dateTimePicker.MinDate = DateTime.Parse(year.ToString() + ".1").AddMonths((1 + ((quarter - 1) * 3)) - 1);
+            dateTimePicker.MinDate = DateTime.Parse(year.ToString() + ".1").AddMonths((1 + ((quarter - 1) * 3)) - 1);   //Выставление ограничений в пределах квартала
             dateTimePicker.MaxDate = DateTime.Parse(year.ToString() + ".1").AddMonths((1 + ((quarter) * 3)) - 1).AddDays(-1);
 
             if (report_id != -1)
@@ -74,7 +74,7 @@ namespace SVDK2
             helpStatusStrip.Visible = Convert.ToBoolean(settingsIni.Read("help", "settings"));
         }
 
-        private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)    //Строка ввода с подсказками для комбобокса
         {
             var comboBox = e.Control as DataGridViewComboBoxEditingControl;
             if (comboBox != null && dataGridView.CurrentCell.Value == null)
@@ -133,7 +133,7 @@ namespace SVDK2
             }
 
             foreach (DataGridViewRow item in dataGridView.Rows)
-                if (item.Index != dataGridView.Rows.Count - 1)  //Проверка на последнюю строку
+                if (item.Index != dataGridView.Rows.Count - 1)  //Проверка на последнюю строку (пустую)
                 {
                     if (item.Cells["agentReportContent_id"].Value == null)  //Строка ещё не создана в бд (Добавление)
                     {
@@ -167,7 +167,7 @@ namespace SVDK2
             this.Close();
         }
 
-        private void dataGridView_CellValidated(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_CellValidated(object sender, DataGridViewCellEventArgs e) //Загрузка процента коммисионного вознаграждения
         {
             if (dataGridView.Columns[e.ColumnIndex].Name == "vs_name")
                 if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -193,14 +193,14 @@ namespace SVDK2
                 }
         }
 
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)  //Расчёт суммы для агента
         {
             if (dataGridView.Columns[e.ColumnIndex].Name == "sum" || dataGridView.Columns[e.ColumnIndex].Name == "percent")
                 if (dataGridView.Rows[e.RowIndex].Cells["sum"].Value != null && dataGridView.Rows[e.RowIndex].Cells["percent"].Value != null)
                     dataGridView.Rows[e.RowIndex].Cells["sumForAgent"].Value = Convert.ToDecimal(dataGridView.Rows[e.RowIndex].Cells["sum"].Value) * (Convert.ToDecimal(dataGridView.Rows[e.RowIndex].Cells["percent"].Value) / 100);
         }
 
-        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)  //Удаление или отметка для строк
         {
             if (e.Row.Index == dataGridView.Rows.Count - 1)
                 return;
@@ -224,7 +224,7 @@ namespace SVDK2
             e.Cancel = true;
         }
 
-        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)  //Провека на ввод
         {
             if (e.FormattedValue.ToString() == "")
                 return;
@@ -249,7 +249,7 @@ namespace SVDK2
         }
 
 
-        private void loadVsList()
+        private void loadVsList()   //Загрузка данных в выпадающий список
         {
             sqliteConnection.Open();
             SQLiteCommand command = new SQLiteCommand("SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM commissionPercent LEFT JOIN vs ON vs.vs_id=commissionPercent.vs_id WHERE commissionPercent.agent_id=@agent_id AND commissionPercent.commissionPercent_year=@year UNION SELECT DISTINCT vs.vs_id, (vs.vs_kod || ': ' || vs.vs_name) AS name FROM agentReportContent LEFT JOIN vs ON vs.vs_id=agentReportContent.vs_id WHERE agentReportContent.agentReport_id=@report_id", sqliteConnection);
@@ -264,7 +264,7 @@ namespace SVDK2
             sqliteConnection.Close();
         }
 
-        private void loadDateGridView()
+        private void loadDateGridView() //Загрузка таблицы
         {
             sqliteConnection.Open();
             SQLiteCommand load = new SQLiteCommand("SELECT * FROM agentReportContent WHERE agentReport_id=@report_id", sqliteConnection);

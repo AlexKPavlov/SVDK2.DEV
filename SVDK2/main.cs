@@ -23,15 +23,15 @@ namespace SVDK2
         {
             InitializeComponent();
 
-            if (settingsIni.Read("dbPath", "db").Length == 0)
+            if (settingsIni.Read("dbPath", "db").Length == 0)   //Загрузка пути п создание строки плдключения
                 settingsIni.Write("dbPath", @"db.db", "db");
             sqliteConnection = new SQLiteConnection(@"Data Source=" + settingsIni.Read("dbPath", "db") + @"; Version=3;");
-            sqliteConnection.ConnectionString += "foreign keys=true;";
+            sqliteConnection.ConnectionString += "foreign keys=true;";  //Включение проверки внешних ключей
         }
 
         private void main_Load(object sender, EventArgs e)
         {
-            if (settingsIni.Read("name", "settings").Length == 0)
+            if (settingsIni.Read("name", "settings").Length == 0)   //Загрузка настроек в поля
                 settingsIni.Write("name", "ФИО", "settings");
             fioToolStripTextBox_main.TextBox.Text = settingsIni.Read("name", "settings");
             if (settingsIni.Read("help", "settings").Length == 0)
@@ -42,14 +42,14 @@ namespace SVDK2
                 settingsIni.Write("countDayBackup", "30", "settings");
             countDayBackupsToolStripTextBox_main.TextBox.Text = settingsIni.Read("countDayBackup", "settings");
 
-            yearNumericUpDown_main.Value = DateTime.Now.Year;
+            yearNumericUpDown_main.Value = DateTime.Now.Year;       //Установка даты
             quarterNumericUpDown_main.Value = (int)((DateTime.Now.Month + 2) / 3);
-            loadChart();
+            loadChart();    //Загрузка диаграммы
         }
 
         #region События
         #region События кнопок
-        private void AgentToolStripButton_main_Click(object sender, EventArgs e)
+        private void AgentToolStripButton_main_Click(object sender, EventArgs e)    //Открытие формы агентов
         {
             agent form = new agent(sqliteConnection);
             this.Hide();
@@ -58,7 +58,7 @@ namespace SVDK2
             loadChart();
         }
 
-        private void insuranceToolStripButton_main_Click(object sender, EventArgs e)
+        private void insuranceToolStripButton_main_Click(object sender, EventArgs e)    //Открытие формы видов страхования
         {
             insuranceReference form = new insuranceReference(sqliteConnection);
             this.Hide();
@@ -72,12 +72,12 @@ namespace SVDK2
         #endregion
 
         #region События изменения настроек
-        private void fioToolStripTextBox_main_TextChanged(object sender, EventArgs e)
+        private void fioToolStripTextBox_main_TextChanged(object sender, EventArgs e)   //Запись нового ФИО
         {
             settingsIni.Write("name", fioToolStripTextBox_main.TextBox.Text, "settings");
             this.Text = this.Text.Split(new string[] { @" (" }, StringSplitOptions.RemoveEmptyEntries)[0] + @" (" + settingsIni.Read("name", "settings") + ")";
         }
-        private void helpToolStripMenuItem_main_Click(object sender, EventArgs e)
+        private void helpToolStripMenuItem_main_Click(object sender, EventArgs e)   //Запись состояния подсказок
         {
             helpToolStripMenuItem_main.Checked = !helpToolStripMenuItem_main.Checked;
             settingsIni.Write("help", helpToolStripMenuItem_main.Checked.ToString(), "settings");
@@ -87,7 +87,7 @@ namespace SVDK2
 
         #endregion
 
-        private void loadChart()
+        private void loadChart()    //Загрузка диаграммы
         {
             sqliteConnection.Open();
             SQLiteCommand command = new SQLiteCommand("SELECT agent.agent_lnr, agent.agent_name, " +
@@ -174,7 +174,7 @@ namespace SVDK2
         private void main_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Alt)
-                switch (e.KeyCode)
+                switch (e.KeyCode)  //Изменение даты
                 {
                     case Keys.A:
                         {
@@ -207,7 +207,7 @@ namespace SVDK2
                 }
         }
 
-        private void countDayBackupsToolStripTextBox_main_TextChanged(object sender, EventArgs e)
+        private void countDayBackupsToolStripTextBox_main_TextChanged(object sender, EventArgs e)   //Запись дней хранения РК
         {
             UInt32 count = 30;
             if (!UInt32.TryParse(countDayBackupsToolStripTextBox_main.Text, out count))

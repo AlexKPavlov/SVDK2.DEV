@@ -47,7 +47,7 @@ namespace SVDK2
                 changeModeToolStripButton.ForeColor = Color.Black;
         }
 
-        private void changeModeToolStripButton_CheckStateChanged(object sender, EventArgs e)
+        private void changeModeToolStripButton_CheckStateChanged(object sender, EventArgs e)    //Выключеие/включение кнопок и возможности редактирования
         {
             if (changeModeToolStripButton.Checked)
             {
@@ -77,7 +77,6 @@ namespace SVDK2
         {
             dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells["vs_name"];
             dataGridView.BeginEdit(false);
-
         }
 
         private void renameToolStripButton_Click(object sender, EventArgs e)
@@ -120,7 +119,7 @@ namespace SVDK2
             }
         }
 
-        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)  //Сохранение данных в БД
         {
             if (dataGridView.Rows.Count - 1 == e.RowIndex)
                 return;
@@ -197,7 +196,7 @@ namespace SVDK2
         }
         #endregion
 
-        private void updateDataGridView()
+        private void updateDataGridView()   //Загрузка данных в таблицу
         {
             dataGridView.Rows.Clear();
 

@@ -45,7 +45,7 @@ namespace SVDK2
             agentComboBox.SelectedIndex = 0;
         }
 
-        private void selectingAgentRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void selectingAgentRadioButton_CheckedChanged(object sender, EventArgs e)   //Выключение выбора агента при выборе варианта источника "данный агент"
         {
             if (selectingAgentRadioButton.Checked)
                 agentComboBox.Enabled = true;
@@ -71,7 +71,7 @@ namespace SVDK2
             bool commissionPercentEnabled = false;
             bool[] insurancePlanEnabled = new bool[4];
 
-            if (fullResetModeRadioButton.Checked)
+            if (fullResetModeRadioButton.Checked)   //Считывание параметров импортирования
                 mode = Mode.fullImport;
             if (updateModeRadioButton.Checked)
                 mode = Mode.update;
@@ -95,7 +95,7 @@ namespace SVDK2
 
             switch (mode)
             {
-                case Mode.fullImport:
+                case Mode.fullImport:   //При полном импортировании (удаление всех существующих данных)
                     {
                         sqliteConnection.Open();
                         SQLiteCommand loadCommand;
@@ -104,17 +104,17 @@ namespace SVDK2
                         SQLiteCommand addCommand;
 
                         if (commissionPercentEnabled)
-                        {
+                        {   //Загружаем данные из источника
                             loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
-                            reader = loadCommand.ExecuteReader();
+                            reader = loadCommand.ExecuteReader();   //Удаляем текущие данные
                             deleteCommand = new SQLiteCommand("DELETE FROM commissionPercent WHERE agent_id=@id AND commissionPercent_year=@year", sqliteConnection);
                             deleteCommand.Parameters.AddWithValue("@id", agent_id);
                             deleteCommand.Parameters.AddWithValue("@year", this.year);
                             deleteCommand.ExecuteNonQuery();
                             while (reader.Read())
-                            {
+                            {   //Добавляем новые данные
                                 addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                 addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                 addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
@@ -127,7 +127,7 @@ namespace SVDK2
                         for (int i = 0; i < 4; i++)
                         {
                             if (insurancePlanEnabled[i])
-                            {
+                            {       //Тоже саоме, но для остальных показателей
                                 loadCommand = new SQLiteCommand("SELECT vs_id, insurancePlan_quantity, insurancePlan_sum FROM insurancePlan WHERE agent_id=@source AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter", sqliteConnection);
                                 loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                                 loadCommand.Parameters.AddWithValue("@year", year);
@@ -153,7 +153,7 @@ namespace SVDK2
                         }
                     }
                     break;
-                case Mode.update:
+                case Mode.update:   //Добавление новых, обновление старых (оставляют данные которых нет в импортированых)
                     {
                         sqliteConnection.Open();
                         SQLiteCommand loadCommand;
@@ -162,19 +162,19 @@ namespace SVDK2
                         SQLiteCommand addCommand;
 
                         if (commissionPercentEnabled)
-                        {
+                        {   //Получение данных для импорта
                             loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
                             reader = loadCommand.ExecuteReader();
                             while (reader.Read())
-                            {
+                            {       //Удаление текущих данных для данного вида страхования (если данных нет, то ничего не произойдёт)
                                 deleteCommand = new SQLiteCommand("DELETE FROM commissionPercent WHERE agent_id=@id AND commissionPercent_year=@year AND vs_id=@vs_id", sqliteConnection);
                                 deleteCommand.Parameters.AddWithValue("@id", agent_id);
                                 deleteCommand.Parameters.AddWithValue("@year", this.year);
                                 deleteCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
                                 deleteCommand.ExecuteNonQuery();
-
+                                    //Добавление новых данных 
                                 addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                 addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                 addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
@@ -187,7 +187,7 @@ namespace SVDK2
                         for (int i = 0; i < 4; i++)
                         {
                             if (insurancePlanEnabled[i])
-                            {
+                            {       //Тоже саоме, но для остальных показателей
                                 loadCommand = new SQLiteCommand("SELECT vs_id, insurancePlan_quantity, insurancePlan_sum FROM insurancePlan WHERE agent_id=@source AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter", sqliteConnection);
                                 loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                                 loadCommand.Parameters.AddWithValue("@year", year);
@@ -215,7 +215,7 @@ namespace SVDK2
                         }
                     }
                     break;
-                case Mode.add:
+                case Mode.add:  //Добавление только новых данных (остальные игнорируются)
                     {
                         sqliteConnection.Open();
                         SQLiteCommand loadCommand;
@@ -227,24 +227,24 @@ namespace SVDK2
                         bool itExist;
 
                         if (commissionPercentEnabled)
-                        {
+                        {       //Загрузка списка существующих данных
                             checkCommand = new SQLiteCommand("SELECT vs_id FROM commissionPercent WHERE agent_id=@id AND commissionPercent_year=@year", sqliteConnection);
                             checkCommand.Parameters.AddWithValue("@id", agent_id);
                             checkCommand.Parameters.AddWithValue("@year", this.year);
                             checkAdapter = new SQLiteDataAdapter(checkCommand);
-                            checkAdapter.Fill(currentData);
+                            checkAdapter.Fill(currentData); //Загрузка новых данных
                             loadCommand = new SQLiteCommand("SELECT vs_id, commissionPercent_percent FROM commissionPercent WHERE agent_id=@source AND commissionPercent_year=@year", sqliteConnection);
                             loadCommand.Parameters.AddWithValue("@source", sourseAgentID);
                             loadCommand.Parameters.AddWithValue("@year", year);
                             reader = loadCommand.ExecuteReader();
                             while (reader.Read())
                             {
-                                itExist = false;
+                                itExist = false;    //Проверка на существование данных
                                 foreach (DataRow item in currentData.Rows)
                                     if (Convert.ToInt32(reader["vs_id"]) == Convert.ToInt32(item.ItemArray[0]))
                                         itExist = true;
                                 if (!itExist)
-                                {
+                                {       //Добовление новых данных
                                     addCommand = new SQLiteCommand("INSERT INTO commissionPercent (agent_id, vs_id, commissionPercent_year, commissionPercent_percent) VALUES (@agent_id, @vs_id, @year, @persent)", sqliteConnection);
                                     addCommand.Parameters.AddWithValue("@agent_id", agent_id);
                                     addCommand.Parameters.AddWithValue("@vs_id", reader["vs_id"]);
@@ -258,7 +258,7 @@ namespace SVDK2
                         for (int i = 0; i < 4; i++)
                         {
                             if (insurancePlanEnabled[i])
-                            {
+                            {       //Тоже саоме, но для остальных показателей
                                 checkCommand = new SQLiteCommand("SELECT vs_id FROM insurancePlan WHERE agent_id=@source AND insurancePlan_year=@year AND insurancePlan_quarter=@quarter", sqliteConnection);
                                 checkCommand.Parameters.AddWithValue("@source", this.agent_id);
                                 checkCommand.Parameters.AddWithValue("@year", year);

@@ -142,12 +142,12 @@ namespace SVDK2
             if (MessageBox.Show("Вы хотите создать резервную копию?", "Резервная копия?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            RemoveOldFile.DeleteOldFiles(Directory.GetCurrentDirectory() + @"//backup", Convert.ToUInt32(settingsIni.Read("countDayBackup", "settings")));
-            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"//temp");
-            File.Copy(Directory.GetCurrentDirectory() + @"//db.db", Directory.GetCurrentDirectory() + @"//temp//db.db");
+            RemoveOldFile.DeleteOldFiles(Directory.GetCurrentDirectory() + @"\backup", Convert.ToUInt32(settingsIni.Read("countDayBackup", "settings")));
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\temp");
+            File.Copy(Directory.GetCurrentDirectory() + @"\db.db", Directory.GetCurrentDirectory() + @"\temp\db.db");
             Random random = new Random();
-            ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory() + @"//temp", Directory.GetCurrentDirectory() + @"//backup//" + DateTime.Now.ToString("d") + "-" + random.Next(2147483647) + ".zip");
-            Directory.Delete(Directory.GetCurrentDirectory() + @"//temp", true);
+            ZipFile.CreateFromDirectory(Directory.GetCurrentDirectory() + @"\temp", Directory.GetCurrentDirectory() + @"\backup\" + DateTime.Now.ToString("d") + "-" + random.Next(2147483647) + ".zip");
+            Directory.Delete(Directory.GetCurrentDirectory() + @"\temp", true);
         }
 
         #region Подсказки

@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_008522E11DA64B5F916F7E75DB8DD991"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0B57CBB1105B4AF7BD66C0CBDEB171AA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1AD45FDEF1DEE2982F876143B19546C0"
         "OwnerKey" = "8:_950F32F55F19438BA2C1CFF665326D00"
         "MsmSig" = "8:_UNDEFINED"
@@ -23,6 +35,12 @@
         {
         "MsmKey" = "8:_1E8F0363E90401C7AB8AA6C0F3492A66"
         "OwnerKey" = "8:_950F32F55F19438BA2C1CFF665326D00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_289E0CF6C5FD4FB68F3ECB8FB1E4814D"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -81,8 +99,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A714242B5B42435DA9B8A3420474FBD8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C2B1C623D6CF3C8CFB83AE396D6ACA1B"
         "OwnerKey" = "8:_950F32F55F19438BA2C1CFF665326D00"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D6C49AC8B9D4463FAFE95A39FF99E6B0"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -170,6 +200,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -232,6 +270,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_008522E11DA64B5F916F7E75DB8DD991"
+            {
+            "SourcePath" = "8:..\\SVDK2\\template\\agentReport.xlsm"
+            "TargetName" = "8:agentReport.xlsm"
+            "Tag" = "8:"
+            "Folder" = "8:_30D32B5EDC0A4A1EAEFBB258A8449F0D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0B57CBB1105B4AF7BD66C0CBDEB171AA"
+            {
+            "SourcePath" = "8:..\\SVDK2\\db.db"
+            "TargetName" = "8:db.db"
+            "Tag" = "8:"
+            "Folder" = "8:_C6F10F4A302A4297B617C6E27092FB4E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1AD45FDEF1DEE2982F876143B19546C0"
             {
             "AssemblyRegister" = "3:1"
@@ -292,6 +370,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_289E0CF6C5FD4FB68F3ECB8FB1E4814D"
+            {
+            "SourcePath" = "8:..\\SVDK2\\setting.ini"
+            "TargetName" = "8:setting.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_C6F10F4A302A4297B617C6E27092FB4E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4A2F2E612E90D0A00A09BEE187AE9F0A"
@@ -418,6 +516,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A714242B5B42435DA9B8A3420474FBD8"
+            {
+            "SourcePath" = "8:..\\SVDK2\\bin\\Release\\x86\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_0C57622BA8664CDC90908492BBA3EC69"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C2B1C623D6CF3C8CFB83AE396D6ACA1B"
             {
             "AssemblyRegister" = "3:1"
@@ -447,6 +565,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D6C49AC8B9D4463FAFE95A39FF99E6B0"
+            {
+            "SourcePath" = "8:..\\SVDK2\\bin\\Release\\x64\\SQLite.Interop.dll"
+            "TargetName" = "8:SQLite.Interop.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_03EE33960CD74B04A6C9BCA945C37D8D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FCFFE5BCE3030037AE32DB3D3FAB45A1"
@@ -507,6 +645,50 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_03EE33960CD74B04A6C9BCA945C37D8D"
+                    {
+                    "Name" = "8:x64"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FCBCE17193C84AFEA1EA0725106C9430"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0C57622BA8664CDC90908492BBA3EC69"
+                    {
+                    "Name" = "8:x86"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FB0D1D2AC7A74DFE8790F8DABFFC7D6B"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_30D32B5EDC0A4A1EAEFBB258A8449F0D"
+                    {
+                    "Name" = "8:template"
+                    "AlwaysCreate" = "11:TRUE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_2AB5F8B458844C07A90B0841F0A30022"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_4C9E704A0A0041A8AF17B9B1CCC550EA"
+                    {
+                    "Name" = "8:backup"
+                    "AlwaysCreate" = "11:TRUE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_8E01414CFDCD4A959D5C262CBCE2D56B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_D961CC82B6234102A84B4F6C386766D9"
@@ -537,7 +719,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:СВДК2"
         "ProductCode" = "8:{694ABBFC-BAD8-4F08-AD20-288EB3C59EB2}"
-        "PackageCode" = "8:{87BFB7BC-84BB-4609-9CD5-DCF2178F36C1}"
+        "PackageCode" = "8:{D80AEF70-DCF6-4BD7-9254-993B55BE0F7D}"
         "UpgradeCode" = "8:{3B8599C9-96CA-4E71-909B-E252773EC5EA}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -1058,7 +1240,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_950F32F55F19438BA2C1CFF665326D00"
             {
-            "SourcePath" = "8:..\\SVDK2\\obj\\Release\\SVDK2.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C6F10F4A302A4297B617C6E27092FB4E"

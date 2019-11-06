@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip_main = new System.Windows.Forms.ToolStrip();
             this.AgentToolStripButton_main = new System.Windows.Forms.ToolStripButton();
             this.insuranceToolStripButton_main = new System.Windows.Forms.ToolStripButton();
@@ -67,7 +67,7 @@
             this.toolStripDropDownButton_main});
             this.toolStrip_main.Location = new System.Drawing.Point(0, 0);
             this.toolStrip_main.Name = "toolStrip_main";
-            this.toolStrip_main.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip_main.Size = new System.Drawing.Size(800, 31);
             this.toolStrip_main.TabIndex = 0;
             this.toolStrip_main.Text = "toolStrip1";
             // 
@@ -77,7 +77,7 @@
             this.AgentToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("AgentToolStripButton_main.Image")));
             this.AgentToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AgentToolStripButton_main.Name = "AgentToolStripButton_main";
-            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 24);
+            this.AgentToolStripButton_main.Size = new System.Drawing.Size(63, 28);
             this.AgentToolStripButton_main.Text = "&Агенты";
             this.AgentToolStripButton_main.Click += new System.EventHandler(this.AgentToolStripButton_main_Click);
             this.AgentToolStripButton_main.MouseEnter += new System.EventHandler(this.AgentToolStripButton_main_MouseEnter);
@@ -88,7 +88,7 @@
             this.insuranceToolStripButton_main.Image = ((System.Drawing.Image)(resources.GetObject("insuranceToolStripButton_main.Image")));
             this.insuranceToolStripButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.insuranceToolStripButton_main.Name = "insuranceToolStripButton_main";
-            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 24);
+            this.insuranceToolStripButton_main.Size = new System.Drawing.Size(143, 28);
             this.insuranceToolStripButton_main.Text = "&Виды страхований";
             this.insuranceToolStripButton_main.Click += new System.EventHandler(this.insuranceToolStripButton_main_Click);
             this.insuranceToolStripButton_main.MouseEnter += new System.EventHandler(this.insuranceToolStripButton_main_MouseEnter);
@@ -103,7 +103,7 @@
             this.toolStripDropDownButton_main.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_main.Image")));
             this.toolStripDropDownButton_main.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton_main.Name = "toolStripDropDownButton_main";
-            this.toolStripDropDownButton_main.Size = new System.Drawing.Size(98, 24);
+            this.toolStripDropDownButton_main.Size = new System.Drawing.Size(98, 28);
             this.toolStripDropDownButton_main.Text = "Настройки";
             // 
             // forFioToolStripMenuItem_main
@@ -160,7 +160,7 @@
             this.tableLayoutPanel_main.Controls.Add(this.yearNumericUpDown_main, 1, 2);
             this.tableLayoutPanel_main.Controls.Add(this.quarterNumericUpDown_main, 3, 2);
             this.tableLayoutPanel_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel_main.Location = new System.Drawing.Point(0, 27);
+            this.tableLayoutPanel_main.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel_main.Name = "tableLayoutPanel_main";
             this.tableLayoutPanel_main.RowCount = 3;
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -170,7 +170,7 @@
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel_main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel_main.Size = new System.Drawing.Size(800, 423);
+            this.tableLayoutPanel_main.Size = new System.Drawing.Size(800, 419);
             this.tableLayoutPanel_main.TabIndex = 1;
             // 
             // helpStatusStrip_main
@@ -178,7 +178,7 @@
             this.helpStatusStrip_main.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.helpStatusStrip_main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripStatusLabel_main});
-            this.helpStatusStrip_main.Location = new System.Drawing.Point(245, 401);
+            this.helpStatusStrip_main.Location = new System.Drawing.Point(245, 397);
             this.helpStatusStrip_main.Name = "helpStatusStrip_main";
             this.helpStatusStrip_main.Size = new System.Drawing.Size(555, 22);
             this.helpStatusStrip_main.TabIndex = 0;
@@ -191,34 +191,34 @@
             // 
             // chart_main
             // 
-            chartArea3.AxisX.MaximumAutoSize = 85F;
-            chartArea3.Name = "ChartArea1";
-            this.chart_main.ChartAreas.Add(chartArea3);
+            chartArea1.AxisX.MaximumAutoSize = 85F;
+            chartArea1.Name = "ChartArea1";
+            this.chart_main.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel_main.SetColumnSpan(this.chart_main, 5);
             this.chart_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart_main.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chart_main.Legends.Add(legend1);
             this.chart_main.Location = new System.Drawing.Point(3, 3);
             this.chart_main.Name = "chart_main";
             this.tableLayoutPanel_main.SetRowSpan(this.chart_main, 2);
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.LegendText = "Выполнение плана\\nпо количеству (%)";
-            series5.Name = "count";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.LegendText = "Выполнение плана\\nпо сумме (%)";
-            series6.Name = "sum";
-            this.chart_main.Series.Add(series5);
-            this.chart_main.Series.Add(series6);
-            this.chart_main.Size = new System.Drawing.Size(794, 389);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.LegendText = "Выполнение плана\\nпо количеству (%)";
+            series1.Name = "count";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.LegendText = "Выполнение плана\\nпо сумме (%)";
+            series2.Name = "sum";
+            this.chart_main.Series.Add(series1);
+            this.chart_main.Series.Add(series2);
+            this.chart_main.Size = new System.Drawing.Size(794, 385);
             this.chart_main.TabIndex = 1;
             this.chart_main.Text = "chart1";
             // 
             // yearLabel_main
             // 
             this.yearLabel_main.AutoSize = true;
-            this.yearLabel_main.Location = new System.Drawing.Point(3, 395);
+            this.yearLabel_main.Location = new System.Drawing.Point(3, 391);
             this.yearLabel_main.Name = "yearLabel_main";
             this.yearLabel_main.Size = new System.Drawing.Size(36, 17);
             this.yearLabel_main.TabIndex = 2;
@@ -228,7 +228,7 @@
             // quarterLabel_main
             // 
             this.quarterLabel_main.AutoSize = true;
-            this.quarterLabel_main.Location = new System.Drawing.Point(116, 395);
+            this.quarterLabel_main.Location = new System.Drawing.Point(116, 391);
             this.quarterLabel_main.Name = "quarterLabel_main";
             this.quarterLabel_main.Size = new System.Drawing.Size(67, 17);
             this.quarterLabel_main.TabIndex = 4;
@@ -238,7 +238,7 @@
             // yearNumericUpDown_main
             // 
             this.yearNumericUpDown_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yearNumericUpDown_main.Location = new System.Drawing.Point(47, 398);
+            this.yearNumericUpDown_main.Location = new System.Drawing.Point(47, 394);
             this.yearNumericUpDown_main.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -261,7 +261,7 @@
             // quarterNumericUpDown_main
             // 
             this.quarterNumericUpDown_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quarterNumericUpDown_main.Location = new System.Drawing.Point(196, 398);
+            this.quarterNumericUpDown_main.Location = new System.Drawing.Point(196, 394);
             this.quarterNumericUpDown_main.Maximum = new decimal(new int[] {
             4,
             0,
